@@ -1,0 +1,1 @@
+# dj-vagrant-react-wagtail

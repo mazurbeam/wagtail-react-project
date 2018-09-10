@@ -8,7 +8,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    axios.get('/api/v2/pages/?type=home.HomePage').then(res => {
+    axios.get('/api/v2/pages/?type=home.HomePage&fields=*').then(res => {
       const page = res.data.items[0];
       this.setState({ page });
     });
@@ -16,11 +16,11 @@ class Home extends Component {
 
   render() {
     const { page } = this.state;
-    console.log('homepage', page);
+    // console.log('homepage', page);
     return (
       <div>
-        <h1>Home page</h1>
-        <h3>{page.title}</h3>
+        <h1>{page.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: page.introduction }} />
       </div>
     );
   }

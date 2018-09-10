@@ -9,6 +9,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+from wagtail.api import APIField
 
 
 class BlogPageTag(TaggedItemBase):
@@ -18,6 +19,9 @@ class BlogPageTag(TaggedItemBase):
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
+    api_fields = [
+        APIField('intro'),
+    ]
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full")
     ]

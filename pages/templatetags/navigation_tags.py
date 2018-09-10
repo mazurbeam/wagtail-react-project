@@ -2,7 +2,7 @@ from django import template
 
 from wagtail.core.models import Page
 
-from home.models import FooterText
+from pages.models import FooterText
 
 
 register = template.Library()

@@ -8,12 +8,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import rootReducer from './services/reducers';
 import store, { history } from './services/store';
+import './index.css';
 
 const render = () => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <App />
+        <App history={history} />
       </Provider>
     </AppContainer>,
     document.getElementById('root')

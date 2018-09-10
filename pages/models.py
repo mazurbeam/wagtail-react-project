@@ -24,8 +24,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from .blocks import BaseStreamBlock
-from colleges.majors.models import MajorIndexPage
-from colleges.locations.models import *
+
 
 def slash_join(*args):
     return "/".join(arg.strip("/") for arg in args)

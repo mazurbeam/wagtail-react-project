@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { Box } from 'rebass';
+import { Box, Heading } from 'rebass';
 import axios from 'axios';
 
 import { fetchAllPages } from '../services/actions/page';
@@ -30,7 +30,7 @@ class Home extends Component {
     return (
       <div>
         <Box className="uk-position-large uk-position-top-center">
-          <h1>{page.title}</h1>
+          <Heading>{page.title}</Heading>
         </Box>
         <Box className=" uk-position-center">
           <div

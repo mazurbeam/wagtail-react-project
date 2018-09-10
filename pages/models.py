@@ -7,6 +7,7 @@ from .blocks import BaseStreamBlock
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
+from wagtail.api import APIField
 
 from wagtail.admin.edit_handlers import (
     FieldPanel,
@@ -127,6 +128,12 @@ class StandardPage(Page):
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True
     )
+    api_fields = [
+        APIField('introduction'),
+        APIField('body'),
+        APIField('image')
+    ]
+
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
         StreamFieldPanel('body'),

@@ -14,10 +14,11 @@ import Header from '../components/Header';
 import Home from '../containers/Home';
 import Page from '../containers/Page';
 import BlogIndexPage from '../containers/BlogIndexPage';
+import StandardPage from '../containers/StandardPage';
 
 const Wrapper = styled.div``;
 
-const routes = ({ location }) => (
+const Routes = ({ location }) => (
   <Wrapper>
     <Header />
     <TransitionGroup>
@@ -34,6 +35,9 @@ const routes = ({ location }) => (
               if (props.location.state.type === 'blog.BlogIndexPage') {
                 return <BlogIndexPage {...props} />;
               }
+              if (props.location.state.type === 'pages.StandardPage') {
+                return <StandardPage {...props} />;
+              }
               return <Page {...props} />;
             }}
           />
@@ -44,4 +48,4 @@ const routes = ({ location }) => (
   </Wrapper>
 );
 
-export default withRouter(routes);
+export default withRouter(Routes);

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
 import axios from 'axios';
 import { Box, Heading, Card, Text } from 'rebass';
+
+const Wrapper = styled.div``;
 
 class BlogIndexPage extends Component {
   state = {
@@ -42,22 +45,28 @@ class BlogIndexPage extends Component {
     // console.log('page children', childPages);
 
     return (
-      <Box className=" uk-position-center">
-        <Heading>{page.title}</Heading>
-        {loading ? (
-          <Text>Loading...</Text>
-        ) : (
-          <div>
-            <div dangerouslySetInnerHTML={{ __html: page.intro }} />
-            {childPages.items.map(child => (
-              <Card key={child.id}>
-                <Heading>{child.title}</Heading>
-                <Text>{child.intro}</Text>
-              </Card>
-            ))}
-          </div>
-        )}
-      </Box>
+      <Wrapper>
+        <Box className="uk-position-large uk-position-top-center">
+          <Heading fontSize={5}>{page.title}</Heading>
+          <Heading
+            fontSize={2}
+            dangerouslySetInnerHTML={{ __html: page.intro }}
+          />
+        </Box>
+        <Box className=" uk-position-center">
+          {loading ? (
+            <Text>Loading...</Text>
+          ) : (
+            <div>
+              {childPages.items.map(child => (
+                <Card key={child.id}>
+                  <Heading>{child.title}</Heading>
+                </Card>
+              ))}
+            </div>
+          )}
+        </Box>
+      </Wrapper>
     );
   }
 }

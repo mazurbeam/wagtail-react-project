@@ -4,7 +4,8 @@ import * as page from '../actions/page';
 
 const initialState = {
   menu: [],
-  meta: {},
+  meta: null,
+  pages: [],
   details: {},
   children: [],
   errors: {}
@@ -12,10 +13,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case page.GET_PAGES_SUCCESS:
+      return {
+        ...state,
+        pages: action.payload
+      };
     case page.GET_MAIN_MENU_SUCCESS:
       return {
         ...state,
-        menu: action.payload
+        menu: action.payload.items
       };
     case page.GET_MAIN_MENU_FAILURE:
       return {

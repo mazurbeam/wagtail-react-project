@@ -23,3 +23,16 @@ const render = () => {
 
 render();
 // registerServiceWorker()
+
+// Hot reloading
+if (module.hot) {
+  // Reload components
+  module.hot.accept('./App', () => {
+    render();
+  });
+
+  // Reload reducers
+  module.hot.accept('./services/reducers', () => {
+    store.replaceReducer(connectRouter(history)(rootReducer));
+  });
+}

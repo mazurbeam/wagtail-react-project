@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 // import Header from '../components/Header'
+
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { Box } from 'rebass';
 import axios from 'axios';
+
+import { fetchAllPages } from '../services/actions/page';
+// import * as reducers from '../services/reducers';
 
 class Home extends Component {
   state = {
@@ -12,6 +20,8 @@ class Home extends Component {
       const page = res.data.items[0];
       this.setState({ page });
     });
+    const { getPages } = this.props;
+    getPages();
   }
 
   render() {
@@ -19,11 +29,31 @@ class Home extends Component {
     // console.log('homepage', page);
     return (
       <div>
-        <h1>{page.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: page.introduction }} />
+        <Box className="uk-position-large uk-position-top-center">
+          <h1>{page.title}</h1>
+        </Box>
+        <Box className=" uk-position-center">
+          <div
+            className="uk-container"
+            dangerouslySetInnerHTML={{ __html: page.introduction }}
+          />
+        </Box>
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  pages: state.page.pages
+});
+
+const mapDispatchToProps = dispatch => ({
+  getPages: () => dispatch(fetchAllPages())
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Home)
+);

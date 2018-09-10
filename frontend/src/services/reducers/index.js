@@ -1,13 +1,11 @@
 // src/services/reducers/index.js
 
 import { combineReducers } from 'redux';
-import counterReducer from './counter';
 
 import page, * as fromPage from './page';
 
 const rootReducer = combineReducers({
-  page,
-  count: counterReducer
+  page
 });
 
 export const refreshPage = state => fromPage.refreshPageState(state.page);

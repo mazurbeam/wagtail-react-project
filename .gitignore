@@ -4,5 +4,5 @@ __pycache__/
 
 frontend/node_modules/
 frontend/.vscode
-frontend/build/
+
 .idea

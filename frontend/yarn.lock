@@ -145,18 +145,6 @@
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.1.tgz#f3a81587ad8d0ef33cdad6f3b4310774fcc1053e"
 
-"@rebass/components@^4.0.0-1":
-  version "4.0.0-1"
-  resolved "https://registry.yarnpkg.com/@rebass/components/-/components-4.0.0-1.tgz#00f08f99a3e9db565b685ab23283852fe5f7573f"
-  dependencies:
-    styled-system "^3.0.1"
-
-"@rebass/grid@^6.0.0-0":
-  version "6.0.0-0"
-  resolved "https://registry.yarnpkg.com/@rebass/grid/-/grid-6.0.0-0.tgz#0bafd24503196f564a75287a9cafa55c0e2ae2d4"
-  dependencies:
-    "@rebass/components" "^4.0.0-1"
-
 "@types/node@*":
   version "10.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.4.tgz#0f4cb2dc7c1de6096055357f70179043c33e9897"
@@ -3770,7 +3758,7 @@ ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
 
-immutable@^3.8.1:
+immutable@^3.8.1, immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
@@ -5627,10 +5615,6 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
-polished@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-1.9.3.tgz#d61b8a0c4624efe31e2583ff24a358932b6b75e1"
-
 portfinder@^1.0.9:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.17.tgz#a8a1691143e46c4735edefcf4fbcccedad26456a"
@@ -6321,15 +6305,11 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
-rebass@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/rebass/-/rebass-2.3.2.tgz#b8dc477a7ff1005b9dca6374420473dfddb5d986"
+rebass@^3.0.0-0:
+  version "3.0.0-0"
+  resolved "https://registry.yarnpkg.com/rebass/-/rebass-3.0.0-0.tgz#f270f374985358463fca5245d866145878e88e3f"
   dependencies:
-    "@rebass/components" "^4.0.0-1"
-    "@rebass/grid" "^6.0.0-0"
-    polished "^1.9.3"
-    prop-types "^15.6.0"
-    styled-system "^3.0.3"
+    styled-system "^3.0.2"
 
 recursive-readdir@2.2.1:
   version "2.2.1"
@@ -6380,6 +6360,10 @@ redux-devtools@^3.4.1:
     lodash "^4.2.0"
     prop-types "^15.5.7"
     redux-devtools-instrument "^1.0.1"
+
+redux-immutable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
 
 redux-logger@^3.0.6:
   version "3.0.6"
@@ -7145,7 +7129,7 @@ styled-components@^3.4.5:
     stylis-rule-sheet "^0.0.10"
     supports-color "^3.2.3"
 
-styled-system@^3.0.1, styled-system@^3.0.3:
+styled-system@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.0.3.tgz#8ca3938fa382564e059f181d37d563b753cc9f41"
   dependencies:

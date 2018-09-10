@@ -19,36 +19,38 @@ class Page extends Component {
   };
 
   componentWillMount() {
-    const { match } = this.props;
+    const { match, location } = this.props;
     // console.log(match);
-    axios.get(`/api/v2/pages/?slug=${match.params.slug}&fields=*`).then(res => {
-      const { meta } = res.data.items[0];
-      const { type } = meta;
-      // this.setState({ meta, type });
-      axios.get(`/api/v2/pages/?type=${meta.type}&fields=*`).then(res2 => {
-        const page = res2.data.items[0];
-        axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res3 => {
-          const childPages = res3.data;
-          this.setState({ meta, type, page, childPages, loaded: true });
+    const { state } = location;
+    console.log('location state', state);
+
+    axios
+      .get(
+        `/api/v2/pages/?type=${state.type}&slug=${match.params.slug}&fields=*`
+      )
+      .then(res => {
+        const page = res.data.items[0];
+        axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
+          const childPages = res2.data;
+          this.setState({ page, childPages, type: state.type, loading: false });
         });
       });
-    });
   }
 
   render() {
-    const { meta, page, type, childPages, loaded } = this.state;
+    const { page, childPages, loading } = this.state;
     console.log(this.state);
-    console.log('page meta', meta);
-    console.log('page', page);
-    console.log('page children', childPages);
+    // console.log('page meta', meta);
+    // console.log('page', page);
+    // console.log('page children', childPages);
 
     return (
-      <Box>
+      <Box className=" uk-position-center">
         <Heading>{page.title}</Heading>
-        {loaded && type === 'blog.BlogIndexPage' ? (
-          <BlogIndexPage page={page} childPages={childPages} />
+        {loading ? (
+          <Text>Loading...</Text>
         ) : (
-          <Text>Standard Page </Text>
+          <BlogIndexPage page={page} childPages={childPages} />
         )}
       </Box>
     );
@@ -56,7 +58,7 @@ class Page extends Component {
 }
 
 const mapStateToProps = state => ({
-  state
+  pathname: state.router.location.pathname
 });
 
 // const mapDispatchToProps = dispatch => ({

@@ -6,7 +6,11 @@ import styled from 'styled-components';
 // import axios from 'axios';
 import { Box, Heading, Card, Text } from 'rebass';
 
-import { fetchPageType, fetchPageChildren } from '../services/actions/page';
+import {
+  // fetchPageType,
+  fetchPageChildren,
+  fetchPageWithId
+} from '../services/actions/page';
 import * as reducers from '../services/reducers';
 // import BlogPage from './BlogPage';
 
@@ -24,27 +28,15 @@ class BlogIndexPage extends Component {
 
   componentWillMount() {
     this.setState({ loading: true });
-    const { match, location, getBlogPages, getPageDetails } = this.props;
-    // console.log(match);
-    const { state } = location;
-    const { type, id } = state;
+    const { match, id, getBlogPages, getPageDetails } = this.props;
+    console.log(match);
+    // const { state } = location;
+    // const { type, id } = state;
 
-    console.log('location state', state);
-    getPageDetails(type, match.params.slug);
+    // console.log('location state', state);
+    getPageDetails(id);
     getBlogPages(id);
     this.setState({ loading: false });
-    // axios
-    //   .get(`/api/v2/pages/?type=${type}&slug=${match.params.slug}&fields=*`)
-    //   .then(res => {
-    //     const page = res.data.items[0];
-
-    //     // this.setState({ page, childPages, type: state.type, loading: false });
-
-    //     axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
-    //       const childPages = res2.data;
-    //       this.setState({ page, childPages, type: state.type, loading: false });
-    //     });
-    //   });
   }
 
   render() {
@@ -56,6 +48,8 @@ class BlogIndexPage extends Component {
     // console.log('page children', childPages);
     const { pathname, details, children } = this.props;
     console.log('blogpageindex details', details);
+    console.log('blogpageindex children', children);
+
     // let page = { title: '', intro: '' };
     // if (loading === false) {
     //   page = { title: 'loaded', intro: 'loaded' };
@@ -107,8 +101,8 @@ const mapDispatchToProps = dispatch => ({
   getBlogPages(id) {
     dispatch(fetchPageChildren(id));
   },
-  getPageDetails(type, slug) {
-    dispatch(fetchPageType(type, slug));
+  getPageDetails(id) {
+    dispatch(fetchPageWithId(id));
   }
 });
 

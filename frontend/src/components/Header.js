@@ -104,8 +104,7 @@ class Header extends Component {
                   color="white"
                   key={item.id}
                   to={{
-                    pathname: `/${item.meta.slug}`,
-                    state: { type: item.meta.type, id: item.id }
+                    pathname: `/${item.meta.slug}`
                   }}
                 >
                   {item.title}

@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import axios from 'axios';
+// import axios from 'axios';
 import { Box, Heading, Text } from 'rebass';
-// import { fetchPageMeta } from '../services/actions/page';
+
+import * as reducers from '../services/reducers';
+import {
+  fetchPageMeta,
+  fetchPageWithId,
+  fetchPageChildren
+} from '../services/actions/page';
 
 import BlogIndexPage from './BlogIndexPage';
+import StandardPage from './StandardPage';
 
 class Page extends Component {
   state = {
@@ -19,52 +26,74 @@ class Page extends Component {
   };
 
   componentWillMount() {
-    const { match, location } = this.props;
+    const { getPageMeta, meta, match } = this.props;
     // console.log(match);
-    const { state } = location;
-    console.log('location state', state);
+    // const state = { type: 'blog.BlogIndexPage' };
+    console.log('will mount meta', meta);
+    // getPageMeta(match.params.slug);
+    getPageMeta(match.params.slug);
+  }
 
-    axios
-      .get(
-        `/api/v2/pages/?type=${state.type}&slug=${match.params.slug}&fields=*`
-      )
-      .then(res => {
-        const page = res.data.items[0];
-        axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
-          const childPages = res2.data;
-          this.setState({ page, childPages, type: state.type, loading: false });
-        });
-      });
+  componentDidMount() {
+    // const { getPageDetails, meta } = this.props;
+    // getPageDetails(meta[0].id);
   }
 
   render() {
-    const { page, childPages, loading } = this.state;
-    console.log(this.state);
-    // console.log('page meta', meta);
-    // console.log('page', page);
-    // console.log('page children', childPages);
+    const { page, loading } = this.state;
+
+    const { meta } = this.props;
+    console.log('props', this.props);
+    let pageSpace = <Text>Loading...</Text>;
+    if (meta.meta.type === 'blog.BlogIndexPage') {
+      pageSpace = <BlogIndexPage id={meta.id} />;
+      // pageSpace = (
+      //   <Text>
+      //     {meta.title}
+      //     ...
+      //   </Text>
+      // );
+    }
+    if (meta.meta.type === 'pages.StandardPage') {
+      pageSpace = <StandardPage id={meta.id} />;
+      // pageSpace = (
+      //   <Text>
+      //     {meta.title}
+      //     ...
+      //   </Text>
+      // );
+    }
 
     return (
-      <Box className=" uk-position-center">
+      <Box>
         <Heading>{page.title}</Heading>
-        {loading ? (
-          <Text>Loading...</Text>
-        ) : (
-          <BlogIndexPage page={page} childPages={childPages} />
-        )}
+        {loading ? pageSpace : pageSpace}
       </Box>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  pathname: state.router.location.pathname
+  pathname: state.router.location.pathname,
+  meta: state.page.meta,
+  details: reducers.refreshPage(state)
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getPageMeta() {
-//     dispatch(fetchMainMenu());
-//   }
-// });
+const mapDispatchToProps = dispatch => ({
+  getPageMeta(slug) {
+    dispatch(fetchPageMeta(slug));
+  },
+  getPageDetails(id) {
+    dispatch(fetchPageWithId(id));
+  },
+  getPageChildren(id) {
+    dispatch(fetchPageChildren(id));
+  }
+});
 
-export default withRouter(connect(mapStateToProps)(Page));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Page)
+);

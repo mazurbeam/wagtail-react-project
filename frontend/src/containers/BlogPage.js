@@ -21,8 +21,8 @@ class BlogPage extends Component {
 
   componentWillMount() {
     const { match, location } = this.props;
-    console.log('match', match);
-    console.log('location', location);
+    console.log('blogpage match', match);
+    console.log('blogpage location', location);
 
     // const { state } = location;
     // console.log('location state', state);

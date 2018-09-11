@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Box, Heading, Card, Text } from 'rebass';
 
-import axios from 'axios';
+// import axios from 'axios';
+import {
+  // fetchPageType,
+  fetchPageChildren,
+  fetchPageWithId
+} from '../services/actions/page';
+import * as reducers from '../services/reducers';
 
 const Wrapper = styled.div``;
 
@@ -18,49 +25,59 @@ class StandardPage extends Component {
   };
 
   componentWillMount() {
-    const { match, location } = this.props;
-    // console.log(match);
-    const { state } = location;
-    console.log('location state', state);
+    this.setState({ loading: true });
 
-    axios
-      .get(
-        `/api/v2/pages/?type=${state.type}&slug=${match.params.slug}&fields=*`
-      )
-      .then(res => {
-        const page = res.data.items[0];
-        axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
-          const childPages = res2.data;
-          this.setState({ page, childPages, type: state.type, loading: false });
-        });
-      });
+    const { id, getPageDetails, getPageChildren } = this.props;
+    console.log('willmount props', this.props);
+
+    getPageDetails(id);
+    getPageChildren(id);
+    this.setState({ loading: false });
   }
+
+  componentDidMount() {
+    // const { id, getPageDetails } = this.props;
+  }
+
+  isEmpty = obj => {
+    const values = Object.values(obj);
+    if (values.length > 0) {
+      return false;
+    }
+    return true;
+  };
 
   render() {
     const { page, loading } = this.state;
     console.log(page);
-    let imageUrl;
-    if (loading === false) {
-      imageUrl = `http://localhost:8000${page.image_thumbnail.url}`;
+    // let imageUrl;
+    let { details } = this.props;
+    console.log('details', details);
+    // if (loading === false) {
+    //   imageUrl = `http://localhost:8000${details.image_thumbnail.url}`;
+    // }
+    if (this.isEmpty(details)) {
+      details = { title: '', body: [] };
     }
     return (
       <Wrapper>
-        <Box className="uk-position-large uk-position-top-center">
-          <Heading>{page.title}</Heading>
-        </Box>
         <Box className=" uk-position-center">
           {loading ? (
             <Text>Loading...</Text>
           ) : (
-            <Card bg={imageUrl}>
-              <img src={imageUrl} alt="about" />
-              {page.body.map(block => (
-                <div
-                  key={block.id}
-                  dangerouslySetInnerHTML={{ __html: block.value }}
-                />
-              ))}
-            </Card>
+            <Wrapper>
+              <Box className="uk-position-large uk-position-top-center">
+                <Heading>{details.title}</Heading>
+              </Box>
+              <Card>
+                {details.body.map(block => (
+                  <div
+                    key={block.id}
+                    dangerouslySetInnerHTML={{ __html: block.value }}
+                  />
+                ))}
+              </Card>
+            </Wrapper>
           )}
         </Box>
       </Wrapper>
@@ -68,4 +85,24 @@ class StandardPage extends Component {
   }
 }
 
-export default StandardPage;
+const mapStateToProps = state => ({
+  pathname: state.router.location.pathname,
+  details: reducers.refreshPage(state),
+  children: reducers.refreshPageChildren(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  getPageChildren(id) {
+    dispatch(fetchPageChildren(id));
+  },
+  getPageDetails(id) {
+    dispatch(fetchPageWithId(id));
+  }
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(StandardPage)
+);

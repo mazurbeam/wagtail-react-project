@@ -13,8 +13,8 @@ import NoMatch from '../components/NoMatch';
 import Header from '../components/Header';
 import Home from '../containers/Home';
 import Page from '../containers/Page';
-import BlogIndexPage from '../containers/BlogIndexPage';
-import StandardPage from '../containers/StandardPage';
+// import BlogIndexPage from '../containers/BlogIndexPage';
+// import StandardPage from '../containers/StandardPage';
 import BlogPage from '../containers/BlogPage';
 
 const Wrapper = styled.div``;
@@ -30,18 +30,7 @@ const Routes = ({ location }) => (
       >
         <Switch location={location}>
           <Route exact path="/" component={Home} />
-          <Route
-            path="/:slug"
-            render={props => {
-              if (props.location.state.type === 'blog.BlogIndexPage') {
-                return <BlogIndexPage {...props} />;
-              }
-              if (props.location.state.type === 'pages.StandardPage') {
-                return <StandardPage {...props} />;
-              }
-              return <Page {...props} />;
-            }}
-          />
+          <Route path="/:slug" component={Page} />
           <Route
             path="/:slug/:child"
             render={props => {

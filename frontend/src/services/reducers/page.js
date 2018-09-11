@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case page.GET_PAGES_SUCCESS:
       return {
         ...state,
-        pages: action.payload
+        pages: action.payload.items
       };
     case page.GET_MAIN_MENU_SUCCESS:
       return {
@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
     case page.GET_PAGE_CHILDREN_SUCCESS:
       return {
         ...state,
-        children: action.payload
+        children: action.payload.items
       };
     case page.GET_PAGE_FAILURE:
       return {
@@ -64,8 +64,15 @@ export default (state = initialState, action) => {
 };
 
 export function refreshPageState(state) {
-  if (state) {
-    return state;
+  if (state.details.items) {
+    return state.details.items[0];
+  }
+  return null;
+}
+
+export function refreshPageChildren(state) {
+  if (state.children) {
+    return state.children;
   }
   return null;
 }

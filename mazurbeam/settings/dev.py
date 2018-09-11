@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# WAGTAILAPI_BASE_URL = 'localhost:8000'
 
 try:
     from .local import *

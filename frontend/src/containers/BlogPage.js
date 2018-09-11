@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import { Box, Heading, Card, Text } from 'rebass';
 
-import axios from 'axios';
+// import axios from 'axios';
 
 const Wrapper = styled.div``;
 
@@ -19,30 +21,20 @@ class BlogPage extends Component {
 
   componentWillMount() {
     const { match, location } = this.props;
-    // console.log(match);
-    const { state } = location;
-    console.log('location state', state);
+    console.log('match', match);
+    console.log('location', location);
 
-    axios
-      .get(
-        `/api/v2/pages/?type=${state.type}&slug=${match.params.slug}&fields=*`
-      )
-      .then(res => {
-        const page = res.data.items[0];
-        axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
-          const childPages = res2.data;
-          this.setState({ page, childPages, type: state.type, loading: false });
-        });
-      });
+    // const { state } = location;
+    // console.log('location state', state);
   }
 
   render() {
-    const { page, loading } = this.state;
-    console.log(page);
+    const { loading } = this.state;
+    // console.log(page);
     return (
       <Wrapper>
         <Box className="uk-position-large uk-position-top-center">
-          <Heading>{page.title}</Heading>
+          <Heading>Blog Title</Heading>
         </Box>
         <Box className=" uk-position-center">
           {loading ? <Text>Loading...</Text> : <Card>Loaded</Card>}
@@ -52,4 +44,14 @@ class BlogPage extends Component {
   }
 }
 
-export default BlogPage;
+const mapStateToProps = state => ({
+  pathname: state.router.location.pathname
+});
+
+// const mapDispatchToProps = dispatch => ({
+//   getPageMeta() {
+//     dispatch(fetchMainMenu());
+//   }
+// });
+
+export default withRouter(connect(mapStateToProps)(BlogPage));

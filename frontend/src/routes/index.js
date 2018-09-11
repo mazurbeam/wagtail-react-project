@@ -15,6 +15,7 @@ import Home from '../containers/Home';
 import Page from '../containers/Page';
 import BlogIndexPage from '../containers/BlogIndexPage';
 import StandardPage from '../containers/StandardPage';
+import BlogPage from '../containers/BlogPage';
 
 const Wrapper = styled.div``;
 
@@ -41,6 +42,16 @@ const Routes = ({ location }) => (
               return <Page {...props} />;
             }}
           />
+          <Route
+            path="/:slug/:child"
+            render={props => {
+              if (props.location.state.type === 'blog.BlogPage') {
+                return <BlogPage {...props} />;
+              }
+              return <Page {...props} />;
+            }}
+          />
+
           <Route component={NoMatch} />
         </Switch>
       </CSSTransition>

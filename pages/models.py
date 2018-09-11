@@ -23,6 +23,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail.images.api.fields import ImageRenditionField
 
 from .blocks import BaseStreamBlock
 
@@ -131,7 +132,9 @@ class StandardPage(Page):
     api_fields = [
         APIField('introduction'),
         APIField('body'),
-        APIField('image')
+        APIField('image'),
+        APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
+
     ]
 
     content_panels = Page.content_panels + [

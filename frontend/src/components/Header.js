@@ -93,19 +93,19 @@ class Header extends Component {
         >
           <ul className="uk-nav">
             <li>
-              <NavLink className="uk-link-heading" color="whitish" to="/">
+              <NavLink className="uk-nav-header" color="whitish" to="/">
                 Home
               </NavLink>
             </li>
             {menu.map(item => (
               <li>
                 <NavLink
-                  className="uk-link-heading"
+                  className="uk-nav-header"
                   color="white"
                   key={item.id}
                   to={{
-                    pathname: item.meta.slug,
-                    state: { type: item.meta.type }
+                    pathname: `/${item.meta.slug}`,
+                    state: { type: item.meta.type, id: item.id }
                   }}
                 >
                   {item.title}

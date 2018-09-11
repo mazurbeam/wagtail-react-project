@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import axios from 'axios';
+// import axios from 'axios';
 import { Box, Heading, Card, Text } from 'rebass';
+
+import { fetchPageType, fetchPageChildren } from '../services/actions/page';
+import * as reducers from '../services/reducers';
+// import BlogPage from './BlogPage';
 
 const Wrapper = styled.div``;
 
@@ -19,66 +23,98 @@ class BlogIndexPage extends Component {
   };
 
   componentWillMount() {
-    const { match, location } = this.props;
+    this.setState({ loading: true });
+    const { match, location, getBlogPages, getPageDetails } = this.props;
     // console.log(match);
     const { state } = location;
-    console.log('location state', state);
+    const { type, id } = state;
 
-    axios
-      .get(
-        `/api/v2/pages/?type=${state.type}&slug=${match.params.slug}&fields=*`
-      )
-      .then(res => {
-        const page = res.data.items[0];
-        axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
-          const childPages = res2.data;
-          this.setState({ page, childPages, type: state.type, loading: false });
-        });
-      });
+    console.log('location state', state);
+    getPageDetails(type, match.params.slug);
+    getBlogPages(id);
+    this.setState({ loading: false });
+    // axios
+    //   .get(`/api/v2/pages/?type=${type}&slug=${match.params.slug}&fields=*`)
+    //   .then(res => {
+    //     const page = res.data.items[0];
+
+    //     // this.setState({ page, childPages, type: state.type, loading: false });
+
+    //     axios.get(`/api/v2/pages/?child_of=${page.id}`).then(res2 => {
+    //       const childPages = res2.data;
+    //       this.setState({ page, childPages, type: state.type, loading: false });
+    //     });
+    //   });
   }
 
   render() {
-    const { page, childPages, loading } = this.state;
-    console.log(this.state);
+    const { childPages, loading } = this.state;
+    console.log('blogpageindex render state childPages', childPages);
+
     // console.log('page meta', meta);
     // console.log('page', page);
     // console.log('page children', childPages);
-
+    const { pathname, details, children } = this.props;
+    console.log('blogpageindex details', details);
+    // let page = { title: '', intro: '' };
+    // if (loading === false) {
+    //   page = { title: 'loaded', intro: 'loaded' };
+    // }
     return (
       <Wrapper>
-        <Box className="uk-position-large uk-position-top-center">
-          <Heading fontSize={5}>{page.title}</Heading>
-          <Heading
-            fontSize={2}
-            dangerouslySetInnerHTML={{ __html: page.intro }}
-          />
-        </Box>
-        <Box className=" uk-position-center">
-          {loading ? (
-            <Text>Loading...</Text>
-          ) : (
-            <div>
-              {childPages.items.map(child => (
-                <Card key={child.id}>
-                  <Heading>{child.title}</Heading>
-                </Card>
-              ))}
-            </div>
-          )}
-        </Box>
+        {loading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <Wrapper>
+            <Box className="uk-position-large uk-position-top-center">
+              <Heading fontSize={5}>{details.title}</Heading>
+              <Heading
+                fontSize={2}
+                dangerouslySetInnerHTML={{ __html: details.intro }}
+              />
+            </Box>
+            <Box className=" uk-position-center">
+              <div>
+                {children.map(child => (
+                  <Card key={child.id}>
+                    <Heading>{child.title}</Heading>
+                    <Link
+                      to={{
+                        pathname: `${pathname}/${child.meta.slug}`,
+                        state: { type: child.meta.type, id: child.id }
+                      }}
+                    >
+                      Read More
+                    </Link>
+                  </Card>
+                ))}
+              </div>
+            </Box>
+          </Wrapper>
+        )}
       </Wrapper>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  pathname: state.router.location.pathname
+  pathname: state.router.location.pathname,
+  details: reducers.refreshPage(state),
+  children: reducers.refreshPageChildren(state)
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getPageMeta() {
-//     dispatch(fetchMainMenu());
-//   }
-// });
+const mapDispatchToProps = dispatch => ({
+  getBlogPages(id) {
+    dispatch(fetchPageChildren(id));
+  },
+  getPageDetails(type, slug) {
+    dispatch(fetchPageType(type, slug));
+  }
+});
 
-export default withRouter(connect(mapStateToProps)(BlogIndexPage));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BlogIndexPage)
+);

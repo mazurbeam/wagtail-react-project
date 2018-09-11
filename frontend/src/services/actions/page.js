@@ -18,9 +18,9 @@ export const GET_PAGE_TYPE_REQUEST = '@@page/GET_PAGE_TYPE_REQUEST';
 export const GET_PAGE_TYPE_SUCCESS = '@@page/GET_PAGE_TYPE_SUCCESS';
 export const GET_PAGE_TYPE_FAILURE = '@@page/GET_PAGE_TYPE_FAILURE';
 
-export const GET_PAGE_CHILDREN_REQUEST = '@@page/GET_PAGE_REQUEST';
-export const GET_PAGE_CHILDREN_SUCCESS = '@@page/GET_PAGE_SUCCESS';
-export const GET_PAGE_CHILDREN_FAILURE = '@@page/GET_PAGE_FAILURE';
+export const GET_PAGE_CHILDREN_REQUEST = '@@page/GET_PAGE_CHILDREN_REQUEST';
+export const GET_PAGE_CHILDREN_SUCCESS = '@@page/GET_PAGE_CHILDREN_SUCCESS';
+export const GET_PAGE_CHILDREN_FAILURE = '@@page/GET_PAGE_CHILDREN_FAILURE';
 
 export const fetchMainMenu = () => ({
   [RSAA]: {
@@ -49,9 +49,9 @@ export const fetchPageMeta = slug => ({
   }
 });
 
-export const fetchPageType = type => ({
+export const fetchPageType = (type, slug) => ({
   [RSAA]: {
-    endpoint: `/api/v2/pages/?type=${type}&fields=*`,
+    endpoint: `/api/v2/pages/?type=${type}&slug=${slug}&fields=*`,
     method: 'GET',
     headers: { 'Content-type': 'application/json' },
     types: [GET_PAGE_TYPE_REQUEST, GET_PAGE_TYPE_SUCCESS, GET_PAGE_TYPE_FAILURE]

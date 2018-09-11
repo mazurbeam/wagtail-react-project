@@ -39,6 +39,10 @@ class StandardPage extends Component {
   render() {
     const { page, loading } = this.state;
     console.log(page);
+    let imageUrl;
+    if (loading === false) {
+      imageUrl = `http://localhost:8000${page.image_thumbnail.url}`;
+    }
     return (
       <Wrapper>
         <Box className="uk-position-large uk-position-top-center">
@@ -48,7 +52,8 @@ class StandardPage extends Component {
           {loading ? (
             <Text>Loading...</Text>
           ) : (
-            <Card>
+            <Card bg={imageUrl}>
+              <img src={imageUrl} alt="about" />
               {page.body.map(block => (
                 <div
                   key={block.id}

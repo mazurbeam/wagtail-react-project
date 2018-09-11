@@ -59,6 +59,13 @@ class StandardPage extends Component {
     if (this.isEmpty(details)) {
       details = { title: '', body: [] };
     }
+    const detailsHasBody = Object.prototype.hasOwnProperty.call(
+      details,
+      'body'
+    );
+    if (!detailsHasBody) {
+      details.body = [];
+    }
     return (
       <Wrapper>
         <Box className=" uk-position-center">

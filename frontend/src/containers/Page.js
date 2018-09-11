@@ -26,12 +26,15 @@ class Page extends Component {
   };
 
   componentWillMount() {
+    this.setState({ loading: true });
+
     const { getPageMeta, meta, match } = this.props;
-    // console.log(match);
+    console.log('Page match', match);
     // const state = { type: 'blog.BlogIndexPage' };
     console.log('will mount meta', meta);
     // getPageMeta(match.params.slug);
     getPageMeta(match.params.slug);
+    this.setState({ loading: false });
   }
 
   componentDidMount() {

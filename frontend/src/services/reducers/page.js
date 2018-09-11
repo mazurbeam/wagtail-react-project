@@ -8,6 +8,9 @@ const initialState = {
   pages: [],
   details: {},
   children: [],
+  standard: [],
+  blog: [],
+  blogIndex: [],
   errors: {}
 };
 

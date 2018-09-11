@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "animated": "^0.2.2",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -21,7 +20,6 @@
     "fs-extra": "3.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
-    "immutable": "^3.8.2",
     "jest": "20.0.4",
     "jwt-decode": "^2.2.0",
     "object-assign": "4.1.1",
@@ -39,11 +37,9 @@
     "react-render-html": "^0.6.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-transition-group": "^2.4.0",
-    "rebass": "^3.0.0-0",
+    "rebass": "^2.3.2",
     "redux": "^4.0.0",
     "redux-api-middleware": "^2.3.0",
-    "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "resolve": "1.6.0",
@@ -61,12 +57,8 @@
     "lint": "./node_modules/eslint/bin/eslint.js **/*.{js,jsx} --quiet"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
+    "setupFiles": ["<rootDir>/config/polyfills.js"],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -78,9 +70,7 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },
@@ -95,17 +85,11 @@
     ]
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   },
   "eslintConfig": {
     "extends": "react-app",
-    "rules": {
-      "react/no-unused-state": [
-        1
-      ]
-    }
+    "rules": { "react/no-unused-state": [1] }
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,5 +1,0 @@
-#### Wagtail - React Starter Template
-
-
-
-

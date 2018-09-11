@@ -17,11 +17,7 @@ const Wrapper = styled.div``;
 
 class StandardPage extends Component {
   state = {
-    loading: true,
-    meta: { items: [] },
-    type: '',
-    page: { title: '' },
-    childPages: []
+    loading: true
   };
 
   componentWillMount() {
@@ -68,18 +64,23 @@ class StandardPage extends Component {
     }
     return (
       <Wrapper>
-        <Box className=" uk-position-center">
+        <Box>
           {loading ? (
             <Text>Loading...</Text>
           ) : (
             <Wrapper>
               <Box className="uk-position-large uk-position-top-center">
-                <Heading>{details.title}</Heading>
+                <Heading fontSize={5}>{details.title}</Heading>
+                <Heading
+                  fontSize={2}
+                  dangerouslySetInnerHTML={{ __html: details.intro }}
+                />
               </Box>
-              <Card>
+              <Card className=" uk-position-center">
                 {details.body.map(block => (
                   <div
                     key={block.id}
+                    // eslint-disable-next-line
                     dangerouslySetInnerHTML={{ __html: block.value }}
                   />
                 ))}

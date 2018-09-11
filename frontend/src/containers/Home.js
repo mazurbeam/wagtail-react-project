@@ -35,6 +35,7 @@ class Home extends Component {
         <Box className=" uk-position-center">
           <div
             className="uk-container"
+            // eslint-disable-next-line
             dangerouslySetInnerHTML={{ __html: page.introduction }}
           />
         </Box>

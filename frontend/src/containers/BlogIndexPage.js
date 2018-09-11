@@ -18,11 +18,11 @@ const Wrapper = styled.div``;
 
 class BlogIndexPage extends Component {
   state = {
-    refresh: false,
+    // refresh: false,
     loading: true,
-    meta: { items: [] },
-    type: '',
-    page: { title: '' },
+    // meta: { items: [] },
+    // type: '',
+    // page: { title: '' },
     childPages: []
   };
 

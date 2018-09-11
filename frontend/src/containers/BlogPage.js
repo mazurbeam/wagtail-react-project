@@ -12,18 +12,14 @@ const Wrapper = styled.div``;
 
 class BlogPage extends Component {
   state = {
-    loading: true,
-    meta: { items: [] },
-    type: '',
-    page: { title: '' },
-    childPages: []
+    loading: true
   };
 
   componentWillMount() {
-    const { match, location } = this.props;
+    const { match, id, location } = this.props;
     console.log('blogpage match', match);
     console.log('blogpage location', location);
-
+    console.log('blogpage id', id);
     // const { state } = location;
     // console.log('location state', state);
   }

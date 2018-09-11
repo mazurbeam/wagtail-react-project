@@ -115,7 +115,7 @@ class StandardPage(Page):
     image, introduction and body field
     """
 
-    introduction = models.TextField(
+    intro = models.TextField(
         help_text='Text to describe the page',
         blank=True)
     image = models.ForeignKey(
@@ -130,7 +130,7 @@ class StandardPage(Page):
         BaseStreamBlock(), verbose_name="Page body", blank=True
     )
     api_fields = [
-        APIField('introduction'),
+        APIField('intro'),
         APIField('body'),
         APIField('image'),
         APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
@@ -138,7 +138,7 @@ class StandardPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
+        FieldPanel('intro', classname="full"),
         StreamFieldPanel('body'),
         ImageChooserPanel('image'),
     ]

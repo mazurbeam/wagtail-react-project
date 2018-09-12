@@ -35,3 +35,33 @@ body {
 .main-menu {
   position: fixed !important;
 }
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+  z-index: -1;
+  position: fixed;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+  z-index: -1;
+  position: fixed;
+}
+
+/* ---- particles.js container ---- */
+#particles-js {
+  z-index: -1;
+
+  /*position: absolute;*/
+  position: fixed !important;
+
+  width: 100%;
+  height: 100%;
+  background-color: #232741;
+  /*background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png");*/
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 50% 50%;
+}

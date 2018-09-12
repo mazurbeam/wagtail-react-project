@@ -63,6 +63,7 @@ class BlogIndexPage extends Component {
         ) : (
           <Wrapper>
             <Box
+              pt={80}
               color="whitish"
               className="uk-position-large uk-position-top-center"
             >
@@ -72,7 +73,7 @@ class BlogIndexPage extends Component {
                 dangerouslySetInnerHTML={{ __html: details.intro }}
               />
             </Box>
-            <Box color="whitish" mt="30%" className=" uk-position-center">
+            <Box color="whitish" className=" uk-position-center">
               <div>
                 {children.map(child => (
                   <Card key={child.id}>

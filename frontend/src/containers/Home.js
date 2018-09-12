@@ -42,7 +42,7 @@ class Home extends Component {
         <Card
           my="auto"
           className="uk-position-large uk-position-center  "
-          pt={['100%', '50%', '40%']}
+          // pt={['100%', '50%', '40%']}
         >
           <Heading p={1} mx="auto" color="whitish">
             {page.title}

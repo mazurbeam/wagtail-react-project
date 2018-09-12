@@ -8,7 +8,7 @@ const StickyFooter = styled.footer`
   width: 100%;
   // height: 40px;
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   color: #f5f5f5;
   background-color: #232741;
@@ -26,7 +26,7 @@ text-decoration: none;
 
 const Footer = () => (
   <StickyFooter>
-    <Box className="uk-height-1-1 uk-overlay" ml="auto" mr="auto" width={1 / 6}>
+    <Box className="uk-height-1-1 uk-overlay" ml="auto" mr="" width={1 / 6}>
       <FooterLink
         className="uk-nav-header"
         color="whitish"

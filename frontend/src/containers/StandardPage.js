@@ -72,16 +72,14 @@ class StandardPage extends Component {
             <Text>Loading...</Text>
           ) : (
             <Wrapper>
-              <Box className="uk-position-large uk-position-top-center">
+              <Box pt={80} className="uk-position-large uk-position-top-center">
                 <Heading fontSize={5}>{details.title}</Heading>
                 <Heading
                   fontSize={2}
                   dangerouslySetInnerHTML={{ __html: details.intro }}
                 />
               </Box>
-              <Card mt={[300]} className=" uk-position-center">
-                {body}
-              </Card>
+              <Card className=" uk-position-center">{body}</Card>
             </Wrapper>
           )}
         </Box>

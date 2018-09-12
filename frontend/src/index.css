@@ -29,3 +29,7 @@ body {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
+.main-menu {
+  position: fixed !important;
+}

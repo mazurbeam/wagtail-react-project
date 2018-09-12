@@ -1180,7 +1180,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.25.0, babel-runtime@^6.26.0:
+babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.25.0, babel-runtime@^6.26.0, babel-runtime@^6.6.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -1502,7 +1502,7 @@ callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
 
-camel-case@3.0.x:
+camel-case@3.0.x, camel-case@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
   dependencies:
@@ -1661,6 +1661,10 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.3:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
 clean-css@4.2.x:
   version "4.2.1"
@@ -4713,6 +4717,10 @@ loader-utils@^1.0.2, loader-utils@^1.1.0:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
+loaders.css@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/loaders.css/-/loaders.css-0.1.2.tgz#3a9fb43726c73334a38142af9d0629019b658743"
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
@@ -6016,7 +6024,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -6202,6 +6210,13 @@ react-hot-loader@^4.3.6:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
 
+react-icons-kit@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/react-icons-kit/-/react-icons-kit-1.1.7.tgz#806e71710df0f9c733355199763a165886e00c50"
+  dependencies:
+    camel-case "^3.0.0"
+    prop-types "^15.5.8"
+
 react-is@^16.3.1:
   version "16.5.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.0.tgz#2ec7c192709698591efe13722fab3ef56144ba55"
@@ -6209,6 +6224,13 @@ react-is@^16.3.1:
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-loader-spinner@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-2.0.6.tgz#88bb2b740ce6d78dd8e2f1b1b2e0fd63172f377a"
+  dependencies:
+    babel-runtime "^6.6.1"
+    prop-types "^15.6.2"
 
 react-redux@^5.0.7:
   version "5.0.7"
@@ -6250,6 +6272,15 @@ react-router@^4.3.1:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-spinkit@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-spinkit/-/react-spinkit-3.0.0.tgz#31fdaf4e18177766c57d1b1f3330290f8492a85a"
+  dependencies:
+    classnames "^2.2.3"
+    loaders.css "^0.1.2"
+    object-assign "^4.1.0"
+    prop-types "^15.5.8"
 
 react-transition-group@^2.4.0:
   version "2.4.0"
@@ -7156,6 +7187,12 @@ styled-components@^3.4.5:
 styled-system@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.0.3.tgz#8ca3938fa382564e059f181d37d563b753cc9f41"
+  dependencies:
+    prop-types "^15.6.2"
+
+styled-system@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.1.0.tgz#d221c6f0343bbcdcb49976a7e24973d6a59488b5"
   dependencies:
     prop-types "^15.6.2"
 

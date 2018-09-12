@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // import axios from 'axios';
-import { Box, Heading, Card, Text } from 'rebass';
+import { Box, Heading, Card } from 'rebass';
 
 import {
   // fetchPageType,
@@ -14,22 +14,19 @@ import {
 import * as reducers from '../services/reducers';
 // import BlogPage from './BlogPage';
 
+import Loading from '../components/Loading';
+
 const Wrapper = styled.div``;
 
 class BlogIndexPage extends Component {
   state = {
-    // refresh: false,
-    loading: true,
-    // meta: { items: [] },
-    // type: '',
-    // page: { title: '' },
-    childPages: []
+    loading: true
   };
 
   componentWillMount() {
     this.setState({ loading: true });
-    const { match, id, getBlogPages, getPageDetails } = this.props;
-    console.log(match);
+    const { id, getBlogPages, getPageDetails } = this.props;
+    // console.log('blogindex willmount match', match);
     // const { state } = location;
     // const { type, id } = state;
 
@@ -39,16 +36,21 @@ class BlogIndexPage extends Component {
     this.setState({ loading: false });
   }
 
+  // componentDidMount() {
+  //   const { match } = this.props;
+  //   console.log('did mount', match);
+  // }
+
   render() {
-    const { childPages, loading } = this.state;
-    console.log('blogpageindex render state childPages', childPages);
+    const { loading } = this.state;
+    // console.log('blogpageindex render state childPages', childPages);
 
     // console.log('page meta', meta);
     // console.log('page', page);
     // console.log('page children', childPages);
     const { pathname, details, children } = this.props;
-    console.log('blogpageindex details', details);
-    console.log('blogpageindex children', children);
+    // console.log('blogpageindex details', details);
+    // console.log('blogpageindex children', children);
 
     // let page = { title: '', intro: '' };
     // if (loading === false) {
@@ -57,7 +59,7 @@ class BlogIndexPage extends Component {
     return (
       <Wrapper>
         {loading ? (
-          <Text>Loading...</Text>
+          <Loading />
         ) : (
           <Wrapper>
             <Box className="uk-position-large uk-position-top-center">

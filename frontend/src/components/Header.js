@@ -8,7 +8,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { Box, Flex, Card } from 'rebass';
 
 import styled from 'styled-components';
-import { color, space, width, disply, height } from 'styled-system';
+import { color, space, width, disply, height, position } from 'styled-system';
 
 import axios from 'axios';
 
@@ -62,10 +62,7 @@ class Header extends Component {
     // }
     return (
       <div>
-        <Box
-          className="uk-hidden@s uk-position-medium uk-position-center-top"
-          height={1}
-        >
+        <Box className="uk-hidden@s uk-uk-position-medium uk-position-center-top">
           <ul className="uk-nav">
             <li>
               <NavLink className="uk-link-heading" color="whitish" to="/">
@@ -88,17 +85,18 @@ class Header extends Component {
         </Box>
 
         <Box
-          className="uk-visible@s uk-position-medium uk-position-center-left"
+          position="fixed"
+          className="uk-visible@s main-menu uk-position-medium uk-position-center-left uk-overlay"
           height={1}
         >
-          <ul className="uk-nav">
+          <ul className="uk-nav ">
             <li>
               <NavLink className="uk-nav-header" color="whitish" to="/">
                 Home
               </NavLink>
             </li>
             {menu.map(item => (
-              <li>
+              <li key={item.id}>
                 <NavLink
                   className="uk-nav-header"
                   color="white"

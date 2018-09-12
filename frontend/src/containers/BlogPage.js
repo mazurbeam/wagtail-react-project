@@ -14,8 +14,7 @@ import {
 import * as reducers from '../services/reducers';
 
 import Loading from '../components/Loading';
-import HeadingBlock from '../components/HeadingBlock';
-// import axios from 'axios';
+import renderPageBody from '../utils';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -38,26 +37,6 @@ class BlogPage extends Component {
     this.setState({ loading: false });
   }
 
-  renderPageBody = body => {
-    const result = (
-      <Wrapper css="overflow: scroll; position: absolute;">
-        {body.map(item => {
-          if (item.type === 'heading_block') {
-            return <HeadingBlock key={item.id} value={item.value} />;
-          }
-          return (
-            <div
-              key={item.id}
-              // eslint-disable-next-line
-              dangerouslySetInnerHTML={{ __html: item.value }}
-            />
-          );
-        })}
-      </Wrapper>
-    );
-    return result;
-  };
-
   render() {
     const { loading } = this.state;
     // console.log(page);
@@ -73,10 +52,10 @@ class BlogPage extends Component {
       details.tags = [];
       details.body = [];
     }
-    const body = this.renderPageBody(details.body);
+    const body = renderPageBody(details.body);
     return (
       <Wrapper>
-        <Box p={0} ml={[0, 200]}>
+        <Box color="whitish" p={0} ml={[0, 200]}>
           {loading ? (
             <Loading />
           ) : (
@@ -84,7 +63,9 @@ class BlogPage extends Component {
               <Heading className="uk-position-top-center">Blog</Heading>
 
               <Box mt={[120, 200]} className="">
-                <h4 className="uk-article-title">{details.title}</h4>
+                <Heading color="whitish" className="uk-article-title">
+                  {details.title}
+                </Heading>
                 <Text className="uk-article-meta">Written {details.date}</Text>
                 <Text className="uk-article-meta">
                   {' '}
@@ -102,11 +83,13 @@ class BlogPage extends Component {
                 color="slate"
                 bg="whitish"
                 width={[1, 4 / 5]}
-                p={3}
+                p={[0, 3]}
                 borderRadius={8}
                 boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
               >
-                <Box>{body}</Box>
+                <Box p={1} mr={[0]}>
+                  {body}
+                </Box>
               </Card>
             </Wrapper>
           )}

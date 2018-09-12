@@ -12,6 +12,7 @@ import {
   fetchPageWithId
 } from '../services/actions/page';
 import * as reducers from '../services/reducers';
+import renderPageBody from '../utils';
 
 const Wrapper = styled.div``;
 
@@ -62,9 +63,11 @@ class StandardPage extends Component {
     if (!detailsHasBody) {
       details.body = [];
     }
+
+    const body = renderPageBody(details.body);
     return (
       <Wrapper>
-        <Box>
+        <Box color="whitish">
           {loading ? (
             <Text>Loading...</Text>
           ) : (
@@ -76,14 +79,8 @@ class StandardPage extends Component {
                   dangerouslySetInnerHTML={{ __html: details.intro }}
                 />
               </Box>
-              <Card className=" uk-position-center">
-                {details.body.map(block => (
-                  <div
-                    key={block.id}
-                    // eslint-disable-next-line
-                    dangerouslySetInnerHTML={{ __html: block.value }}
-                  />
-                ))}
+              <Card mt={[300]} className=" uk-position-center">
+                {body}
               </Card>
             </Wrapper>
           )}

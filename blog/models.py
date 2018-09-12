@@ -20,17 +20,22 @@ class BlogPageTag(TaggedItemBase):
 
 class BlogIndexPage(Page):
 	intro = RichTextField(blank=True)
+	icon = models.CharField(max_length=20)
 
 	api_fields = [
 		APIField('intro'),
+		APIField('icon'),
 	]
 	content_panels = Page.content_panels + [
-		FieldPanel('intro', classname="full")
+		FieldPanel('intro', classname="full"),
+		FieldPanel('icon'),
+
 	]
 
 
 class BlogPage(Page):
 	date = models.DateField("Post date")
+	icon = models.CharField(max_length=20)
 	intro = models.CharField(max_length=250)
 	body = StreamField(
 		BaseStreamBlock(), verbose_name="Page body", blank=True
@@ -51,6 +56,8 @@ class BlogPage(Page):
 
 	api_fields = [
 		APIField('date'),
+		APIField('icon'),
+
 		APIField('intro'),
 		APIField('body'),
 		APIField('tags'),
@@ -58,6 +65,7 @@ class BlogPage(Page):
 
 	content_panels = Page.content_panels + [
 		FieldPanel('date'),
+		FieldPanel('icon'),
 		FieldPanel('intro'),
 		StreamFieldPanel('body', classname="full"),
 		InlinePanel('gallery_images', label="Gallery images"),

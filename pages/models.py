@@ -126,11 +126,14 @@ class StandardPage(Page):
         related_name='+',
         help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
     )
+    icon = models.CharField(max_length=20)
+
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True
     )
     api_fields = [
         APIField('intro'),
+        APIField('icon'),
         APIField('body'),
         APIField('image'),
         APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
@@ -139,6 +142,7 @@ class StandardPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full"),
+        FieldPanel('icon'),
         StreamFieldPanel('body'),
         ImageChooserPanel('image'),
     ]

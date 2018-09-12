@@ -94,7 +94,7 @@ class Page extends Component {
     }
 
     return (
-      <Box p={0} ml={[0, 4]}>
+      <Box p={0} mb={80} ml={[0, 4]}>
         {loading && ready ? pageSpace : pageSpace}
       </Box>
     );

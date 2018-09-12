@@ -62,14 +62,17 @@ class BlogIndexPage extends Component {
           <Loading />
         ) : (
           <Wrapper>
-            <Box className="uk-position-large uk-position-top-center">
+            <Box
+              color="whitish"
+              className="uk-position-large uk-position-top-center"
+            >
               <Heading fontSize={5}>{details.title}</Heading>
               <Heading
                 fontSize={2}
                 dangerouslySetInnerHTML={{ __html: details.intro }}
               />
             </Box>
-            <Box className=" uk-position-center">
+            <Box color="whitish" mt="30%" className=" uk-position-center">
               <div>
                 {children.map(child => (
                   <Card key={child.id}>

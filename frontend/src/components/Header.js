@@ -46,10 +46,30 @@ class Header extends Component {
 
   props = this.props;
 
+  componentWillMount() {}
+
   componentDidMount() {
     const { getMenu, menu } = this.props;
     getMenu();
   }
+
+  addIcons = menu => {
+    const menuWithIcons = menu.map(item => {
+      switch (item.meta.slug) {
+        case 'blog':
+          return {
+            ...item,
+            icon: 'icon: social'
+          };
+        case 'about':
+          return {
+            ...item,
+            icon: 'icon: question'
+          };
+      }
+    });
+    return menuWithIcons;
+  };
 
   render() {
     const { pages } = this.state;
@@ -60,23 +80,32 @@ class Header extends Component {
     //   getMenu();
     //   this.setState({ loading: false });
     // }
+    const iconMenu = this.addIcons(menu);
+    console.log('icon menu', iconMenu);
     return (
       <div>
         <Box
           width={1}
           position="absolute"
-          className="uk-hidden@s uk-uk-position-medium uk-position-center-top"
+          className="uk-hidden@s uk-position-medium uk-position-center-top"
         >
           <ul className="uk-nav">
             <li>
-              <NavLink className="uk-link-heading" color="whitish" to="/">
+              {' '}
+              <NavLink
+                className="uk-link-heading uk-icon-link"
+                uk-icon="home"
+                color="whitish"
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
-            {menu.map(item => (
-              <li>
+            {iconMenu.map(item => (
+              <li key={item.id}>
                 <NavLink
-                  className="uk-link-heading"
+                  className="uk-link-heading uk-icon-link"
+                  uk-icon={item.icon}
                   color="white"
                   key={item.id}
                   to={item.meta.slug}
@@ -96,10 +125,10 @@ class Header extends Component {
           <ul className="uk-nav ">
             <li>
               <NavLink className="uk-nav-header" color="whitish" to="/">
-                Home
+                <span uk-icon="icon: home" /> Home
               </NavLink>
             </li>
-            {menu.map(item => (
+            {iconMenu.map(item => (
               <li key={item.id}>
                 <NavLink
                   className="uk-nav-header"
@@ -109,6 +138,7 @@ class Header extends Component {
                     pathname: `/${item.meta.slug}`
                   }}
                 >
+                  <span uk-icon={item.icon} />
                   {item.title}
                 </NavLink>
               </li>

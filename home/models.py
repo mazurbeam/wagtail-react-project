@@ -20,6 +20,7 @@ class HomePage(Page):
     introduction = models.TextField(
         help_text='Text to describe the page',
         blank=True)
+
     # image = models.ForeignKey(
     #     'wagtailimages.Image',
     #     null=True,

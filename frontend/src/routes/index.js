@@ -11,6 +11,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import NoMatch from '../components/NoMatch';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Home from '../containers/Home';
 import Page from '../containers/Page';
 // import BlogIndexPage from '../containers/BlogIndexPage';
@@ -21,7 +22,7 @@ const Wrapper = styled.div``;
 
 const Routes = ({ location }) => (
   <Wrapper>
-    <Flex>
+    <Flex position="relative">
       <Box classNames="uk-width-1-3@m uk-width-1-1@s">
         <Header />
       </Box>
@@ -41,6 +42,7 @@ const Routes = ({ location }) => (
         </CSSTransition>
       </TransitionGroup>
     </Flex>
+    <Footer />
   </Wrapper>
 );
 

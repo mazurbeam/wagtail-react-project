@@ -2,10 +2,12 @@
 __pycache__/
 *.py[cod]
 db.sqlite3
-media/
+/media
+
+/static
 frontend/node_modules/
 frontend/.vscode
 
-.idea
+/.idea
 
-mazurbeam/settings/local.py
+/mazurbeam/settings/local.py

@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
-import { Box, Heading } from 'rebass';
+import { Card, Box, Heading, Text } from 'rebass';
 import axios from 'axios';
 
 import { fetchAllPages } from '../services/actions/page';
 // import * as reducers from '../services/reducers';
+import renderPageBody from '../utils';
 
 class Home extends Component {
   state = {
@@ -27,19 +27,34 @@ class Home extends Component {
   render() {
     const { page } = this.state;
     // console.log('homepage', page);
+    const pageHasBody = Object.prototype.hasOwnProperty.call(page, 'body');
+    if (!pageHasBody) {
+      page.body = [];
+    }
+    const body = renderPageBody(page.body);
     return (
-      <div>
-        <Box className="uk-position-large uk-position-top-center">
-          <Heading>{page.title}</Heading>
+      <Box alignItems="center">
+        <Box className=" uk-position-top-center ">
+          <Heading className="" color="whitish">
+            mazurbeam
+          </Heading>
         </Box>
-        <Box className=" uk-position-center">
-          <div
-            className="uk-container"
-            // eslint-disable-next-line
-            dangerouslySetInnerHTML={{ __html: page.introduction }}
-          />
-        </Box>
-      </div>
+        <Card
+          my="auto"
+          className="uk-position-large uk-position-center  "
+          pt={['100%', '50%', '40%']}
+        >
+          <Heading p={1} mx="auto" color="whitish">
+            {page.title}
+          </Heading>
+          <Heading p={2} fontSize={2} className="" color="whitish">
+            {page.introduction}
+          </Heading>
+          <Box p={2}>
+            <Text color="whitish">{body}</Text>
+          </Box>
+        </Card>
+      </Box>
     );
   }
 }

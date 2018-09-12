@@ -13,6 +13,7 @@ html5lib==1.0.1
 idna==2.7
 Markdown==2.6.11
 Pillow==5.2.0
+python-decouple==3.1
 pytz==2018.5
 requests==2.19.1
 six==1.11.0

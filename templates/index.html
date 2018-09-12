@@ -1,4 +1,4 @@
-{% load render_bundle from webpack_loader %}
+{% load render_bundle webpack_static from webpack_loader %}
 {% load static staticfiles %}
 <!DOCTYPE html>
 <html>
@@ -20,9 +20,9 @@
 </div>
 {% render_bundle 'main' %}
 
-<script src="{% static 'js/uikit.min.js' %}"></script>
-<script src="{% static 'js/uikit-icons.min.js' %}"></script>
-<script src="{% static 'js/particles.js' %}"></script>
+<script src="{% webpack_static 'uikit.min.js' %}"></script>
+<script src="{% webpack_static 'uikit-icons.min.js' %}"></script>
+<script src="{% webpack_static 'particles.js' %}"></script>
 
 <script>particlesJS("particles-js", {
     "particles": {

@@ -43,13 +43,6 @@ canvas {
   position: fixed;
 }
 
-canvas {
-  display: block;
-  vertical-align: bottom;
-  z-index: -1;
-  position: fixed;
-}
-
 /* ---- particles.js container ---- */
 #particles-js {
   z-index: -1;

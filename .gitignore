@@ -4,6 +4,7 @@ __pycache__/
 db.sqlite3
 /media
 
+/staticfiles
 /static
 frontend/node_modules/
 frontend/.vscode

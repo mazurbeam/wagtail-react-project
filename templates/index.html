@@ -6,8 +6,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width"/>
     {#    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.css' %}">#}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/particles.css/' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'pixelturtle.ico/' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/particles.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'pixelturtle.ico' %}"/>
 
     <title>mazurbeam</title>
 </head>
@@ -22,9 +22,10 @@
 
 {#<script src="{% webpack_static 'uikit.min.js' %}"></script>#}
 {#<script src="{% webpack_static 'uikit-icons.min.js' %}"></script>#}
-<script src="{% static 'js/particles.js/' %}"></script>
+<script type="text/javascript" src="{% static 'js/particles.js' %}"></script>
 
-<script>particlesJS("particles-js", {
+<script>
+    particlesJS("particles-js", {
     "particles": {
         "number": {"value": 160, "density": {"enable": true, "value_area": 800}},
         "color": {"value": "#ffffff"},

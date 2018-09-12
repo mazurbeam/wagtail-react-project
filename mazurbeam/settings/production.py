@@ -14,7 +14,7 @@ WEBPACK_LOADER = {
         }
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # WHITENOISE_ROOT = os.path.join(BASE_DIR, 'assets', 'root')
 

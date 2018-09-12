@@ -93,7 +93,11 @@ class Page extends Component {
       }
     }
 
-    return <Box ml={4}>{loading && ready ? pageSpace : pageSpace}</Box>;
+    return (
+      <Box p={0} ml={[0, 4]}>
+        {loading && ready ? pageSpace : pageSpace}
+      </Box>
+    );
   }
 }
 

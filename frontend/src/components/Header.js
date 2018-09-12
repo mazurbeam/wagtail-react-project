@@ -62,7 +62,11 @@ class Header extends Component {
     // }
     return (
       <div>
-        <Box className="uk-hidden@s uk-uk-position-medium uk-position-center-top">
+        <Box
+          width={1}
+          position="absolute"
+          className="uk-hidden@s uk-uk-position-medium uk-position-center-top"
+        >
           <ul className="uk-nav">
             <li>
               <NavLink className="uk-link-heading" color="whitish" to="/">

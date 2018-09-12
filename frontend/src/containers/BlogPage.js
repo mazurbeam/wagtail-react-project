@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { Box, Heading, Card } from 'rebass';
+import { Box, Heading, Card, Text } from 'rebass';
 
 import {
   // fetchPageType,
@@ -17,7 +17,10 @@ import Loading from '../components/Loading';
 import HeadingBlock from '../components/HeadingBlock';
 // import axios from 'axios';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin: 0;
+  padding: 0;
+`;
 
 class BlogPage extends Component {
   state = {
@@ -73,32 +76,38 @@ class BlogPage extends Component {
     const body = this.renderPageBody(details.body);
     return (
       <Wrapper>
-        <Box>
+        <Box p={0} ml={[0, 200]}>
           {loading ? (
             <Loading />
           ) : (
             <Wrapper className=" ">
               <Heading className="uk-position-top-center">Blog</Heading>
 
-              <article className="uk-article  uk-container uk-alight-right uk-width-3-5">
-                <Box mt={200} className="">
-                  <h4 className="uk-article-title">{details.title}</h4>
-                  <p className="uk-article-meta">Written {details.date}</p>
-                  <p className="uk-article-meta">
-                    {' '}
-                    Tags:
-                    {details.tags.map(tag => (
-                      <span className="uk-badge" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </p>
-                </Box>
+              <Box mt={[120, 200]} className="">
+                <h4 className="uk-article-title">{details.title}</h4>
+                <Text className="uk-article-meta">Written {details.date}</Text>
+                <Text className="uk-article-meta">
+                  {' '}
+                  Tags:
+                  {details.tags.map(tag => (
+                    <span className="uk-badge" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </Text>
+              </Box>
 
-                <Card className="uk-position-small blog-body" color="slate">
-                  <div>{body}</div>
-                </Card>
-              </article>
+              <Card
+                className=""
+                color="slate"
+                bg="whitish"
+                width={[1, 4 / 5]}
+                p={3}
+                borderRadius={8}
+                boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+              >
+                <Box>{body}</Box>
+              </Card>
             </Wrapper>
           )}
         </Box>

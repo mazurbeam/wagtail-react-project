@@ -22,7 +22,7 @@ const Wrapper = styled.div``;
 const Routes = ({ location }) => (
   <Wrapper>
     <Flex>
-      <Box classNames="uk-width-1-3">
+      <Box classNames="uk-width-1-3@m uk-width-1-1@s">
         <Header />
       </Box>
       <TransitionGroup>

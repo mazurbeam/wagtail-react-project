@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Link } from 'react-router-dom';
 import Routes from './routes';
-import theme from './theme';
+import theme from './styles/theme';
 import './static/css/uikit.css'
 
 const App = ({ history }) => {

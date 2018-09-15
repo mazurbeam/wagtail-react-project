@@ -64,17 +64,19 @@ class Page extends Component {
     if (meta.meta.type === 'blog.BlogIndexPage' && ready) {
       console.log('BlogIndexPage');
 
-      pageSpace = <BlogIndexPage id={meta.id} />;
+      pageSpace =
+        <BlogIndexPage id={meta.id} type={meta.meta.type}/>;
     }
     if (meta.meta.type === 'pages.StandardPage') {
       console.log('StandardPage');
 
-      pageSpace = <StandardPage id={meta.id} />;
+      pageSpace =
+        <StandardPage id={meta.id} type={meta.meta.type}/>;
     }
     if (meta.meta.type === 'blog.BlogPage' && ready) {
       console.log('BlogPage');
 
-      pageSpace = <BlogPage id={meta.id} />;
+      pageSpace = <BlogPage id={meta.id} type={meta.meta.type}/>;
     }
 
     // if (pathname !== meta.meta.html_url) {
@@ -94,7 +96,7 @@ class Page extends Component {
     }
 
     return (
-      <Box p={0} mb={20} mt={80} ml={[0, 4]}>
+      <Box >
         {loading && ready ? pageSpace : pageSpace}
       </Box>
     );

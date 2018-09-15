@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
@@ -37,7 +39,7 @@ const NavLink = styled(Link)`
 ${space}
 ${width}
 ${color}
-padding: 20px;
+padding: 20px 10px;
 text-decoration: none;
 display: inline-block;
 
@@ -45,7 +47,7 @@ display: inline-block;
 
 NavItem.displayName = 'NavItem';
 
-class Header extends Component {
+class Sidemenu extends Component {
   state = {
     loading: true,
     pages: { items: [] }
@@ -73,11 +75,6 @@ class Header extends Component {
             ...item,
             icon: 'icon: question'
           };
-        default:
-          return{
-            ...item,
-            icon: 'icon: bolt'
-          }
       }
     });
     return menuWithIcons;
@@ -95,30 +92,22 @@ class Header extends Component {
     const iconMenu = this.addIcons(menu);
     console.log('icon menu', iconMenu);
     return (
-      <Flex
-        px={2}
-        color='white'
-        bg=''
-        alignItems='center'
-        width={1}
-      >
-
-        <Box  color='white' position='absolute' className="uk-position-top-left uk-hidden@s ">
-          <Dropdown className="" list={iconMenu}/>
-
-        </Box>
-        <Box mx='auto'/>
+      <Box className="">
         <Box
-          position=""
-          className="uk-visible@s"
+          position="fixed"
+          className="uk-visible@s main-menu uk-nav uk-position-medium uk-position-center-left uk-overlay "
+          height={1}
         >
-
-              <NavLink className="" color="whitish" to="/">
+          <ul className="">
+            <li>
+              <NavLink className="uk-nav-header" color="whitish" to="/">
                 <span uk-icon="icon: home" /> Home
               </NavLink>
+            </li>
             {iconMenu.map(item => (
+              <li key={item.id}>
                 <NavLink
-                  className=""
+                  className="uk-nav-header"
                   color="white"
                   key={item.id}
                   to={{
@@ -128,44 +117,11 @@ class Header extends Component {
                   <span uk-icon={item.icon} />
                   {item.title}
                 </NavLink>
+              </li>
             ))}
+          </ul>
         </Box>
-        <Box mx='auto'/>
-        <Box
-          position=""
-          className="uk-position-top-right"
-        >
-
-              <NavLink
-                color="white"
-                to="https://github.com/mazurbeam/"
-                target="_blank"
-              >
-                {' '}
-                <span uk-icon="icon: github-alt; ratio: 1.5" />{' '}
-              </NavLink>
-
-              <NavLink
-                color="white"
-                to="https://www.linkedin.com/in/walter-mazur-02803453/"
-                target="_blank"
-              >
-                <span uk-icon="icon: linkedin; ratio: 1.5" />
-              </NavLink>
-
-        </Box>
-
-
-          <Card  className="  main-menu uk-nav uk-position-medium  uk-position-center-left@m uk-overlay "
-
-                           p={3}
-                  color='white'
-                  borderRadius={8}
-                  boxShadow='0 2px 16px rgba(0, 0, 0, 0.25)'
-          >
-
-          </Card>
-      </Flex>
+      </Box>
     );
   }
 }
@@ -183,5 +139,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Header)
+  )(Sidemenu)
 );

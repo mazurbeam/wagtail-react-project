@@ -34,15 +34,12 @@ class Home extends Component {
     const body = renderPageBody(page.body);
     return (
       <Box alignItems="center">
-        <Box className=" uk-position-top-center ">
-          <Heading className="" color="whitish">
-            mazurbeam
-          </Heading>
-        </Box>
+
         <Card
           my="auto"
           className="uk-position-large uk-position-center  "
           // pt={['100%', '50%', '40%']}
+          bg='whitish.10'
         >
           <Heading p={1} mx="auto" color="whitish">
             {page.title}

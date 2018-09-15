@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router';
-import { Flex, Box } from 'rebass';
+
+// rebass
+// import {  Box } from 'rebass';
 // components
 import styled from 'styled-components';
 
@@ -11,7 +13,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import NoMatch from '../components/NoMatch';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import Home from '../containers/Home';
 import Page from '../containers/Page';
 // import BlogIndexPage from '../containers/BlogIndexPage';
@@ -22,10 +24,7 @@ const Wrapper = styled.div``;
 
 const Routes = ({ location }) => (
   <Wrapper>
-    <Flex position="relative">
-      <Box classNames="uk-width-1-3@m uk-width-1-1@s">
         <Header />
-      </Box>
       <TransitionGroup>
         <CSSTransition
           key={location.key}
@@ -41,8 +40,6 @@ const Routes = ({ location }) => (
           </Switch>
         </CSSTransition>
       </TransitionGroup>
-    </Flex>
-    <Footer />
   </Wrapper>
 );
 

@@ -25,21 +25,22 @@ class BlogIndexPage extends Component {
 
   componentWillMount() {
     this.setState({ loading: true });
-    const { id, getBlogPages, getPageDetails } = this.props;
+    const { id, type, getBlogPages, getPageDetails } = this.props;
     // console.log('blogindex willmount match', match);
     // const { state } = location;
     // const { type, id } = state;
 
-    // console.log('location state', state);
+    console.log('will mount type', type);
     getPageDetails(id);
-    getBlogPages(id);
-    this.setState({ loading: false });
+    getBlogPages(id, 'blog.BlogPage');
   }
 
-  // componentDidMount() {
-  //   const { match } = this.props;
-  //   console.log('did mount', match);
-  // }
+  componentDidMount() {
+    const {  details } = this.props;
+    console.log('bpi did mount details', details)
+    this.setState({ loading: false });
+
+  }
 
   render() {
     const { loading } = this.state;
@@ -73,10 +74,12 @@ class BlogIndexPage extends Component {
                 dangerouslySetInnerHTML={{ __html: details.intro }}
               />
             </Box>
-            <Box color="whitish" className=" uk-position-center">
+            <Box color="whitish" mx={[20, 40]} mt={[ 250]} className=" ">
               <div>
                 {children.map(child => (
-                  <Card key={child.id}>
+                  <Card borderRadius={8}
+                       bg='slate' p={3} boxShadow='0 2px 16px rgba(0, 0, 0, 0.25)' key={child.id}>
+                    <img src={child.gallery_images[0].image_thumbnail.url} alt={child.gallery_images[0].image.title}/>
                     <Heading>{child.title}</Heading>
                     <Link
                       to={{
@@ -104,8 +107,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getBlogPages(id) {
-    dispatch(fetchPageChildren(id));
+  getBlogPages(id, type) {
+    dispatch(fetchPageChildren(id, type));
   },
   getPageDetails(id) {
     dispatch(fetchPageWithId(id));

@@ -71,9 +71,9 @@ export const fetchPageWithId = id => ({
   }
 });
 
-export const fetchPageChildren = id => ({
+export const fetchPageChildren = (id, type) => ({
   [RSAA]: {
-    endpoint: `/api/v2/pages/?child_of=${id}`,
+    endpoint: `/api/v2/pages/?type=${type}&child_of=${id}&fields=*`,
     method: 'GET',
     headers: { 'Content-type': 'application/json' },
     types: [

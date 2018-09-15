@@ -103,6 +103,7 @@ DATABASES = {
     }
 }
 
+WAGTAILDOCS_DOCUMENT_MODEL = 'pages.CustomDocument'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

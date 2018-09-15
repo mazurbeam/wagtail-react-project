@@ -10,6 +10,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.api import APIField
+from wagtail.images.api.fields import ImageRenditionField
 
 from pages.blocks import BaseStreamBlock
 
@@ -57,10 +58,10 @@ class BlogPage(Page):
 	api_fields = [
 		APIField('date'),
 		APIField('icon'),
-
 		APIField('intro'),
 		APIField('body'),
 		APIField('tags'),
+		APIField('gallery_images')
 	]
 
 	content_panels = Page.content_panels + [
@@ -79,6 +80,14 @@ class BlogPageGalleryImage(Orderable):
 		'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
 	)
 	caption = models.CharField(blank=True, max_length=250)
+
+	api_fields = [
+		APIField('image'),
+		APIField('caption'),
+		APIField('page'),
+		APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
+
+	]
 
 	panels = [
 		ImageChooserPanel('image'),

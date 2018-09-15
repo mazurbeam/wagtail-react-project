@@ -11,8 +11,6 @@ from search import views as search_views
 
 from .api import api_router
 
-
-
 urlpatterns = [
 	url(r'^django-admin/', admin.site.urls),
 
@@ -32,9 +30,9 @@ urlpatterns = [
 	# of your site, rather than the site root:
 	# url(r'^pages/', include(wagtail_urls)),
 ]
-
 if settings.DEBUG:
 	from django.conf.urls.static import static
 	from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-	urlpatterns += staticfiles_urlpatterns()
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+	urlpatterns = staticfiles_urlpatterns() + urlpatterns
+	urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + urlpatterns

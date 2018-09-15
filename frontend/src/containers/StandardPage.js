@@ -79,7 +79,14 @@ class StandardPage extends Component {
                   dangerouslySetInnerHTML={{ __html: details.intro }}
                 />
               </Box>
-              <Card className=" uk-position-center">{body}</Card>
+              <Card   color="slate"
+                      bg="whitish"
+                      p={3}
+                      mt={[ 150]}
+                      mx={[0,10]}
+                      borderRadius={8}
+                      boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+              >{body}</Card>
             </Wrapper>
           )}
         </Box>

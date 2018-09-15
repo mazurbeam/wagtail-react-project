@@ -24,6 +24,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtail.images.api.fields import ImageRenditionField
+from wagtail.documents.models import Document, AbstractDocument
 
 from .blocks import BaseStreamBlock
 
@@ -157,7 +158,7 @@ class GalleryPage(Page):
     and is intended to show the extensibility of this aspect of Wagtail
     """
 
-    introduction = models.TextField(
+    intro = models.TextField(
         help_text='Text to describe the page',
         blank=True)
     image = models.ForeignKey(
@@ -181,8 +182,15 @@ class GalleryPage(Page):
         help_text='Select the image collection for this gallery.'
     )
 
+    api_fields = [
+        APIField('intro'),
+        APIField('body'),
+        APIField('image'),
+        APIField('collection')
+    ]
+
     content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
+        FieldPanel('intro', classname="full"),
         StreamFieldPanel('body'),
         ImageChooserPanel('image'),
         FieldPanel('collection'),
@@ -232,3 +240,18 @@ class FormPage(AbstractEmailForm):
         ], "Email"),
     ]
 
+
+class CustomDocument(AbstractDocument):
+    # Custom field example:
+    source = models.CharField(
+        max_length=255,
+        # This must be set to allow Wagtail to create a document instance
+        # on upload.
+        blank=True,
+        null=True
+    )
+
+    admin_form_fields = Document.admin_form_fields + (
+        # Add all custom fields names to make them appear in the form:
+        'source',
+    )

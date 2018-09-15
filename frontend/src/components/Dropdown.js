@@ -17,6 +17,10 @@ display: block;
 
 `;
 
+const NavList = styled.ul`
+list-style-type: none;
+`
+
 
 class Dropdown extends Component {
   constructor(props) {
@@ -60,14 +64,14 @@ class Dropdown extends Component {
               bg='slate'
               boxShadow='0 2px 16px rgba(0, 0, 0, 0.25)'
         >
-          <ul className="">
+          <NavList className="">
             <li className=""><NavLink className="uk-nav-header" color='white' to='/' onClick={() => this.toggleList()}><span uk-icon="icon: home"/>Home</NavLink></li>
 
             {list.map((item) => (
               <li className="" key={item.id} ><NavLink className="uk-nav-header" color='white' to={item.meta.slug} onClick={() => this.toggleList()}><span uk-icon={item.icon}/>
                 {item.title}</NavLink></li>
             ))}
-          </ul>
+          </NavList>
         </Card>
         }
       </Box>

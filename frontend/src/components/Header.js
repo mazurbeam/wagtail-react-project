@@ -103,7 +103,7 @@ class Header extends Component {
         width={1}
       >
 
-        <Box  color='white' position='absolute' className="uk-position-top-left uk-hidden@s ">
+        <Box width={5/6} color='white' position='absolute' className="uk-position-z-index uk-hidden@s ">
           <Dropdown className="" list={iconMenu}/>
 
         </Box>

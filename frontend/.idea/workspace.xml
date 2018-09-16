@@ -19,7 +19,7 @@
           <file leaf-file-name="Dropdown.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Dropdown.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
+                <state relative-caret-position="165">
                   <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
                   <folding>
                     <element signature="e#81#131#0" expanded="true" />
@@ -319,12 +319,12 @@
       <workItem from="1536861378379" duration="12497000" />
       <workItem from="1536955222224" duration="3593000" />
       <workItem from="1537035886730" duration="7874000" />
-      <workItem from="1537118105769" duration="208000" />
+      <workItem from="1537118105769" duration="516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24374000" />
+    <option name="totallyTimeSpent" value="24682000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -346,7 +346,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" sideWeight="0.28281462" side_tool="true" weight="0.11848341" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.5002633" side_tool="true" visible="true" weight="0.2502533" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.5002633" side_tool="true" visible="true" weight="0.20871328" />
       <window_info anchor="bottom" id="RNConsole" order="8" weight="0.32897604" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -813,7 +813,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dropdown.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="165">
           <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
           <folding>
             <element signature="e#81#131#0" expanded="true" />

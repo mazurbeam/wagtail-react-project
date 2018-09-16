@@ -21,4 +21,5 @@ Unidecode==1.0.22
 urllib3==1.23
 wagtail==2.2.2
 webencodings==0.5.1
+whitenoise==4.1
 Willow==1.1

@@ -14,6 +14,7 @@ source ~/.virtualenvs/wagtail-react-project/bin/activate
 
 with virtualenv activated and inside the project directory
 ```
+pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py runserver

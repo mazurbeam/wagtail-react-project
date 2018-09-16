@@ -1,4 +1,5 @@
 #### Wagtail - React Starter Template
+This project uses Django-based [Wagtail](http://docs.wagtail.io/) CMS for the backend with a React fronted and Redux store that connects to its [page API](http://docs.wagtail.io/en/v2.2.2/advanced_topics/api/index.html). 
 
 To download and run with the dev server:
 

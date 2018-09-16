@@ -29,4 +29,6 @@ yarn run
 
 You'll get the standard message to view at localhost:3000 but it will be accessible from Django at localhost:8000 with hot swapping enabled.
 
+Access the wagtail admin at localhost:8000/admin/ 
 
+ be sure to explicitly add the slash '/' at the end or else it will load the frontend app.

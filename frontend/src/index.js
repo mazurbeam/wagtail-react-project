@@ -9,6 +9,7 @@ import App from './App';
 import rootReducer from './services/reducers';
 import store, { history } from './services/store';
 import './index.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const render = () => {
   ReactDOM.render(

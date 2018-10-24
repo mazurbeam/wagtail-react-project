@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+/* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
+
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Responsive,
+  Segment,
+  Sidebar,
+  Visibility,
+} from 'semantic-ui-react'
 
 import { Box, Heading, Card, Text } from 'rebass';
 
@@ -67,7 +84,12 @@ class StandardPage extends Component {
     const body = renderPageBody(details.body);
     return (
       <Wrapper>
-        <Box color="whitish">
+        <Segment
+          inverted
+          textAlign='center'
+          style={{ minHeight: 700, padding: '1em 0em' }}
+          vertical
+        >
           {loading ? (
             <Text>Loading...</Text>
           ) : (
@@ -89,7 +111,7 @@ class StandardPage extends Component {
               >{body}</Card>
             </Wrapper>
           )}
-        </Box>
+        </Segment>
       </Wrapper>
     );
   }

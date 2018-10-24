@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 // import Header from '../components/Header'
+/* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, Box, Heading, Text } from 'rebass';
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Responsive,
+  Segment,
+  Sidebar,
+  Visibility,
+} from 'semantic-ui-react'
 import axios from 'axios';
 
 import { fetchAllPages } from '../services/actions/page';
@@ -33,25 +49,45 @@ class Home extends Component {
     }
     const body = renderPageBody(page.body);
     return (
-      <Box alignItems="center">
-
-        <Card
-          my="auto"
-          className="uk-position-large uk-position-center  "
-          // pt={['100%', '50%', '40%']}
-          bg='whitish.10'
+      <div>
+        <Segment
+          inverted
+          textAlign='center'
+          style={{ minHeight: 700, padding: '1em 0em' }}
+          vertical
         >
-          <Heading p={1} mx="auto" color="whitish">
-            {page.title}
-          </Heading>
-          <Heading p={2} fontSize={2} className="" color="whitish">
-            {page.introduction}
-          </Heading>
-          <Box p={2}>
-            <Text color="whitish">{body}</Text>
-          </Box>
-        </Card>
-      </Box>
+        <Container text >
+          <Header
+            as='h1'
+            content={page.title}
+            inverted
+            style={{
+              fontSize:  '4em',
+              fontWeight: 'normal',
+              marginBottom: 0,
+              marginTop:  '3em',
+            }}
+          />
+          <Header
+            as='h2'
+            content={page.introduction}
+            inverted
+            style={{
+              fontSize:'1.7em',
+              fontWeight: 'normal',
+              marginTop:  '1.5em',
+            }}
+          />
+          <Button primary size='huge'>
+            Contact Me
+            <Icon name='right arrow' />
+          </Button>
+          <Text color="whitish">{body}</Text>
+
+        </Container>
+        </Segment>
+
+      </div>
     );
   }
 }

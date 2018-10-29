@@ -95,7 +95,7 @@ class Header extends Component {
     console.log("icon menu", iconMenu);
     return (
       <div>
-        <Menu fixed='top' inverted pointing secondary>
+        <Menu fixed='top'  pointing secondary>
           <Box width={5 / 6} position='absolute' className="uk-position-z-index uk-hidden@s ">
             <Dropdown className="" list={iconMenu}/>
 

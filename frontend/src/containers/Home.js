@@ -26,6 +26,8 @@ import { fetchAllPages } from '../services/actions/page';
 // import * as reducers from '../services/reducers';
 import renderPageBody from '../utils';
 
+import ContactForm from '../components/ContactForm';
+
 class Home extends Component {
   state = {
     page: {}
@@ -51,7 +53,6 @@ class Home extends Component {
     return (
       <div>
         <Segment
-          inverted
           textAlign='center'
           style={{ minHeight: 700, padding: '1em 0em' }}
           vertical
@@ -60,7 +61,6 @@ class Home extends Component {
           <Header
             as='h1'
             content={page.title}
-            inverted
             style={{
               fontSize:  '4em',
               fontWeight: 'normal',
@@ -71,7 +71,6 @@ class Home extends Component {
           <Header
             as='h2'
             content={page.introduction}
-            inverted
             style={{
               fontSize:'1.7em',
               fontWeight: 'normal',
@@ -86,7 +85,9 @@ class Home extends Component {
 
         </Container>
         </Segment>
-
+        <Segment>
+          <ContactForm onSubmit={() => console.log("ProfileForm was submitted")} />
+        </Segment>
       </div>
     );
   }

@@ -85,7 +85,6 @@ class StandardPage extends Component {
     return (
       <Wrapper>
         <Segment
-          inverted
           textAlign='center'
           style={{ minHeight: 700, padding: '1em 0em' }}
           vertical

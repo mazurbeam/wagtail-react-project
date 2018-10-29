@@ -1,11 +1,13 @@
 // src/services/reducers/index.js
 
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form'
 
 import page, * as fromPage from './page';
 
 const rootReducer = combineReducers({
-  page
+  page,
+  form: formReducer
 });
 
 export const refreshPage = state => fromPage.refreshPageState(state.page);

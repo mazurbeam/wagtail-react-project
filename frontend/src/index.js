@@ -23,17 +23,17 @@ const render = () => {
 };
 
 render();
-registerServiceWorker();
+// registerServiceWorker();
 
 // Hot reloading
-// if (module.hot) {
-//   // Reload components
-//   module.hot.accept('./App', () => {
-//     render();
-//   });
+if (module.hot) {
+  // Reload components
+  module.hot.accept('./App', () => {
+    render();
+  });
 
-//   // Reload reducers
-//   module.hot.accept('./services/reducers', () => {
-//     store.replaceReducer(connectRouter(history)(rootReducer));
-//   });
-// }
+  // Reload reducers
+  module.hot.accept('./services/reducers', () => {
+    store.replaceReducer(connectRouter(history)(rootReducer));
+  });
+}

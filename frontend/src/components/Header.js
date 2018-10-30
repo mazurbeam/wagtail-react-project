@@ -121,6 +121,14 @@ class Header extends Component {
                   {item.title}
               </Menu.Item>
             ))}
+            <Menu.Item
+              name='contact'
+              as={NavLink}
+              to="/contact"
+              active={activeItem === "contact"}
+              onClick={this.handleItemClick}>
+              Contact
+            </Menu.Item>
             <Menu.Item position='right'>
 
               <span uk-icon="icon: github-alt; ratio: 1.5"/>{" "}

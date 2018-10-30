@@ -8,17 +8,11 @@ import { Card, Box, Heading, Text } from 'rebass';
 import {
   Button,
   Container,
-  Divider,
-  Grid,
   Header,
   Icon,
   Image,
-  List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
+
 } from 'semantic-ui-react'
 import axios from 'axios';
 
@@ -85,9 +79,7 @@ class Home extends Component {
 
         </Container>
         </Segment>
-        <Segment>
-          <ContactForm onSubmit={() => console.log("ProfileForm was submitted")} />
-        </Segment>
+
       </div>
     );
   }

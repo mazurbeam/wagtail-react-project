@@ -15,7 +15,7 @@ import {
 
 } from 'semantic-ui-react'
 import axios from 'axios';
-
+import Particles from 'react-particles-js';
 import { fetchAllPages } from '../services/actions/page';
 // import * as reducers from '../services/reducers';
 import renderPageBody from '../utils';
@@ -46,12 +46,17 @@ class Home extends Component {
     const body = renderPageBody(page.body);
     return (
       <div>
+
         <Segment
           textAlign='center'
           style={{ minHeight: 700, padding: '1em 0em' }}
           vertical
         >
-        <Container text >
+        <Container text
+          style={{
+            zIndex: 0
+          }}
+        >
           <Header
             as='h1'
             content={page.title}
@@ -60,6 +65,7 @@ class Home extends Component {
               fontWeight: 'normal',
               marginBottom: 0,
               marginTop:  '3em',
+
             }}
           />
           <Header
@@ -79,7 +85,6 @@ class Home extends Component {
 
         </Container>
         </Segment>
-
       </div>
     );
   }

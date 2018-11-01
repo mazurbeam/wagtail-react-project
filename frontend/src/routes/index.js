@@ -16,9 +16,7 @@ import Header from "../components/Header";
 // import Footer from '../components/Footer';
 import Home from "../containers/Home";
 import Page from "../containers/Page";
-// import BlogIndexPage from '../containers/BlogIndexPage';
-// import StandardPage from '../containers/StandardPage';
-// import BlogPage from '../containers/BlogPage';
+
 import ContactPage from "../containers/ContactPage";
 
 

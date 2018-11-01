@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
-import { bindActionCreators } from "redux";
-
 import { withRouter, Link } from "react-router-dom";
 
 import { Box, Flex, Card } from "rebass";
 import { Menu, Container } from "semantic-ui-react";
 import styled from "styled-components";
 import { color, space, width, disply, height, position } from "styled-system";
-
-import axios from "axios";
+import Particles from 'react-particles-js';
 
 import { fetchMainMenu } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -90,7 +87,7 @@ class Header extends Component {
   render() {
     const { pages, activeItem } = this.state;
     const { items } = pages;
-    const { menu, getMenu } = this.props;
+    const { menu, getMenu, pathname } = this.props;
     const iconMenu = this.addIcons(menu);
     console.log("icon menu", iconMenu);
     return (
@@ -98,7 +95,6 @@ class Header extends Component {
         <Menu fixed='top'  pointing secondary>
           <Box width={5 / 6} position='absolute' className="uk-position-z-index uk-hidden@s ">
             <Dropdown className="" list={iconMenu}/>
-
           </Box>
           <Container className="uk-visible@s">
 
@@ -106,7 +102,7 @@ class Header extends Component {
               name='home'
               as={NavLink}
               to="/"
-              active={activeItem === "home"}
+              active={pathname === "/"}
               onClick={this.handleItemClick}>
                 Home
             </Menu.Item>
@@ -115,7 +111,7 @@ class Header extends Component {
               <Menu.Item
                 name={item.meta.slug}
                 as={NavLink}
-                active={activeItem === item.meta.slug}
+                active={pathname === `/${item.meta.slug}`}
                 to={{ pathname: `/${item.meta.slug}` }}
                 onClick={this.handleItemClick}>
                   {item.title}
@@ -125,7 +121,7 @@ class Header extends Component {
               name='contact'
               as={NavLink}
               to="/contact"
-              active={activeItem === "contact"}
+              active={pathname === "/contact"}
               onClick={this.handleItemClick}>
               Contact
             </Menu.Item>
@@ -137,7 +133,6 @@ class Header extends Component {
             </Menu.Item>
           </Container>
         </Menu>
-
       </div>
     );
   }

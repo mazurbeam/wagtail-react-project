@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Link } from 'react-router-dom';
+import Particles from 'react-particles-js';
+
 import Routes from './routes';
 import theme from './styles/theme';
 import './static/css/uikit.css'
@@ -12,7 +14,9 @@ const App = ({ history }) => {
   return (
     <ThemeProvider theme={theme}>
       <ConnectedRouter history={history}>
+
         <Routes />
+
       </ConnectedRouter>
     </ThemeProvider>
   );

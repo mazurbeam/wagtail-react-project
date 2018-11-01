@@ -89,7 +89,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      '../../theme.config$': path.join(__dirname, 'theme/theme.config')
+      '../../theme.config$': path.join(__dirname, '../theme/theme.config')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -144,12 +144,6 @@ module.exports = {
         use: 'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
       },
       {
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'less-loader']
-        }),
-        test: /\.less$/
-      },
-      {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
@@ -181,6 +175,12 @@ module.exports = {
               // directory for faster rebuilds.
               cacheDirectory: true
             }
+          },
+          {
+            use: ExtractTextPlugin.extract({
+              use: ['css-loader', 'less-loader']
+            }),
+            test: /\.less$/
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -229,14 +229,26 @@ module.exports = {
             // its runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [
+              /\.(config|overrides|variables)$/,
+              /\.html$/,
+              /\.(js|jsx)$/,
+              /\.css$/,
+              /\.json$/,
+              /\.bmp$/,
+              /\.gif$/,
+              /\.jpe?g$/,
+              /\.png$/,
+              /\.scss$/,
+            ],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]'
             }
           }
         ]
-      }
+      },
+
       // ** STOP ** Are you adding a new loader?
       // Make sure to add the new loader(s) before the "file" loader.
     ]

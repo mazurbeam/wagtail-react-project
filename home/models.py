@@ -46,7 +46,7 @@ class HomePage(Page):
         APIField('subtitle'),
         APIField('introduction'),
         APIField('body'),
-        APIField('image_thumbnail', serializer=ImageRenditionField('fill-350x350', source='image')),
+        APIField('image_thumbnail', serializer=ImageRenditionField('fill-200x200', source='image')),
     ]
 
     content_panels = Page.content_panels + [

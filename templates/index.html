@@ -1,5 +1,5 @@
-{% load render_bundle  from webpack_loader %}
-{% load static  %}
+{% load render_bundle  from webpack_loader  %}
+{% load static wagtailuserbar %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/particles.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'pixelturtle.ico' %}"/>
 
-    <title>Wagtail React Project</title>
+    <title>
+        {% block title %}
+            {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+            {% with self.get_site.site_name as site_name %}
+                {% if site_name %}- {{ site_name }}{% endif %}
+            {% endwith %}
+        {% endblock %}
+    </title>
 </head>
 <body>
 

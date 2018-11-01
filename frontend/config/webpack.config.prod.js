@@ -92,7 +92,8 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      '../../theme.config$': path.join(__dirname, '../src/theme/theme.config')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -149,6 +150,24 @@ module.exports = {
             options: {
               compact: true
             }
+          },
+
+          {
+            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+          },
+
+          { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+
+          {
+            test: /\.otf(\?.*)?$/,
+            use: 'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
+          },
+          {
+            use: ExtractTextPlugin.extract({
+              use: [ 'css-loader', 'less-loader']
+            }),
+            test: /\.less$/
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
@@ -219,7 +238,18 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [
+              /\.(config|overrides|variables)$/,
+              /\.html$/,
+              /\.(js|jsx)$/,
+              /\.css$/,
+              /\.json$/,
+              /\.bmp$/,
+              /\.gif$/,
+              /\.jpe?g$/,
+              /\.png$/,
+              /\.scss$/,
+            ],
             options: {
               name: 'media/[name].[hash:8].[ext]'
             }
@@ -236,6 +266,9 @@ module.exports = {
     // <link rel="shortcut icon" href="%PUBLIC_URL%/turtle.ico">
     // In production, it will be an empty string unless you specify "homepage"
     // in `package.json`, in which case it will be the pathname of that URL.
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
+    }),
     new InterpolateHtmlPlugin(env.raw),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({

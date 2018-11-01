@@ -177,7 +177,7 @@ module.exports = {
           },
           {
             use: ExtractTextPlugin.extract({
-              use: ['css-loader', 'less-loader']
+              use: [ 'css-loader', 'less-loader']
             }),
             test: /\.less$/
           },

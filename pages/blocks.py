@@ -56,6 +56,7 @@ class BaseStreamBlock(StreamBlock):
     """
     Define the custom blocks that `StreamField` will utilize
     """
+    required=False
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
         icon="fa-paragraph",

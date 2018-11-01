@@ -89,10 +89,11 @@ class Home extends Component {
 
         </Container>
         </Segment>
+        {body.length > 0 &&
         <Segment>
           <Text color="">{body}</Text>
 
-        </Segment>
+        </Segment>}
       </div>
     );
   }

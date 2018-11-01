@@ -23,7 +23,8 @@ class HomePage(Page):
         help_text='Your Name',
         blank=True)
     subtitle = models.TextField(
-        help_text='Ex: Full Stack Developer'
+        help_text='Ex: Full Stack Developer',
+	    blank=True
     )
     introduction = models.TextField(
         help_text='A paragraph intro',
@@ -38,7 +39,7 @@ class HomePage(Page):
         help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
     )
     body = StreamField(
-        BaseStreamBlock(), verbose_name="Page body", blank=True
+        BaseStreamBlock(), verbose_name="Page body", blank=True, null=True
     )
     api_fields = [
         APIField('name'),

@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import rootReducer from './services/reducers';
 import store, { history } from './services/store';
-import './index.css';
+// import './index.css';
 // import 'semantic-ui-css/semantic.min.css';
 import "semantic-ui-less/semantic.less"; // ES6
 
@@ -24,7 +24,7 @@ const render = () => {
 };
 
 render();
-// registerServiceWorker();
+registerServiceWorker();
 
 // Hot reloading
 if (module.hot) {

@@ -129,20 +129,7 @@ module.exports = {
         use: 'file-loader?name=[name].[ext]?[hash]'
       },
 
-      // the following 3 rules handle font extraction
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-      },
 
-      {
-        test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.otf(\?.*)?$/,
-        use: 'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
-      },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -175,6 +162,18 @@ module.exports = {
               // directory for faster rebuilds.
               cacheDirectory: true
             }
+          },
+          // the following 3 rules handle font extraction
+          {
+            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+          },
+
+          { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+
+          {
+            test: /\.otf(\?.*)?$/,
+            use: 'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
           },
           {
             use: ExtractTextPlugin.extract({

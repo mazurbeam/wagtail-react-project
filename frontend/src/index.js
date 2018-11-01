@@ -24,7 +24,7 @@ const render = () => {
 };
 
 render();
-registerServiceWorker();
+// registerServiceWorker();
 
 // Hot reloading
 if (module.hot) {

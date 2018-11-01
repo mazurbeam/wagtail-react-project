@@ -79,7 +79,7 @@ class Home extends Component {
           />
           <Button primary size='huge'>
             Contact Me
-            <Icon name='right arrow' />
+            <Icon className='angle right' />
           </Button>
           <Text color="whitish">{body}</Text>
 

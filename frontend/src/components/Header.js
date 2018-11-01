@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 
 import { Box, Flex, Card } from "rebass";
-import { Menu, Container } from "semantic-ui-react";
+import { Menu, Container, Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import { color, space, width, disply, height, position } from "styled-system";
 import Particles from 'react-particles-js';
@@ -91,8 +91,7 @@ class Header extends Component {
     const iconMenu = this.addIcons(menu);
     console.log("icon menu", iconMenu);
     return (
-      <div>
-        <Menu fixed='top'  pointing secondary>
+        <Menu fixed='top' inverted  >
           <Box width={5 / 6} position='absolute' className="uk-position-z-index uk-hidden@s ">
             <Dropdown className="" list={iconMenu}/>
           </Box>
@@ -133,7 +132,6 @@ class Header extends Component {
             </Menu.Item>
           </Container>
         </Menu>
-      </div>
     );
   }
 }

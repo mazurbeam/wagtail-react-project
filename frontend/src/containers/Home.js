@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Card, Box, Heading, Text } from 'rebass';
 import {
   Button,
@@ -38,11 +38,12 @@ class Home extends Component {
 
   render() {
     const { page } = this.state;
-    // console.log('homepage', page);
+    console.log('homepage', page);
     const pageHasBody = Object.prototype.hasOwnProperty.call(page, 'body');
     if (!pageHasBody) {
       page.body = [];
     }
+    const image = page.image_thumbnail
     const body = renderPageBody(page.body);
     return (
       <div>
@@ -59,7 +60,7 @@ class Home extends Component {
         >
           <Header
             as='h1'
-            content={page.title}
+            content={page.name}
             style={{
               fontSize:  '4em',
               fontWeight: 'normal',
@@ -70,20 +71,27 @@ class Home extends Component {
           />
           <Header
             as='h2'
-            content={page.introduction}
+            content={page.subtitle}
             style={{
               fontSize:'1.7em',
               fontWeight: 'normal',
-              marginTop:  '1.5em',
+              marginTop:  '0.5em',
             }}
           />
-          <Button primary size='huge'>
+          {image ? <Image alt='walter mazur' src={page.image_thumbnail.url}  centered circular/> : <div>loading</div> }
+
+          <Text color="">{page.introduction}</Text>
+
+          <Button primary size='huge' as={Link} to="/contact" >
             Contact Me
             <Icon className='angle right' />
           </Button>
-          <Text color="whitish">{body}</Text>
 
         </Container>
+        </Segment>
+        <Segment>
+          <Text color="">{body}</Text>
+
         </Segment>
       </div>
     );

@@ -23,11 +23,23 @@ import ContactForm from "../components/ContactForm";
 
 const ContactPage = (props) => (
   <div>
+
     <Segment
       textAlign='center'
       style={{ minHeight: 700, padding: "1em 0em" }}
       vertical
     >
+      <Header
+        as='h1'
+        content='Contact Me'
+        style={{
+          fontSize:  '4em',
+          fontWeight: 'normal',
+          marginBottom: 0,
+          marginTop:  '3em',
+
+        }}
+      />
       <Container>
         <ContactForm onSubmit={() => console.log("ProfileForm was submitted")}/>
       </Container>

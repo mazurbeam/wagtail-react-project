@@ -16,6 +16,7 @@ import {
   Sidebar,
   Visibility
 } from "semantic-ui-react";
+import { Box, Heading, Card, Text } from 'rebass';
 
 import ContactForm from "../components/ContactForm";
 

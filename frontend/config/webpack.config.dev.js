@@ -12,6 +12,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const BundleTracker = require('webpack-bundle-tracker');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -87,7 +88,8 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      '../../theme.config$': path.join(__dirname, 'theme/theme.config')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -121,10 +123,37 @@ module.exports = {
         ],
         include: paths.appSrc
       },
+      // this rule handles images
+      {
+        test: /\.jpe?g$|\.gif$|\.ico$|\.png$|\.svg$/,
+        use: 'file-loader?name=[name].[ext]?[hash]'
+      },
+
+      // the following 3 rules handle font extraction
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+
+      {
+        test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.otf(\?.*)?$/,
+        use: 'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
+      },
+      {
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'less-loader']
+        }),
+        test: /\.less$/
+      },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
+
         oneOf: [
           // "url" loader works like "file" loader except that it embeds assets
           // smaller than specified limit in bytes as data URLs to avoid requests.
@@ -217,6 +246,9 @@ module.exports = {
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/turtle.ico">
     // In development, this will be an empty string.
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
+    }),
     new InterpolateHtmlPlugin(env.raw),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({

@@ -10,8 +10,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 
 from .api import api_router
+from django.conf.urls.static import static
 
-urlpatterns = [
+urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +[
 	url(r'^django-admin/', admin.site.urls),
 
 	url(r'^admin/', include(wagtailadmin_urls)),
@@ -31,8 +32,7 @@ urlpatterns = [
 	# url(r'^pages/', include(wagtail_urls)),
 ]
 if settings.DEBUG:
-	from django.conf.urls.static import static
 	from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 	urlpatterns = staticfiles_urlpatterns() + urlpatterns
-	urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + urlpatterns
+	# urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + urlpatterns

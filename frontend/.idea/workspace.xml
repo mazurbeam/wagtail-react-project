@@ -720,15 +720,24 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ContactPage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ContactPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/ContactPage.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="441">
-                  <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+                  <caret line="33" selection-start-line="33" selection-end-line="33" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                     <element signature="e#162#332#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="button.overrides" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/node_modules/semantic-ui-less/themes/chubby/elements/button.overrides">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="92">
+                  <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -794,7 +803,6 @@
         <option value="$PROJECT_DIR$/src/theme/site/elements/icon.variables" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/Header.js" />
-        <option value="$PROJECT_DIR$/node_modules/semantic-ui-less/themes/chubby/elements/button.overrides" />
         <option value="$PROJECT_DIR$/src/theme/theme.config" />
         <option value="$PROJECT_DIR$/src/containers/Home.js" />
         <option value="$PROJECT_DIR$/config/webpack.config.dev.js" />
@@ -805,6 +813,7 @@
         <option value="$PROJECT_DIR$/src/services/reducers/form.js" />
         <option value="$PROJECT_DIR$/src/services/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/containers/ContactPage.js" />
+        <option value="$PROJECT_DIR$/node_modules/semantic-ui-less/themes/chubby/elements/button.overrides" />
       </list>
     </option>
   </component>
@@ -956,12 +965,12 @@
       <workItem from="1537118105769" duration="1539000" />
       <workItem from="1537460620427" duration="1406000" />
       <workItem from="1540221291436" duration="624000" />
-      <workItem from="1540232137545" duration="33324000" />
+      <workItem from="1540232137545" duration="33580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61059000" />
+    <option name="totallyTimeSpent" value="61315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -976,7 +985,7 @@
     <frame x="0" y="23" width="1920" height="1124" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.71216214" visible="true" weight="0.11848341" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71216214" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -986,7 +995,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.50236964" side_tool="true" visible="true" weight="0.2494929" />
       <window_info anchor="bottom" id="RNConsole" order="8" weight="0.32897604" />
-      <window_info id="Favorites" order="2" sideWeight="0.28783783" side_tool="true" visible="true" weight="0.11848341" />
+      <window_info active="true" id="Favorites" order="2" sideWeight="0.28783783" side_tool="true" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1257,13 +1266,6 @@
     <entry file="file://$PROJECT_DIR$/src/theme/site/globals/site.variables">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/semantic-ui-less/themes/chubby/elements/button.overrides">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/theme/site/globals/site.overrides">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -1415,11 +1417,18 @@
     <entry file="file://$PROJECT_DIR$/src/containers/ContactPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
-          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#162#332#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/semantic-ui-less/themes/chubby/elements/button.overrides">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>

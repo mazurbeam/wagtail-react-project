@@ -14,15 +14,16 @@ const renderTextArea = field => (
 
 
 const ContactForm = (props) => {
-  const { handleSubmit, reset } = props;
+  const { handleSubmit, reset, message = null} = props;
 
 
   return (
     <Fragment>
+      {message &&
       <Message info>
-
-       <p>Form message here</p>
+        <p>{message}</p>
       </Message>
+      }
       <Form onSubmit={handleSubmit}>
         <Form.Group widths="equal">
           <Field
@@ -49,7 +50,7 @@ const ContactForm = (props) => {
 
         <Form.Group inline>
           <Form.Button primary>Submit</Form.Button>
-          <Form.Button onClick={reset}>Reset</Form.Button>
+          <Form.Button onClick={reset}>Clear</Form.Button>
         </Form.Group>
       </Form>
     </Fragment>

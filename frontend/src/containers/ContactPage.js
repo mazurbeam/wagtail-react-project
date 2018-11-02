@@ -24,16 +24,27 @@ import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 
 
 class ContactPage extends Component {
+  state = {
+    submitted: false
+  }
 
   submit = values => {
     const {createMessage} = this.props;
     console.log(values)
     createMessage(values.name, values.email, values.message)
+    this.setState({submitted: true})
+  }
+
+  toggleForm = () => {
+    const { submitted } = this.state;
+    this.setState({submitted: !submitted})
   }
 
 
 
   render() {
+    const {submitted} = this.state;
+
     return(
       <div>
 
@@ -54,7 +65,17 @@ class ContactPage extends Component {
             }}
           />
           <Container>
-            <ContactForm onSubmit={this.submit}/>
+            {submitted ?
+              <Segment>
+                <Header icon
+                  as='h3'
+                >
+                  <Icon name='envelope outline'/>
+                Thank you :)
+                </Header>
+                <Button onClick={this.toggleForm}>Reset</Button>
+              </Segment>  : <ContactForm onSubmit={this.submit}/>}
+
           </Container>
         </Segment>
       </div>

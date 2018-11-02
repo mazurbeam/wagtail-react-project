@@ -613,10 +613,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="BlogIndexPage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="BlogIndexPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/BlogIndexPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="156">
+                <state relative-caret-position="333">
                   <caret line="81" column="52" lean-forward="true" selection-start-line="79" selection-start-column="17" selection-end-line="81" selection-end-column="52" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
@@ -626,10 +626,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/containers/Home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
+                <state relative-caret-position="7">
                   <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
                   <folding>
                     <element signature="e#169#207#0" expanded="true" />
@@ -784,8 +784,8 @@
           <file leaf-file-name="PortfolioIndexPage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/containers/PortfolioIndexPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="567">
-                  <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+                <state relative-caret-position="1058">
+                  <caret line="46" selection-start-line="46" selection-end-line="46" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -989,12 +989,12 @@
       <workItem from="1537118105769" duration="1539000" />
       <workItem from="1537460620427" duration="1406000" />
       <workItem from="1540221291436" duration="624000" />
-      <workItem from="1540232137545" duration="43240000" />
+      <workItem from="1540232137545" duration="43905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70975000" />
+    <option name="totallyTimeSpent" value="71640000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1358,17 +1358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
-          <folding>
-            <element signature="e#169#207#0" expanded="true" />
-            <element signature="e#616#654#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/StandardPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1437,7 +1426,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/BlogIndexPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="333">
           <caret line="81" column="52" lean-forward="true" selection-start-line="79" selection-start-column="17" selection-end-line="81" selection-end-column="52" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -1446,10 +1435,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+          <folding>
+            <element signature="e#169#207#0" expanded="true" />
+            <element signature="e#616#654#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/PortfolioIndexPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+        <state relative-caret-position="1058">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

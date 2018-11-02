@@ -85,7 +85,7 @@ class PortfolioPageGalleryImage(Orderable):
 		APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
 		APIField('image_medium', serializer=ImageRenditionField('fill-300x300', source='image')),
 		APIField('image_banner', serializer=ImageRenditionField('fill-500x400', source='image')),
-		APIField('image_full', serializer=ImageRenditionField('fill-800x600', source='image'))
+		APIField('image_full', serializer=ImageRenditionField('max-800x800', source='image'))
 	]
 
 	panels = [

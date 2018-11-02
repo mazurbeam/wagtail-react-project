@@ -43,7 +43,11 @@ class PortfolioIndexPage extends Component {
             <Grid centered stackable columns={2}>
               {children.map(child => (
                 <Grid.Column key={child.id}>
-                <Card centered>
+                <Card centered
+                      style={{
+                         width: 800
+                      }}
+                >
                   <Image src={child.gallery_images[0].image_full.url} alt={child.gallery_images[0].image.title}/>
                   <Card.Content>
                   <Card.Header>{child.title}</Card.Header>

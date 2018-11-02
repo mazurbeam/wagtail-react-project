@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { color, space, width, disply, height, position } from "styled-system";
 import Particles from 'react-particles-js';
 
-import { fetchMainMenu } from "../services/actions/page";
+import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 // import fetchPages from '../services/api';
 
@@ -52,12 +52,14 @@ class Header extends Component {
   props = this.props;
 
   componentWillMount() {
-  }
-
-  componentDidMount() {
     const { getMenu, menu } = this.props;
     getMenu();
   }
+
+  componentDidMount() {
+  }
+
+
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -142,7 +144,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMenu: () => dispatch(fetchMainMenu())
+  getMenu: () => dispatch(fetchMainMenu()),
+  getPageDetails: (id) => dispatch(fetchPageWithId(id))
 });
 
 export default withRouter(

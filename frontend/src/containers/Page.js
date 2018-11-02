@@ -16,6 +16,7 @@ import Loading from '../components/Loading';
 import BlogIndexPage from './BlogIndexPage';
 import BlogPage from './BlogPage';
 import StandardPage from './StandardPage';
+import PortfolioIndexPage from './PortfolioIndexPage';
 
 class Page extends Component {
   state = {
@@ -62,21 +63,18 @@ class Page extends Component {
     let pageSpace = <Loading />;
 
     if (meta.meta.type === 'blog.BlogIndexPage' && ready) {
-      console.log('BlogIndexPage');
-
       pageSpace =
         <BlogIndexPage id={meta.id} type={meta.meta.type}/>;
     }
     if (meta.meta.type === 'pages.StandardPage') {
-      console.log('StandardPage');
-
       pageSpace =
         <StandardPage id={meta.id} type={meta.meta.type}/>;
     }
     if (meta.meta.type === 'blog.BlogPage' && ready) {
-      console.log('BlogPage');
-
       pageSpace = <BlogPage id={meta.id} type={meta.meta.type}/>;
+    }
+    if (meta.meta.type === 'portfolio.PortfolioIndexPage' && ready) {
+      pageSpace = <PortfolioIndexPage id={meta.id} type={meta.meta.type}/>;
     }
 
     // if (pathname !== meta.meta.html_url) {

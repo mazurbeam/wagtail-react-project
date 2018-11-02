@@ -18,40 +18,61 @@ import {
 } from "semantic-ui-react";
 import { Box, Heading, Card, Text } from 'rebass';
 
+import {createNewMessage} from '../services/actions/contact';
 import ContactForm from "../components/ContactForm";
+import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 
 
-const ContactPage = (props) => (
-  <div>
+class ContactPage extends Component {
 
-    <Segment
-      textAlign='center'
-      style={{ minHeight: 700, padding: "1em 0em" }}
-      vertical
-    >
-      <Header
-        as='h1'
-        content='Contact Me'
-        style={{
-          fontSize:  '4em',
-          fontWeight: 'normal',
-          marginBottom: 0,
-          marginTop:  '3em',
+  submit = values => {
+    const {createMessage} = this.props;
+    console.log(values)
+    createMessage(values.name, values.email, values.message)
+  }
 
-        }}
-      />
-      <Container>
-        <ContactForm onSubmit={() => console.log("ProfileForm was submitted")}/>
-      </Container>
-    </Segment>
-  </div>
-);
+  render() {
+    return(
+      <div>
+
+        <Segment
+          textAlign='center'
+          style={{ minHeight: 700, padding: "1em 0em" }}
+          vertical
+        >
+          <Header
+            as='h1'
+            content='Contact Me'
+            style={{
+              fontSize:  '4em',
+              fontWeight: 'normal',
+              marginBottom: 0,
+              marginTop:  '3em',
+
+            }}
+          />
+          <Container>
+            <ContactForm onSubmit={this.submit}/>
+          </Container>
+        </Segment>
+      </div>
+    )
+  }
+}
+
 
 
 function mapStateToProps(state) {
   return {};
 }
 
+const mapDispatchToProps = dispatch => ({
+  createMessage(name, email, message) {
+    dispatch(createNewMessage(name, email, message));
+  }
+});
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ContactPage);

@@ -5,6 +5,7 @@ from wagtail.api.v2.router import WagtailAPIRouter
 from wagtail.images.api.v2.endpoints import ImagesAPIEndpoint
 from wagtail.documents.api.v2.endpoints import DocumentsAPIEndpoint
 from api.endpoints import ContactMessageAPIEndpoint
+from api.views import ContactMessageView
 # Create the router. "wagtailapi" is the URL namespace
 api_router = WagtailAPIRouter('wagtailapi')
 
@@ -15,4 +16,4 @@ api_router = WagtailAPIRouter('wagtailapi')
 api_router.register_endpoint('pages', PagesAPIEndpoint)
 api_router.register_endpoint('images', ImagesAPIEndpoint)
 api_router.register_endpoint('documents', DocumentsAPIEndpoint)
-api_router.register_endpoint('messages', ContactMessageAPIEndpoint)
+# api_router.register_endpoint('messages', ContactMessageAPIEndpoint)

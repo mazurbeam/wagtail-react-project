@@ -31,6 +31,8 @@ class ContactPage extends Component {
     createMessage(values.name, values.email, values.message)
   }
 
+
+
   render() {
     return(
       <div>

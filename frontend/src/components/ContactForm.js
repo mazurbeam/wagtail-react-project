@@ -16,6 +16,7 @@ const renderTextArea = field => (
 const ContactForm = (props) => {
   const { handleSubmit, reset } = props;
 
+
   return (
     <Fragment>
       <Message info>

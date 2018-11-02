@@ -2,12 +2,21 @@
 
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form'
-
+import * as contact from '../actions/contact'
 import page, * as fromPage from './page';
 
 const rootReducer = combineReducers({
   page,
-  form: formReducer
+  form: formReducer.plugin({
+    contact: (state, action) => { // <------ 'account' is name of form given to reduxForm()
+      switch(action.type) {
+        case contact.NEW_MESSAGE_SUCCESS:
+          return undefined;       // <--- blow away form data
+        default:
+          return state;
+      }
+    }
+  })
 });
 
 export const refreshPage = state => fromPage.refreshPageState(state.page);

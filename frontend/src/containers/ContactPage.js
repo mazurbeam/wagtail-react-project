@@ -17,6 +17,7 @@ import {
   Visibility
 } from "semantic-ui-react";
 import { Box, Heading, Card, Text } from 'rebass';
+import {reset} from 'redux-form';
 
 import {createNewMessage} from '../services/actions/contact';
 import ContactForm from "../components/ContactForm";
@@ -40,6 +41,11 @@ class ContactPage extends Component {
     this.setState({submitted: !submitted})
   }
 
+  clearForm = () => {
+    console.log('clearing form');
+    const { resetForm } = this.props;
+    resetForm()
+  }
 
 
   render() {
@@ -73,9 +79,14 @@ class ContactPage extends Component {
                   <Icon name='envelope outline'/>
                 Thank you :)
                 </Header>
-                <Button onClick={this.toggleForm}>Reset</Button>
-              </Segment>  : <ContactForm onSubmit={this.submit}/>}
-
+                <Segment.Inline>
+                <Button onClick={this.toggleForm} reset={this.clearForm()} >Reset</Button>
+                </Segment.Inline>
+              </Segment>  :
+              <Segment>
+                <ContactForm onSubmit={this.submit}/>
+              </Segment>
+            }
           </Container>
         </Segment>
       </div>
@@ -92,6 +103,9 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => ({
   createMessage(name, email, message) {
     dispatch(createNewMessage(name, email, message));
+  },
+  resetForm() {
+    dispatch(reset('contact'))
   }
 });
 

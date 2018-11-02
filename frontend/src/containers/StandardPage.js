@@ -101,7 +101,7 @@ class StandardPage extends Component {
                 />
               </Box>
               <Card   color="slate"
-                      bg="whitish"
+                      bg="white"
                       p={3}
                       mt={[ 150]}
                       mx={[0,10]}

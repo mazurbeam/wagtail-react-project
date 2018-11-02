@@ -4,6 +4,7 @@ import { Form, Message } from "semantic-ui-react";
 
 
 
+
 const renderTextArea = field => (
   <Form.TextArea
     {...field.input}
@@ -24,7 +25,7 @@ const ContactForm = (props) => {
         <p>{message}</p>
       </Message>
       }
-      <Form onSubmit={handleSubmit}>
+      <Form >
         <Form.Group widths="equal">
           <Field
             component={Form.Input}
@@ -49,13 +50,15 @@ const ContactForm = (props) => {
         />
 
         <Form.Group inline>
-          <Form.Button primary>Submit</Form.Button>
+          <Form.Button onClick={handleSubmit} primary>Submit</Form.Button>
           <Form.Button onClick={reset}>Clear</Form.Button>
         </Form.Group>
       </Form>
     </Fragment>
   );
 };
+
+
 
 export default reduxForm({
   form: "contact"

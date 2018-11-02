@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+import styled from "styled-components";
 
 // import axios from 'axios';
-import { Box, Heading, Card } from 'rebass';
-
+import { Box, Heading } from "rebass";
+import { Card, Icon, Image } from "semantic-ui-react";
 import {
   // fetchPageType,
   fetchPageChildren,
   fetchPageWithId
-} from '../services/actions/page';
-import * as reducers from '../services/reducers';
+} from "../services/actions/page";
+import * as reducers from "../services/reducers";
 // import BlogPage from './BlogPage';
 
-import Loading from '../components/Loading';
+import Loading from "../components/Loading";
 
 const Wrapper = styled.div``;
 
@@ -30,14 +30,14 @@ class BlogIndexPage extends Component {
     // const { state } = location;
     // const { type, id } = state;
 
-    console.log('will mount type', type);
+    console.log("will mount type", type);
     getPageDetails(id);
-    getBlogPages(id, 'blog.BlogPage');
+    getBlogPages(id, "blog.BlogPage");
   }
 
   componentDidMount() {
-    const {  details } = this.props;
-    console.log('bpi did mount details', details)
+    const { details } = this.props;
+    console.log("bpi did mount details", details);
     this.setState({ loading: false });
 
   }
@@ -60,12 +60,12 @@ class BlogIndexPage extends Component {
     return (
       <Wrapper>
         {loading ? (
-          <Loading />
+          <Loading/>
         ) : (
           <Wrapper>
             <Box
               pt={80}
-              color="whitish"
+              color=""
               className="uk-position-large uk-position-top-center"
             >
               <Heading fontSize={5}>{details.title}</Heading>
@@ -74,21 +74,27 @@ class BlogIndexPage extends Component {
                 dangerouslySetInnerHTML={{ __html: details.intro }}
               />
             </Box>
-            <Box color="whitish" mx={[20, 40]} mt={[ 250]} className=" ">
+            <Box color="" mx={[20, 40]} mt={[250]} className=" ">
               <div>
                 {children.map(child => (
-                  <Card borderRadius={8}
-                       bg='slate' p={3} boxShadow='0 2px 16px rgba(0, 0, 0, 0.25)' key={child.id}>
-                    <img src={child.gallery_images[0].image_thumbnail.url} alt={child.gallery_images[0].image.title}/>
+                  <Card key={child.id}>
+                    <Image src={child.gallery_images[0].image_medium.url} alt={child.gallery_images[0].image.title}/>
                     <Heading>{child.title}</Heading>
-                    <Link
-                      to={{
-                        pathname: `${pathname}/${child.meta.slug}`,
-                        state: { type: child.meta.type, id: child.id }
-                      }}
-                    >
-                      Read More
-                    </Link>
+
+                    Read More
+
+                    <Card.Content extra>
+                      <Link
+                        to={{
+                          pathname: `${pathname}/${child.meta.slug}`,
+                          state: { type: child.meta.type, id: child.id }
+                        }}
+                      >
+
+                        <Icon name='user'/>
+                        22 Friends
+                      </Link>
+                    </Card.Content>
                   </Card>
                 ))}
               </div>

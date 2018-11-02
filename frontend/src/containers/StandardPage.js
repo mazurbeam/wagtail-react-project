@@ -5,19 +5,9 @@ import styled from 'styled-components';
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 
 import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
+
   Segment,
-  Sidebar,
-  Visibility,
+
 } from 'semantic-ui-react'
 
 import { Box, Heading, Card, Text } from 'rebass';

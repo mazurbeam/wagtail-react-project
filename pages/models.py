@@ -255,3 +255,4 @@ class CustomDocument(AbstractDocument):
         # Add all custom fields names to make them appear in the form:
         'source',
     )
+

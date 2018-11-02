@@ -613,6 +613,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="BlogIndexPage.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/containers/BlogIndexPage.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="575">
+                  <caret line="93" column="40" lean-forward="true" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                    <element signature="e#205#249#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/Home.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -645,14 +658,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StandardPage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="StandardPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/StandardPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="413">
-                  <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+                <state relative-caret-position="-172">
+                  <caret line="9" selection-start-line="9" selection-end-line="9" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
-                    <element signature="e#250#420#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -784,7 +796,6 @@
         <option value="$PROJECT_DIR$/src/styles/index.js" />
         <option value="$PROJECT_DIR$/src/utils/renderStreamField.js" />
         <option value="$PROJECT_DIR$/src/styles/theme.js" />
-        <option value="$PROJECT_DIR$/src/containers/BlogIndexPage.js" />
         <option value="$PROJECT_DIR$/src/containers/BlogPage.js" />
         <option value="$PROJECT_DIR$/src/components/Dropdown.js" />
         <option value="$PROJECT_DIR$/src/routes/index.js" />
@@ -814,6 +825,7 @@
         <option value="$PROJECT_DIR$/src/components/ContactForm.js" />
         <option value="$PROJECT_DIR$/src/containers/ContactPage.js" />
         <option value="$PROJECT_DIR$/src/containers/StandardPage.js" />
+        <option value="$PROJECT_DIR$/src/containers/BlogIndexPage.js" />
       </list>
     </option>
   </component>
@@ -867,6 +879,12 @@
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -971,12 +989,12 @@
       <workItem from="1537118105769" duration="1539000" />
       <workItem from="1537460620427" duration="1406000" />
       <workItem from="1540221291436" duration="624000" />
-      <workItem from="1540232137545" duration="37012000" />
+      <workItem from="1540232137545" duration="37987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64747000" />
+    <option name="totallyTimeSpent" value="65722000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -991,7 +1009,7 @@
     <frame x="0" y="23" width="1920" height="1124" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71216214" visible="true" weight="0.11848341" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.71216214" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -999,7 +1017,7 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49763033" visible="true" weight="0.2494929" />
       <window_info id="npm" order="2" sideWeight="0.2874494" side_tool="true" weight="0.11848341" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.50236964" side_tool="true" visible="true" weight="0.2494929" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.50236964" side_tool="true" visible="true" weight="0.2494929" />
       <window_info anchor="bottom" id="RNConsole" order="8" weight="0.32897604" />
       <window_info id="Favorites" order="2" sideWeight="0.28783783" side_tool="true" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -1346,17 +1364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/BlogIndexPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#205#249#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/actions/contact.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1429,11 +1436,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/StandardPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+        <state relative-caret-position="-172">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#250#420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/BlogIndexPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="93" column="40" lean-forward="true" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#205#249#0" expanded="true" />
           </folding>
         </state>
       </provider>

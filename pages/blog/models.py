@@ -86,7 +86,7 @@ class BlogPageGalleryImage(Orderable):
 		APIField('caption'),
 		APIField('page'),
 		APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
-
+		APIField('image_medium', serializer=ImageRenditionField('fill-300x300', source='image'))
 	]
 
 	panels = [

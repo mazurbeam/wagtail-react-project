@@ -93,11 +93,11 @@ class Header extends Component {
     const iconMenu = this.addIcons(menu);
     console.log("icon menu", iconMenu);
     return (
-        <Menu fixed='top' inverted  >
+        <Menu fixed='top' pointing secondary >
           <Box width={5 / 6} position='absolute' className="uk-position-z-index uk-hidden@s ">
             <Dropdown className="" list={iconMenu}/>
           </Box>
-          <Container textAlign='center' className="uk-visible@s">
+          <Container textAlign='center' centered className="uk-visible@s">
 
             <Menu.Item
               name='home'

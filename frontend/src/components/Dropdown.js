@@ -5,7 +5,7 @@ import { color, space, width } from "styled-system";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Card } from "rebass";
-
+// import {Dropdown, Menu} from 'semantic-ui-react'
 
 const NavLink = styled(Link)`
 ${space}
@@ -61,7 +61,7 @@ class Dropdown extends Component {
               width={1}
               borderRadius={8}
               mt={60}
-              bg='slate'
+              bg='white'
               boxShadow='0 2px 16px rgba(0, 0, 0, 0.25)'
         >
           <NavList className="">

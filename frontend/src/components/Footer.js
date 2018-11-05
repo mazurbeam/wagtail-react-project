@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import { Box } from 'rebass';
-import { Segment, Icon, Grid } from 'semantic-ui-react';
+import {  Icon, Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { color, space, width } from 'styled-system';
 
@@ -27,7 +27,6 @@ text-decoration: none;
 
 const Footer = () => (
   <StickyFooter>
-    <Segment   inverted>
     <Grid  centered columns={3}>
 
       <Grid.Column>
@@ -55,7 +54,6 @@ const Footer = () => (
       <Grid.Column/>
       </Grid>
 
-      </Segment>
   </StickyFooter>
 );
 

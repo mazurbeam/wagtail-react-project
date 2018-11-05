@@ -14,6 +14,8 @@ const initialState = {
   errors: {}
 };
 
+
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case page.GET_PAGES_SUCCESS:
@@ -26,11 +28,16 @@ export default (state = initialState, action) => {
         ...state,
         menu: action.payload.items
       };
-    case page.GET_PAGE_ID_SUCCESS:
+    case page.GET_PAGE_ID_SUCCESS: {
+      const newDetails = state.details
+      const key = action.payload.id
+      newDetails[key] = action.payload
       return {
         ...state,
-        details: action.payload
+        details: newDetails
       };
+    }
+      
     case page.GET_PAGE_ID_FAILURE:
       return {
         ...state,
@@ -76,9 +83,13 @@ export default (state = initialState, action) => {
   }
 };
 
-export function refreshPageState(state) {
+export function refreshPageState(state, id) {
   if (state.details) {
-    return state.details;
+    if(Object.prototype.hasOwnProperty.call(state.details, id)) {
+      console.log('has page', state.details[id])
+      return state.details[id];
+
+    }
   }
   return null;
 }

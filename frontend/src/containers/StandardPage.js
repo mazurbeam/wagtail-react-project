@@ -31,7 +31,7 @@ class StandardPage extends Component {
   componentWillMount() {
     this.setState({ loading: true });
 
-    const { id, getPageDetails, getPageChildren } = this.props;
+    const { id, getPageDetails, getPageChildren, details } = this.props;
     console.log('willmount props', this.props);
 
     getPageDetails(id);
@@ -55,23 +55,26 @@ class StandardPage extends Component {
     const { page, loading } = this.state;
     console.log(page);
     // let imageUrl;
-    let { details } = this.props;
+    const { details } = this.props;
     console.log('details', details);
     // if (loading === false) {
     //   imageUrl = `http://localhost:8000${details.image_thumbnail.url}`;
     // }
-    if (this.isEmpty(details)) {
-      details = { title: '', body: [] };
-    }
-    const detailsHasBody = Object.prototype.hasOwnProperty.call(
-      details,
-      'body'
-    );
-    if (!detailsHasBody) {
-      details.body = [];
-    }
-
-    const body = renderPageBody(details.body);
+    // if (this.isEmpty(details)) {
+    //   details = { title: '', body: [] };
+    // }
+    // const detailsHasBody = Object.prototype.hasOwnProperty.call(
+    //   details,
+    //   'body'
+    // );
+    // if (!detailsHasBody) {
+    //   details.body = [];
+    // }
+    let body = []
+    if(details){
+      body = renderPageBody(details.body);
+    } 
+    
     return (
       <Wrapper>
         <Segment
@@ -79,7 +82,7 @@ class StandardPage extends Component {
           style={{ minHeight: 700, padding: '1em 0em' }}
           vertical
         >
-          {loading ? (
+          {!details ? (
             <Text>Loading...</Text>
           ) : (
             <Wrapper>
@@ -106,9 +109,9 @@ class StandardPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
-  details: reducers.refreshPage(state),
+  details: reducers.refreshPage(state, props.id),
   children: reducers.refreshPageChildren(state)
 });
 

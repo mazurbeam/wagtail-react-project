@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   })
 });
 
-export const refreshPage = state => fromPage.refreshPageState(state.page);
+export const refreshPage = (state, id) => fromPage.refreshPageState(state.page, id);
 export const refreshMenu = state => fromPage.refreshMenu(state.page);
 export const refreshPageChildren = state =>
   fromPage.refreshPageChildren(state.page);

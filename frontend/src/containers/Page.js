@@ -101,10 +101,9 @@ class Page extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   pathname: state.router.location.pathname,
   meta: reducers.refreshPageMeta(state),
-  details: reducers.refreshPage(state)
 });
 
 const mapDispatchToProps = dispatch => ({

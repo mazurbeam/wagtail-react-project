@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 // import axios from 'axios';
 import { Box, Heading } from "rebass";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Container, Icon, Item, Segment } from "semantic-ui-react";
 import {
   // fetchPageType,
   fetchPageChildren,
@@ -59,7 +59,8 @@ class BlogIndexPage extends Component {
     // }
     return (
       <Wrapper>
-        {loading || !details ? (
+      <Container>
+        {loading || !details || !children ? (
           <Loading/>
         ) : (
           <Wrapper>
@@ -75,34 +76,37 @@ class BlogIndexPage extends Component {
               />
             </Box>
             <Box color="" mx={[20, 40]} pt={[250]} className=" ">
-            { children && 
-              <div>
+         
+              <Segment>
+              <Item.Group>
                 {children.items.map(child => (
-                  <Card key={child.id}>
-                    <Image src={child.gallery_images[0].image_medium.url} alt={child.gallery_images[0].image.title}/>
+                  <Item key={child.id}>
+                    <Item.Image src={child.gallery_images[0].image_medium.url} alt={child.gallery_images[0].image.title}/>
                     <Heading>{child.title}</Heading>
 
-                    Read More
+                    
 
-                    <Card.Content extra>
+                    <Item.Content verticalAlign='middle'>
                       <Link
                         to={{
                           pathname: `${pathname}/${child.meta.slug}`,
                           state: { type: child.meta.type, id: child.id }
                         }}
                       >
-
-                        <Icon name='user'/>
-                        22 Friends
+                      <Icon name='link'/>
+                      Read More
+                        
                       </Link>
-                    </Card.Content>
-                  </Card>
+                    </Item.Content>
+                  </Item>
                 ))}
-              </div>
-            }
+                </Item.Group>
+              </Segment>
+            
             </Box>
           </Wrapper>
         )}
+        </Container>
       </Wrapper>
     );
   }

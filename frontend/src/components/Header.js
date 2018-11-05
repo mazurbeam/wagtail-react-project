@@ -97,7 +97,7 @@ class Header extends Component {
           <Box width={5 / 6} position='absolute' className="uk-position-z-index uk-hidden@s ">
             <Dropdown className="" list={iconMenu}/>
           </Box>
-          <Container className="uk-visible@s">
+          <Container textAlign='center' className="uk-visible@s">
 
             <Menu.Item
               name='home'
@@ -126,12 +126,7 @@ class Header extends Component {
               onClick={this.handleItemClick}>
               Contact
             </Menu.Item>
-            <Menu.Item position='right'>
-
-              <span uk-icon="icon: github-alt; ratio: 1.5"/>{" "}
-
-              <span uk-icon="icon: linkedin; ratio: 1.5"/>
-            </Menu.Item>
+            
           </Container>
         </Menu>
     );

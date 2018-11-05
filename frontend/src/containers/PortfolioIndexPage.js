@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Box } from 'rebass';
-import { Segment, Grid, Card, Image, Label } from 'semantic-ui-react';
+import { Container, Segment, Grid, Card, Image, Label } from 'semantic-ui-react';
 
 import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -30,7 +30,7 @@ class PortfolioIndexPage extends Component {
     const {  details, children } = this.props;
     console.log('portfolio items', children)
     return (
-      <div>
+      <Container>
         {loading ? (
           <Box mt={250}>loading</Box>
         ) : (
@@ -45,7 +45,7 @@ class PortfolioIndexPage extends Component {
                 <Grid.Column key={child.id}>
                 <Card centered
                       style={{
-                         width: 800
+                         width: 350
                       }}
                 >
                   <Image src={child.gallery_images[0].image_full.url} alt={child.gallery_images[0].image.title}/>
@@ -72,7 +72,7 @@ class PortfolioIndexPage extends Component {
           </Box>
         )
         }
-      </div>
+      </Container>
     );
   }
 }

@@ -13,6 +13,8 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import NoMatch from "../components/NoMatch";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 // import Footer from '../components/Footer';
 import Home from "../containers/Home";
 import Page from "../containers/Page";
@@ -38,6 +40,7 @@ const Routes = ({ location }) => (
         </Switch>
       </CSSTransition>
     </TransitionGroup>
+    <Footer/>
   </Fragment>
 );
 

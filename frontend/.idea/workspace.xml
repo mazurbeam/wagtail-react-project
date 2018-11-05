@@ -989,12 +989,12 @@
       <workItem from="1537118105769" duration="1539000" />
       <workItem from="1537460620427" duration="1406000" />
       <workItem from="1540221291436" duration="624000" />
-      <workItem from="1540232137545" duration="43905000" />
+      <workItem from="1540232137545" duration="44454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71640000" />
+    <option name="totallyTimeSpent" value="72189000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1007,17 +1007,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1124" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71216214" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50236964" side_tool="true" visible="true" weight="0.2494929" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50236964" side_tool="true" weight="0.2494929" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49763033" visible="true" weight="0.2494929" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49763033" weight="0.2494929" />
       <window_info id="npm" order="2" sideWeight="0.2874494" side_tool="true" weight="0.11848341" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.50236964" side_tool="true" weight="0.2494929" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.50236964" side_tool="true" visible="true" weight="0.2494929" />
       <window_info anchor="bottom" id="RNConsole" order="8" weight="0.32897604" />
       <window_info id="Favorites" order="2" sideWeight="0.28783783" side_tool="true" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />

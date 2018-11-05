@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box } from 'rebass';
+// import { Box } from 'rebass';
+import { Segment, Icon, Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { color, space, width } from 'styled-system';
 
@@ -8,10 +9,10 @@ const StickyFooter = styled.footer`
   width: 100%;
   // height: 40px;
   position: fixed;
-  top: 0;
+  top: 95%;
   left: 0;
   color: #f5f5f5;
-  background-color: #232741;
+  // background-color: #232741;
 `;
 
 const FooterLink = styled.a`
@@ -26,7 +27,13 @@ text-decoration: none;
 
 const Footer = () => (
   <StickyFooter>
-    <Box className="uk-height-1-1 uk-overlay" ml="auto" mr="" width={1 / 6}>
+    <Segment   inverted>
+    <Grid  centered columns={3}>
+
+      <Grid.Column>
+      
+      </Grid.Column>
+      <Grid.Column textAlign='center' centered>
       <FooterLink
         className="uk-nav-header"
         color="whitish"
@@ -34,7 +41,7 @@ const Footer = () => (
         target="_blank"
       >
         {' '}
-        <span uk-icon="icon: github-alt" />{' '}
+        <Icon color='grey' name='github' link size='big'/>{' '}
       </FooterLink>
       <FooterLink
         className="uk-nav-header"
@@ -42,9 +49,13 @@ const Footer = () => (
         href="https://www.linkedin.com/in/walter-mazur-02803453/"
         target="_blank"
       >
-        <span uk-icon="icon: linkedin" />
+        <Icon color='grey' name='linkedin' link size='big' />
       </FooterLink>
-    </Box>
+      </Grid.Column>
+      <Grid.Column/>
+      </Grid>
+
+      </Segment>
   </StickyFooter>
 );
 

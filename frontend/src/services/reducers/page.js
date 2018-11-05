@@ -7,7 +7,7 @@ const initialState = {
   meta: { meta: { type: '' } },
   pages: [],
   details: {},
-  children: [],
+  children: {},
   standard: [],
   blog: [],
   blogIndex: [],
@@ -48,22 +48,29 @@ export default (state = initialState, action) => {
         ...state,
         errors: action.payload
       };
-    case page.GET_PAGE_META_SUCCESS:
+    case page.GET_PAGE_META_SUCCESS: {
+      // const newMeta = state.meta
+      // const key = action.meta
+      // newMeta[key] = action.payload
       return {
         ...state,
         meta: action.payload.items[0]
       };
+    }
+      
     case page.GET_PAGE_TYPE_SUCCESS:
       return {
         ...state,
         details: action.payload
       };
     case page.GET_PAGE_CHILDREN_SUCCESS: {
-      // const children = state.children
       console.log(action)
+      const newChildren = state.children
+      const key = action.meta
+      newChildren[key] = action.payload
       return {
         ...state,
-        children: action.payload.items
+        children: newChildren
       };
     }
       
@@ -113,9 +120,11 @@ export function refreshPageMetaFromMenu(state, slug) {
   return null;
 }
 
-export function refreshPageChildren(state) {
+export function refreshPageChildren(state, id) {
   if (state.children) {
-    return state.children;
+    if(Object.prototype.hasOwnProperty.call(state.children, id)) {
+      return state.children[id];
+    }
   }
   return null;
 }

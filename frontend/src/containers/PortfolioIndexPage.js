@@ -13,17 +13,22 @@ class PortfolioIndexPage extends Component {
   };
 
   componentWillMount() {
-    
+    this.setState({ loading: true });
+    const { id, details, children, getPageDetails, getPageChildren } = this.props;
+    console.log('will mount details', details)
+    if(!details ){
+      console.log('no details')
+      getPageDetails(id);
+    }
+    if(!children){
+      getPageChildren(id, "portfolio.PortfolioPage")
+
+    }
 
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
-    const { id, details, getPageDetails, getPageChildren } = this.props;
-    if(details === null ){
-      getPageDetails(id);
-    }
-    getPageChildren(id, "portfolio.PortfolioPage")
+    
 
     this.setState({ loading: false });
     }
@@ -44,8 +49,10 @@ class PortfolioIndexPage extends Component {
             </Segment>
 
             <Segment>
+            {children &&
             <Grid centered stackable columns={2}>
-              {children.map(child => (
+             
+              { children.items.map(child => (
                 <Grid.Column key={child.id}>
                 <Card centered
                       style={{
@@ -72,6 +79,7 @@ class PortfolioIndexPage extends Component {
                 ))
               }
             </Grid>
+            }
             </Segment>
           </Box>
         )
@@ -84,7 +92,7 @@ class PortfolioIndexPage extends Component {
 const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
   details: reducers.refreshPage(state, props.id),
-  children: reducers.refreshPageChildren(state)
+  children: reducers.refreshPageChildren(state, props.id)
 });
 
 const mapDispatchToProps = dispatch => ({

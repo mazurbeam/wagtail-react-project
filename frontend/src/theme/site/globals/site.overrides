@@ -5,3 +5,6 @@ code {
   background: #E0E1E2;
   border: @black dashed 1px;
 }
+
+body {
+}

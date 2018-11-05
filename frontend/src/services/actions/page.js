@@ -49,7 +49,7 @@ export const fetchPageMeta = slug => ({
     endpoint: `/api/v2/pages/?slug=${slug}&fields=*`,
     method: 'GET',
     headers: { 'Content-type': 'application/json' },
-    types: [GET_PAGE_META_REQUEST, GET_PAGE_META_SUCCESS, GET_PAGE_META_FAILURE]
+    types: [GET_PAGE_META_REQUEST, {type: GET_PAGE_META_SUCCESS, meta: slug}, GET_PAGE_META_FAILURE]
   }
 });
 

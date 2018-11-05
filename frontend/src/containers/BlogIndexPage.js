@@ -75,8 +75,9 @@ class BlogIndexPage extends Component {
               />
             </Box>
             <Box color="" mx={[20, 40]} mt={[250]} className=" ">
+            { children && 
               <div>
-                {children.map(child => (
+                {children.items.map(child => (
                   <Card key={child.id}>
                     <Image src={child.gallery_images[0].image_medium.url} alt={child.gallery_images[0].image.title}/>
                     <Heading>{child.title}</Heading>
@@ -98,6 +99,7 @@ class BlogIndexPage extends Component {
                   </Card>
                 ))}
               </div>
+            }
             </Box>
           </Wrapper>
         )}
@@ -109,7 +111,7 @@ class BlogIndexPage extends Component {
 const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
   details: reducers.refreshPage(state, props.id),
-  children: reducers.refreshPageChildren(state)
+  children: reducers.refreshPageChildren(state, props.id)
 });
 
 const mapDispatchToProps = dispatch => ({

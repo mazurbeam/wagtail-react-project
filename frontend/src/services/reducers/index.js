@@ -21,9 +21,9 @@ const rootReducer = combineReducers({
 
 export const refreshPage = (state, id) => fromPage.refreshPageState(state.page, id);
 export const refreshMenu = state => fromPage.refreshMenu(state.page);
-export const refreshPageChildren = state =>
-  fromPage.refreshPageChildren(state.page);
-export const refreshPageMeta = state => fromPage.refreshPageMeta(state.page);
+export const refreshPageChildren = (state, id) =>
+  fromPage.refreshPageChildren(state.page, id);
+export const refreshPageMeta = (state) => fromPage.refreshPageMeta(state.page);
 export const refreshPageMetaFromMenu = (state, slug) =>
   fromPage.refreshPageMetaFromMenu(state.page, slug);
 

@@ -31,6 +31,7 @@ class Page extends Component {
       match.params,
       'child'
     );
+    
     if (isChildPage) {
       getPageMeta(match.params.child);
     } else {
@@ -39,11 +40,11 @@ class Page extends Component {
     // const state = { type: 'blog.BlogIndexPage' };
     // console.log('will mount meta', meta);
     // getPageMeta(match.params.slug);
-    this.setState({ loading: false });
   }
 
   componentDidMount() {
-    
+    this.setState({ loading: false });
+
   }
 
 
@@ -52,7 +53,9 @@ class Page extends Component {
     const { loading } = this.state;
 
     const { meta, match } = this.props;
-    // console.log('match', match);
+    console.log('meta', meta);
+
+
     const isChildPage = Object.prototype.hasOwnProperty.call(
       match.params,
       'child'
@@ -62,7 +65,9 @@ class Page extends Component {
 
     // console.log('props', this.props);
     let pageSpace = <Loading />;
+    
 
+   
     if (meta.meta.type === 'blog.BlogIndexPage' && ready) {
       pageSpace =
         <BlogIndexPage id={meta.id} type={meta.meta.type}/>;
@@ -77,7 +82,7 @@ class Page extends Component {
     if (meta.meta.type === 'portfolio.PortfolioIndexPage' && ready) {
       pageSpace = <PortfolioIndexPage id={meta.id} type={meta.meta.type}/>;
     }
-
+  
     // if (pathname !== meta.meta.html_url) {
     //   pageSpace = <Text className="uk-position-center">Loading...</Text>;
     // }
@@ -92,8 +97,8 @@ class Page extends Component {
         ready = false;
         pageSpace = <Loading />;
       }
-    }
-
+    
+  }
     return (
       <Box >
         {loading && ready ? pageSpace : pageSpace}

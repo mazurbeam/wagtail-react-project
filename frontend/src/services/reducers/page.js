@@ -58,11 +58,15 @@ export default (state = initialState, action) => {
         ...state,
         details: action.payload
       };
-    case page.GET_PAGE_CHILDREN_SUCCESS:
+    case page.GET_PAGE_CHILDREN_SUCCESS: {
+      // const children = state.children
+      console.log(action)
       return {
         ...state,
         children: action.payload.items
       };
+    }
+      
     case page.GET_PAGE_META_FAILURE:
       return {
         ...state,

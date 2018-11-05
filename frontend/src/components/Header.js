@@ -110,6 +110,7 @@ class Header extends Component {
 
             {iconMenu.map(item => (
               <Menu.Item
+                key={item.meta.id}
                 name={item.meta.slug}
                 as={NavLink}
                 active={pathname === `/${item.meta.slug}`}

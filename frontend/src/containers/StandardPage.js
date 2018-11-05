@@ -40,7 +40,9 @@ class StandardPage extends Component {
   }
 
   componentDidMount() {
-    // const { id, getPageDetails } = this.props;
+    const {details } = this.props;
+    console.log('didmount props', this.props);
+
   }
 
   isEmpty = obj => {

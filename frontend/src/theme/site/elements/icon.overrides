@@ -1,3 +1,5 @@
 /*******************************
          Site Overrides
 *******************************/
+
+i.icon.big.link:hover{font-size: 2.1em}

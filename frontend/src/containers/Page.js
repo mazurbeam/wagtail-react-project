@@ -43,9 +43,10 @@ class Page extends Component {
   }
 
   componentDidMount() {
-    // const { getPageDetails, meta } = this.props;
-    // getPageDetails(meta[0].id);
+    
   }
+
+
 
   render() {
     const { loading } = this.state;

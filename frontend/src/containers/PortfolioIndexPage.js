@@ -13,28 +13,32 @@ class PortfolioIndexPage extends Component {
   };
 
   componentWillMount() {
-    this.setState({ loading: true });
-    const { id, type, getPageDetails, getPageChildren } = this.props;
-    console.log('type: ', type)
-    getPageDetails(id);
-    getPageChildren(id, "portfolio.PortfolioPage")
+    
+
   }
 
   componentDidMount() {
-    // const { details } = this.props;
+    this.setState({ loading: true });
+    const { id, details, getPageDetails, getPageChildren } = this.props;
+    if(details === null ){
+      getPageDetails(id);
+    }
+    getPageChildren(id, "portfolio.PortfolioPage")
+
     this.setState({ loading: false });
-  }
+    }
 
   render() {
     const { loading } = this.state;
     const {  details, children } = this.props;
-    console.log('portfolio items', children)
+    console.log('portfolio props', this.props)
     return (
       <Container>
-        {loading ? (
+        {loading || !details ? (
           <Box mt={250}>loading</Box>
-        ) : (
+        ) : ( 
           <Box mt={80}>
+            
             <Segment textAlign='center'>
             {details.title}
             </Segment>
@@ -77,9 +81,9 @@ class PortfolioIndexPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
-  details: reducers.refreshPage(state),
+  details: reducers.refreshPage(state, props.id),
   children: reducers.refreshPageChildren(state)
 });
 

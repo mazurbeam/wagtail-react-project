@@ -59,7 +59,7 @@ class BlogIndexPage extends Component {
     // }
     return (
       <Wrapper>
-        {loading ? (
+        {loading || !details ? (
           <Loading/>
         ) : (
           <Wrapper>
@@ -106,9 +106,9 @@ class BlogIndexPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
-  details: reducers.refreshPage(state),
+  details: reducers.refreshPage(state, props.id),
   children: reducers.refreshPageChildren(state)
 });
 

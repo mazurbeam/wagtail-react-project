@@ -78,7 +78,7 @@ export const fetchPageChildren = (id, type) => ({
     headers: { 'Content-type': 'application/json' },
     types: [
       GET_PAGE_CHILDREN_REQUEST,
-      GET_PAGE_CHILDREN_SUCCESS,
+      {type: GET_PAGE_CHILDREN_SUCCESS, meta: id},
       GET_PAGE_CHILDREN_FAILURE
     ]
   }

@@ -49,7 +49,7 @@ const Footer = () => (
         href="https://www.linkedin.com/in/walter-mazur-02803453/"
         target="_blank"
       >
-        <Icon color='grey' name='linkedin' link size='big' />
+        <Icon color='grey' className='icon-link' name='linkedin' link size='big' />
       </FooterLink>
       </Grid.Column>
       <Grid.Column/>

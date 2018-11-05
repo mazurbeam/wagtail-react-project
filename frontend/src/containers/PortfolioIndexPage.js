@@ -38,11 +38,12 @@ class PortfolioIndexPage extends Component {
     const {  details, children } = this.props;
     console.log('portfolio props', this.props)
     return (
+      <div>
       <Container>
         {loading || !details ? (
-          <Box mt={250}>loading</Box>
+          <Box pt={250}>loading</Box>
         ) : ( 
-          <Box mt={80}>
+          <Box pt={80}>
             
             <Segment textAlign='center'>
             {details.title}
@@ -85,6 +86,7 @@ class PortfolioIndexPage extends Component {
         )
         }
       </Container>
+      </div>
     );
   }
 }

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import {
 
   Segment,
-
+  Container
 } from 'semantic-ui-react'
 
 import { Box, Heading, Card, Text } from 'rebass';
@@ -79,6 +79,7 @@ class StandardPage extends Component {
     
     return (
       <Wrapper>
+      <Container>
         <Segment
           textAlign='center'
           style={{ minHeight: 700, padding: '1em 0em' }}
@@ -106,6 +107,7 @@ class StandardPage extends Component {
             </Wrapper>
           )}
         </Segment>
+        </Container>
       </Wrapper>
     );
   }

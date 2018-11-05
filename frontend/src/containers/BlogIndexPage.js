@@ -74,7 +74,7 @@ class BlogIndexPage extends Component {
                 dangerouslySetInnerHTML={{ __html: details.intro }}
               />
             </Box>
-            <Box color="" mx={[20, 40]} mt={[250]} className=" ">
+            <Box color="" mx={[20, 40]} pt={[250]} className=" ">
             { children && 
               <div>
                 {children.items.map(child => (

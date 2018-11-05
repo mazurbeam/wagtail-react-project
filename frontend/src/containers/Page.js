@@ -100,7 +100,7 @@ class Page extends Component {
     
   }
     return (
-      <Box >
+      <Box>
         {loading && ready ? pageSpace : pageSpace}
       </Box>
     );

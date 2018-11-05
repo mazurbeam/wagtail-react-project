@@ -7,6 +7,7 @@ import { Route, Switch, withRouter } from "react-router";
 // import {  Box } from 'rebass';
 // components
 // import styled from 'styled-components';
+// import Particles from 'react-particles-js';
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 // containers
@@ -24,6 +25,7 @@ import ContactPage from "../containers/ContactPage";
 
 const Routes = ({ location }) => (
   <Fragment>
+  
     <Header/>
     <TransitionGroup>
       <CSSTransition

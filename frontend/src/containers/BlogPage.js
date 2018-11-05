@@ -4,6 +4,11 @@ import { withRouter } from "react-router-dom";
 
 import styled from "styled-components";
 
+import {
+  Segment,
+  Container,
+  Header
+} from 'semantic-ui-react'
 import { Box, Text, Card } from "rebass";
 
 import {
@@ -37,8 +42,20 @@ class BlogPage extends Component {
     console.log("willmount props", this.props);
 
     getPageDetails(id);
-    this.setState({ loading: false });
   }
+
+  componentDidMount() {
+    this.setState({ loading: false });
+
+  }
+
+  isEmpty = obj => {
+    const values = Object.values(obj);
+    if (values.length > 0) {
+      return false;
+    }
+    return true;
+  };
 
   addIcons = menu => {
     const menuWithIcons = menu.map(item => {
@@ -65,36 +82,48 @@ class BlogPage extends Component {
 
 
   render() {
+    console.log('blogpage props', this.props);
+
     const { loading } = this.state;
     // console.log(page);
     const {  details } = this.props;
-    // console.log('blogpage details', details);
     // const iconmenu = this.addIcons(menu)
-    const detailsHasTags = Object.prototype.hasOwnProperty.call(
-      details,
-      "tags"
-    );
-    if (!detailsHasTags) {
-      details.title = "";
-      details.intro = "";
-      details.tags = [];
-      details.body = [];
+    
+    // const detailsHasTags = Object.prototype.hasOwnProperty.call(
+    //   details,
+    //   "tags"
+    // );
+    // if (!detailsHasTags) {
+    //   details.title = "";
+    //   details.intro = "";
+    //   details.tags = [];
+    //   details.body = [];
+    // }
+    let body = []
+    if(details){
+      body = renderPageBody(details.body);
+
     }
-    const body = renderPageBody(details.body);
+    
     return (
       <Wrapper>
-        {loading ? (
+        {loading || !details ? (
           <Loading/>
         ) : (
-          <Wrapper className="">
+          <Container>
+        <Segment
+          textAlign='center'
+          style={{ minHeight: 700, padding: '1em 0em' }}
+          vertical
+        >
 
             <Box className="uk-position-large"
-                               color="white" pt={80} >
+                               color="" pt={80} >
 
               <Box   className="">
-                <Text color="whitish" className="">
+                <Header>
                   {details.title}
-                </Text>
+                  </Header>
                 <Text className="">Written {details.date}</Text>
                 <Text className="">
                   Tags:
@@ -122,18 +151,19 @@ class BlogPage extends Component {
 
             </Card>
 
-          </Wrapper>
+            </Segment>
+            </Container>
         )}
       </Wrapper>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
-  details: reducers.refreshPage(state),
-  children: reducers.refreshPageChildren(state),
-  menu: reducers.refreshMenu(state)
+  details: reducers.refreshPage(state, props.id),
+  // children: reducers.refreshPageChildren(state),
+  // menu: reducers.refreshMenu(state)
 });
 
 const mapDispatchToProps = dispatch => ({

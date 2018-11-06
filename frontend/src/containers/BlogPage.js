@@ -4,11 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import styled from "styled-components";
 
-import {
-  Segment,
-  Container,
-  Header
-} from 'semantic-ui-react'
+import { Segment, Container, Header } from "semantic-ui-react";
 import { Box, Text, Card } from "rebass";
 
 import {
@@ -25,10 +21,7 @@ import Loading from "../components/Loading";
 
 import renderPageBody from "../utils";
 
-
-const Wrapper = styled.div`
-
-`;
+const Wrapper = styled.div``;
 
 class BlogPage extends Component {
   state = {
@@ -46,7 +39,6 @@ class BlogPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: false });
-
   }
 
   isEmpty = obj => {
@@ -60,35 +52,34 @@ class BlogPage extends Component {
   addIcons = menu => {
     const menuWithIcons = menu.map(item => {
       switch (item.meta.slug) {
-        case 'blog':
+        case "blog":
           return {
             ...item,
-            icon: 'icon: social'
+            icon: "icon: social"
           };
-        case 'about':
+        case "about":
           return {
             ...item,
-            icon: 'icon: question'
+            icon: "icon: question"
           };
         default:
-          return ({
+          return {
             ...item,
-            icon: 'icon: bolt'
-          })
+            icon: "icon: bolt"
+          };
       }
     });
     return menuWithIcons;
   };
 
-
   render() {
-    console.log('blogpage props', this.props);
+    console.log("blogpage props", this.props);
 
     const { loading } = this.state;
     // console.log(page);
-    const {  details } = this.props;
+    const { details } = this.props;
     // const iconmenu = this.addIcons(menu)
-    
+
     // const detailsHasTags = Object.prototype.hasOwnProperty.call(
     //   details,
     //   "tags"
@@ -99,60 +90,51 @@ class BlogPage extends Component {
     //   details.tags = [];
     //   details.body = [];
     // }
-    let body = []
-    if(details){
+    let body = [];
+    if (details) {
       body = renderPageBody(details.body);
-
     }
-    
+
     return (
       <Wrapper>
         {loading || !details ? (
-          <Loading/>
+          <Loading />
         ) : (
           <Container>
-        <Segment
-          textAlign='center'
-          style={{ minHeight: 700, padding: '1em 0em' }}
-          vertical
-        >
-
-            <Box className="uk-position-large"
-                               color="" pt={80} >
-
-              <Box   className="">
-                <Header>
-                  {details.title}
-                  </Header>
-                <Text className="">Written {details.date}</Text>
-                <Text className="">
-                  Tags:
-                  {details.tags.map(tag => (
-                    <span className="uk-badge" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </Text>
-              </Box>
-            </Box>
-
-            <Card
-              className=""
-              color="slate"
-              bg="whitish"
-              p={3}
-              mt={[ 50]}
-              mx={[0,10]}
-              borderRadius={8}
-              boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+            <Segment
+              textAlign="center"
+              style={{ minHeight: 700, padding: "1em 0em" }}
+              vertical
             >
+              <Box className="uk-position-large" color="" pt={80}>
+                <Box className="">
+                  <Header>{details.title}</Header>
+                  <Text className="">Written {details.date}</Text>
+                  <Text className="">
+                    Tags:
+                    {details.tags.map(tag => (
+                      <span className="uk-badge" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </Text>
+                </Box>
+              </Box>
 
+              <Card
+                className=""
+                color="slate"
+                bg="whitish"
+                p={3}
+                mt={[50]}
+                mx={[0, 10]}
+                borderRadius={8}
+                boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+              >
                 <div>{body}</div>
-
-            </Card>
-
+              </Card>
             </Segment>
-            </Container>
+          </Container>
         )}
       </Wrapper>
     );
@@ -161,13 +143,12 @@ class BlogPage extends Component {
 
 const mapStateToProps = (state, props) => ({
   pathname: state.router.location.pathname,
-  details: reducers.refreshPage(state, props.id),
+  details: reducers.refreshPage(state, props.id)
   // children: reducers.refreshPageChildren(state),
   // menu: reducers.refreshMenu(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-
   getPageDetails(id) {
     dispatch(fetchPageWithId(id));
   }

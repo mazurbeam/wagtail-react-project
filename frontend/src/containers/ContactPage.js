@@ -68,7 +68,7 @@ class ContactPage extends Component {
           />
           <Container>
             {submitted ? (
-              <Segment>
+              <Segment inverted>
                 <Header icon as="h3">
                   <Icon name="envelope outline" />
                   Thank you :)

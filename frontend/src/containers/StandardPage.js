@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import styled from "styled-components";
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 
-import {
+import { Segment, Container } from "semantic-ui-react";
 
-  Segment,
-  Container
-} from 'semantic-ui-react'
-
-import { Box, Heading, Card, Text } from 'rebass';
+import { Box, Heading, Card, Text } from "rebass";
 
 // import axios from 'axios';
 import {
   // fetchPageType,
   fetchPageChildren,
   fetchPageWithId
-} from '../services/actions/page';
-import * as reducers from '../services/reducers';
-import renderPageBody from '../utils';
+} from "../services/actions/page";
+import * as reducers from "../services/reducers";
+import renderPageBody from "../utils";
 
 const Wrapper = styled.div``;
 
@@ -32,7 +28,7 @@ class StandardPage extends Component {
     this.setState({ loading: true });
 
     const { id, getPageDetails, getPageChildren, details } = this.props;
-    console.log('willmount props', this.props);
+    console.log("willmount props", this.props);
 
     getPageDetails(id);
     getPageChildren(id);
@@ -40,9 +36,8 @@ class StandardPage extends Component {
   }
 
   componentDidMount() {
-    const {details } = this.props;
-    console.log('didmount props', this.props);
-
+    const { details } = this.props;
+    console.log("didmount props", this.props);
   }
 
   isEmpty = obj => {
@@ -58,7 +53,7 @@ class StandardPage extends Component {
     console.log(page);
     // let imageUrl;
     const { details } = this.props;
-    console.log('details', details);
+    console.log("details", details);
     // if (loading === false) {
     //   imageUrl = `http://localhost:8000${details.image_thumbnail.url}`;
     // }
@@ -72,41 +67,47 @@ class StandardPage extends Component {
     // if (!detailsHasBody) {
     //   details.body = [];
     // }
-    let body = []
-    if(details){
+    let body = [];
+    if (details) {
       body = renderPageBody(details.body);
-    } 
-    
+    }
+
     return (
       <Wrapper>
-      <Container>
-        <Segment
-          textAlign='center'
-          style={{ minHeight: 700, padding: '1em 0em' }}
-          vertical
-        >
-          {!details ? (
-            <Text>Loading...</Text>
-          ) : (
-            <Wrapper>
-              <Box pt={80} className="uk-position-large uk-position-top-center">
-                <Heading fontSize={5}>{details.title}</Heading>
-                <Heading
-                  fontSize={2}
-                  dangerouslySetInnerHTML={{ __html: details.intro }}
-                />
-              </Box>
-              <Card   color="slate"
-                      bg="white"
-                      p={3}
-                      mt={[ 150]}
-                      mx={[0,10]}
-                      borderRadius={8}
-                      boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
-              >{body}</Card>
-            </Wrapper>
-          )}
-        </Segment>
+        <Container>
+          <Segment
+            textAlign="center"
+            style={{ minHeight: 700, padding: "1em 0em" }}
+            vertical
+          >
+            {!details ? (
+              <Text>Loading...</Text>
+            ) : (
+              <Wrapper>
+                <Box
+                  pt={80}
+                  className="uk-position-large uk-position-top-center"
+                >
+                  <Heading fontSize={5}>{details.title}</Heading>
+                  <Heading
+                    fontSize={2}
+                    dangerouslySetInnerHTML={{ __html: details.intro }}
+                  />
+                </Box>
+                <Card
+                  color="white"
+                  bg="slate"
+                  p={3}
+                  mt={[150]}
+                  mx={[0, 10]}
+                  borderRadius={8}
+                  boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+                >
+                  {body}
+                </Card>
+              </Wrapper>
+            )}
+          </Segment>
         </Container>
       </Wrapper>
     );

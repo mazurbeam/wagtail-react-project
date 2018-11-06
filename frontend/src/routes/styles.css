@@ -24,10 +24,10 @@
 
 .page {
   height: 100vh;
-  /* padding: calc(15% + 1.5em) 5% 5%;
+  /* padding: calc(15% + 1.5em) 5% 5%; */
   overflow-y: auto;
   position: fixed;
-  top: 0;*/
+  top: 0;
   width: 100%;
   -webkit-overflow-scrolling: touch;
   transition: transform 1s ease-in-out;

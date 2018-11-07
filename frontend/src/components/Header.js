@@ -7,7 +7,7 @@ import { Box, Flex, Card } from "rebass";
 import { Menu, Container, Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import { color, space, width, disply, height, position } from "styled-system";
-import Particles from 'react-particles-js';
+import Particles from "react-particles-js";
 
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -15,7 +15,6 @@ import * as reducers from "../services/reducers";
 
 //components
 import Dropdown from "../components/Dropdown";
-
 
 const Toolbar = props => (
   <Flex
@@ -28,7 +27,7 @@ const Toolbar = props => (
   />
 );
 
-const NavItem = props => <Box {...props} width={1} my="auto" height={1}/>;
+const NavItem = props => <Box {...props} width={1} my="auto" height={1} />;
 
 const NavLink = styled(Link)`
 ${space}
@@ -56,10 +55,7 @@ class Header extends Component {
     getMenu();
   }
 
-  componentDidMount() {
-  }
-
-
+  componentDidMount() {}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -91,45 +87,49 @@ class Header extends Component {
     const { items } = pages;
     const { menu, getMenu, pathname } = this.props;
     const iconMenu = this.addIcons(menu);
-    console.log("icon menu", iconMenu);
+    // console.log("icon menu", iconMenu);
     return (
-        <Menu fixed='top' pointing secondary >
-          <Box width={5 / 6} position='absolute' className="uk-position-z-index uk-hidden@s ">
-            <Dropdown className="" list={iconMenu}/>
-          </Box>
-          <Container textAlign='center' centered className="uk-visible@s">
-
+      <Menu fixed="top" pointing secondary>
+        <Box
+          width={5 / 6}
+          position="absolute"
+          className="uk-position-z-index uk-hidden@s "
+        >
+          <Dropdown className="" list={iconMenu} />
+        </Box>
+        <Container textAlign="center" centered className="uk-visible@s">
+          <Menu.Item
+            name="home"
+            as={NavLink}
+            to="/"
+            active={pathname === "/"}
+            onClick={this.handleItemClick}
+          >
+            Home
+          </Menu.Item>
+          {iconMenu.map(item => (
             <Menu.Item
-              name='home'
+              key={item.meta.id}
+              name={item.meta.slug}
               as={NavLink}
-              to="/"
-              active={pathname === "/"}
-              onClick={this.handleItemClick}>
-                Home
+              active={pathname === `/${item.meta.slug}`}
+              to={{ pathname: `/${item.meta.slug}` }}
+              onClick={this.handleItemClick}
+            >
+              {item.title}
             </Menu.Item>
-
-            {iconMenu.map(item => (
-              <Menu.Item
-                key={item.meta.id}
-                name={item.meta.slug}
-                as={NavLink}
-                active={pathname === `/${item.meta.slug}`}
-                to={{ pathname: `/${item.meta.slug}` }}
-                onClick={this.handleItemClick}>
-                  {item.title}
-              </Menu.Item>
-            ))}
-            <Menu.Item
-              name='contact'
-              as={NavLink}
-              to="/contact"
-              active={pathname === "/contact"}
-              onClick={this.handleItemClick}>
-              Contact
-            </Menu.Item>
-            
-          </Container>
-        </Menu>
+          ))}
+          <Menu.Item
+            name="contact"
+            as={NavLink}
+            to="/contact"
+            active={pathname === "/contact"}
+            onClick={this.handleItemClick}
+          >
+            Contact
+          </Menu.Item>
+        </Container>
+      </Menu>
     );
   }
 }
@@ -141,7 +141,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getMenu: () => dispatch(fetchMainMenu()),
-  getPageDetails: (id) => dispatch(fetchPageWithId(id))
+  getPageDetails: id => dispatch(fetchPageWithId(id))
 });
 
 export default withRouter(

@@ -20,6 +20,7 @@ import { fetchAllPages } from "../services/actions/page";
 import renderPageBody from "../utils";
 
 import ContactForm from "../components/ContactForm";
+import PageSection from "../components/PageSection";
 
 class Home extends Component {
   state = {

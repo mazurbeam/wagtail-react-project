@@ -1,6 +1,6 @@
 // theme.js
 
-import { injectGlobal } from 'styled-components';
+import { injectGlobal } from 'styled-components'
 
 injectGlobal(`
   @font-face: 
@@ -10,13 +10,12 @@ injectGlobal(`
       font-family: 'Nova Square', cursive;
       src: url('https://fonts.googleapis.com/css?family=Lato|Macondo+Swash+Caps|Nova+Square')
     }
-`);
+`)
 
-const blue = '#07c';
-const slate = '#262626';
-const secondhandgrey = '#3f3f3f';
-const whitish = '#f5f5f5';
-
+const blue = '#07c'
+const slate = '#262626'
+const secondhandgrey = '#3f3f3f'
+const whitish = '#f5f5f5'
 
 export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
@@ -50,4 +49,4 @@ export default {
   NavItem: {
     height: '50px'
   }
-};
+}

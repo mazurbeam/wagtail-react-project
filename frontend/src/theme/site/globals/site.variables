@@ -3,3 +3,9 @@
 *******************************/
 
 @particlesColor: #00fff9
+
+@headerFont        : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont          : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@googleFontName    : 'Roboto';
+
+

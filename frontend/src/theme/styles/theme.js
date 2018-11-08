@@ -5,10 +5,9 @@ import { injectGlobal } from 'styled-components'
 injectGlobal(`
   @font-face: 
     {
-      font-family: 'Macondo Swash Caps', cursive;
-      font-family: 'Lato', sans-serif;
-      font-family: 'Nova Square', cursive;
-      src: url('https://fonts.googleapis.com/css?family=Lato|Macondo+Swash+Caps|Nova+Square')
+      font-family: 'Cardo', serif;
+      font-family: 'Oswald', sans-serif;
+      src: url('https://fonts.googleapis.com/css?family=Oswald|Quattrocento|Cardo:400,700')
     }
 `)
 
@@ -28,8 +27,9 @@ export default {
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    sans: 'system-ui, sans-serif',
-    mono: 'Menlo, monospace'
+    sans: 'Oswald, sans-serif',
+    serif: 'Quattrocento, serif',
+    cardo: 'Cardo, serif'
   },
   shadows: {
     small: '0 0 4px rgba(0, 0, 0, .125)',

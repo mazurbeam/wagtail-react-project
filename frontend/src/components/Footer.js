@@ -28,34 +28,36 @@ text-decoration: none;
 const Footer = () => (
   <StickyFooter>
     <Grid centered columns={3}>
-      <Grid.Column />
-      <Grid.Column textAlign='center' centered>
-        <FooterLink
-          className='uk-nav-header'
-          color='whitish'
-          href='https://github.com/mazurbeam/'
-          target='_blank'
-        >
-          {' '}
-          <Icon inverted name='github' link size='big' />{' '}
-        </FooterLink>
-        <FooterLink
-          className='uk-nav-header'
-          color='whitish'
-          href='https://www.linkedin.com/in/walter-mazur-02803453/'
-          target='_blank'
-        >
-          <Icon
-            color='white'
-            className='icon-link'
-            name='linkedin'
-            link
-            inverted
-            size='big'
-          />
-        </FooterLink>
-      </Grid.Column>
-      <Grid.Column />
+      <Grid.Row>
+        <Grid.Column />
+        <Grid.Column textAlign='center' centered>
+          <FooterLink
+            className='uk-nav-header'
+            color='whitish'
+            href='https://github.com/mazurbeam/'
+            target='_blank'
+          >
+            {' '}
+            <Icon inverted name='github' link size='big' />{' '}
+          </FooterLink>
+          <FooterLink
+            className='uk-nav-header'
+            color='whitish'
+            href='https://www.linkedin.com/in/walter-mazur-02803453/'
+            target='_blank'
+          >
+            <Icon
+              color='white'
+              className='icon-link'
+              name='linkedin'
+              link
+              inverted
+              size='big'
+            />
+          </FooterLink>
+        </Grid.Column>
+        <Grid.Column />
+      </Grid.Row>
     </Grid>
   </StickyFooter>
 )

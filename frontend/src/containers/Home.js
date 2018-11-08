@@ -14,8 +14,10 @@ import {
   Segment,
   Loader
 } from "semantic-ui-react";
+
+import { fontFamily } from "styled-system";
+
 import axios from "axios";
-import Particles from "react-particles-js";
 import { fetchAllPages } from "../services/actions/page";
 // import * as reducers from '../services/reducers';
 import renderPageBody from "../utils";
@@ -59,17 +61,15 @@ class Home extends Component {
               zIndex: 0
             }}
           >
-            <Header
-              as="h1"
-              inverted
-              content={page.name}
-              style={{
-                fontSize: "4em",
-                fontWeight: "normal",
-                marginBottom: 0,
-                marginTop: "3em"
-              }}
-            />
+            <Heading
+              color="whitish"
+              mt="3em"
+              fontFamily="sans"
+              fontSize="3em"
+              style={{ textTransform: "uppercase" }}
+            >
+              {page.name}
+            </Heading>
             <Header
               as="h2"
               content={page.subtitle}
@@ -91,7 +91,7 @@ class Home extends Component {
               <Loader />
             )}
 
-            <Text p={3} color="whitish">
+            <Text fontFamily="sans" p={3} color="whitish">
               {page.introduction}
             </Text>
 

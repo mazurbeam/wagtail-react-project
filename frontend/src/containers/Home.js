@@ -63,7 +63,7 @@ class Home extends Component {
           >
             <Heading
               color="#c0ccd4"
-              mt="3em"
+              mt={[50, 100]}
               fontFamily="mont"
               fontSize="4em"
               style={{ textTransform: "uppercase" }}

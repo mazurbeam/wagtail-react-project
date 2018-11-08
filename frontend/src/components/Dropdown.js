@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 // import PropTypes from "prop-types";
-import onClickOutside from "react-onclickoutside";
-import { color, space, width } from "styled-system";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Box, Card } from "rebass";
-// import {Dropdown, Menu} from 'semantic-ui-react'
+import onClickOutside from 'react-onclickoutside'
+import { color, space, width } from 'styled-system'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { Box } from 'rebass'
+import { Menu, Sidebar, Icon } from 'semantic-ui-react'
 
 const NavLink = styled(Link)`
 ${space}
@@ -15,70 +15,93 @@ padding: 20px 10px;
 text-decoration: none;
 display: block;
 
-`;
-
-const NavList = styled.ul`
-list-style-type: none;
 `
 
+// const NavList = styled.ul`
+//   list-style-type: none;
+// `
 
 class Dropdown extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       listOpen: false
-    };
+    }
   }
 
-  handleClickOutside() {
+  handleClickOutside () {
     this.setState({
       listOpen: false
-    });
+    })
   }
 
-  toggleList() {
+  toggleList () {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
-    }));
+    }))
   }
 
-  render() {
-    const { list } = this.props;
-    const { listOpen } = this.state;
+  render () {
+    const { list, active } = this.props
+    const { listOpen } = this.state
     return (
-      <Box className=""  p={3} position=''>
-        <div className="" onClick={() => this.toggleList()} role="presentation">
-          {listOpen
-            ? <span uk-icon="icon: chevron-down; ratio: 2"/>
-            : <span uk-icon="icon:  menu; ratio: 2"/>
-          }
+      <Box className='' p={3} position=''>
+        <div className='' onClick={() => this.toggleList()} role='presentation'>
+          <Icon name='sidebar' inverted size='big' />
         </div>
-        {listOpen &&
-        <Card className='uk-position-top-left'
-              p={3}
-              position='absolute'
-              color='white'
-              width={1}
-              borderRadius={8}
-              mt={60}
-              bg='white'
-              boxShadow='0 2px 16px rgba(0, 0, 0, 0.25)'
+        <Sidebar
+          as={Menu}
+          vertical
+          inverted
+          animation='uncover'
+          visible={listOpen}
         >
-          <NavList className="">
-            <li className=""><NavLink className="uk-nav-header" color='white' to='/' onClick={() => this.toggleList()}><span uk-icon="icon: home"/>Home</NavLink></li>
-
-            {list.map((item) => (
-              <li className="" key={item.id} ><NavLink className="uk-nav-header" color='white' to={item.meta.slug} onClick={() => this.toggleList()}><span uk-icon={item.icon}/>
-                {item.title}</NavLink></li>
-            ))}
-          </NavList>
-        </Card>
-        }
+          <Menu.Item
+            as={NavLink}
+            active={active === '/'}
+            to='/'
+            onClick={() => this.toggleList()}
+            style={{
+              fontFamily: 'Montserrat',
+              color: '#c0ccd4'
+            }}
+          >
+            Home
+          </Menu.Item>
+          {list.map(item => (
+            <Menu.Item
+              key={item.meta.id}
+              name={item.meta.slug}
+              as={NavLink}
+              onClick={() => this.toggleList()}
+              active={active === `/${item.meta.slug}`}
+              to={{ pathname: `/${item.meta.slug}` }}
+              style={{
+                fontFamily: 'Montserrat',
+                color: '#c0ccd4'
+              }}
+            >
+              {item.title}
+            </Menu.Item>
+          ))}
+          <Menu.Item
+            as={NavLink}
+            active={active === '/contact'}
+            to='/'
+            onClick={() => this.toggleList()}
+            style={{
+              fontFamily: 'Montserrat',
+              color: '#c0ccd4'
+            }}
+          >
+            Contact
+          </Menu.Item>
+        </Sidebar>
       </Box>
-    );
+    )
   }
 }
 
 // Dropdown.propTypes = {};
 
-export default onClickOutside(Dropdown);
+export default onClickOutside(Dropdown)

@@ -103,7 +103,7 @@ class Header extends Component {
           position="absolute"
           className="uk-position-z-index uk-hidden@s "
         >
-          <Dropdown className="" list={iconMenu} />
+          <Dropdown className="" list={iconMenu} active={pathname} />
         </Box>
         <Container textAlign="center" centered className="uk-visible@s">
           <Menu.Item

@@ -17,6 +17,16 @@ display: block;
 
 `
 
+const FooterLink = styled.a`
+${space}
+${width}
+${color}
+width: 50%;
+text-align: center;
+padding: 20px 10px;
+text-decoration: none;
+`
+
 // const NavList = styled.ul`
 //   list-style-type: none;
 // `
@@ -87,7 +97,8 @@ class Dropdown extends Component {
           <Menu.Item
             as={NavLink}
             active={active === '/contact'}
-            to='/'
+            to='/contact'
+            fitted
             onClick={() => this.toggleList()}
             style={{
               fontFamily: 'Montserrat',
@@ -95,6 +106,35 @@ class Dropdown extends Component {
             }}
           >
             Contact
+          </Menu.Item>
+          <Menu.Item
+            as={FooterLink}
+            fitted='horizontally'
+            className='uk-nav-header'
+            color='whitish'
+            href='https://github.com/mazurbeam/'
+            target='_blank'
+            style={{
+              marginTop: 'auto'
+            }}
+          >
+            {' '}
+            <Icon inverted name='github' link size='big' />{' '}
+          </Menu.Item>
+          <Menu.Item
+            as={FooterLink}
+            className='uk-nav-header'
+            color='whitish'
+            href='https://www.linkedin.com/in/walter-mazur-02803453/'
+            target='_blank'
+          >
+            <Icon
+              className='icon-link'
+              name='linkedin'
+              link
+              inverted
+              size='big'
+            />
           </Menu.Item>
         </Sidebar>
       </Box>

@@ -114,7 +114,8 @@ class Header extends Component {
             onClick={this.handleItemClick}
             style={{
               fontFamily: "Montserrat",
-              color: "#c0ccd4"
+              color: "#c0ccd4",
+              marginLeft: "auto"
             }}
           >
             Home
@@ -143,7 +144,8 @@ class Header extends Component {
             onClick={this.handleItemClick}
             style={{
               fontFamily: "Montserrat",
-              color: "#c0ccd4"
+              color: "#c0ccd4",
+              marginRight: "auto"
             }}
           >
             Contact

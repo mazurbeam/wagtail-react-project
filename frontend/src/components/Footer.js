@@ -26,7 +26,7 @@ text-decoration: none;
 `
 
 const Footer = () => (
-  <StickyFooter>
+  <StickyFooter className='uk-visible@s'>
     <Grid centered columns={3}>
       <Grid.Row>
         <Grid.Column />

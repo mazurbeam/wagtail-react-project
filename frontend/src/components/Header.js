@@ -6,8 +6,15 @@ import { withRouter, Link } from "react-router-dom";
 import { Box, Flex, Card } from "rebass";
 import { Menu, Container, Segment } from "semantic-ui-react";
 import styled from "styled-components";
-import { color, space, width, disply, height, position } from "styled-system";
-import Particles from "react-particles-js";
+import {
+  color,
+  space,
+  width,
+  disply,
+  height,
+  position,
+  fontFamily
+} from "styled-system";
 
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -33,6 +40,7 @@ const NavLink = styled(Link)`
 ${space}
 ${width}
 ${color}
+${fontFamily}
 padding: 20px;
 text-decoration: none;
 display: inline-block;
@@ -100,10 +108,14 @@ class Header extends Component {
         <Container textAlign="center" centered className="uk-visible@s">
           <Menu.Item
             name="home"
-            as={NavLink}
+            as={Link}
             to="/"
             active={pathname === "/"}
             onClick={this.handleItemClick}
+            style={{
+              fontFamily: "Montserrat",
+              color: "#c0ccd4"
+            }}
           >
             Home
           </Menu.Item>
@@ -115,6 +127,10 @@ class Header extends Component {
               active={pathname === `/${item.meta.slug}`}
               to={{ pathname: `/${item.meta.slug}` }}
               onClick={this.handleItemClick}
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4"
+              }}
             >
               {item.title}
             </Menu.Item>
@@ -125,6 +141,10 @@ class Header extends Component {
             to="/contact"
             active={pathname === "/contact"}
             onClick={this.handleItemClick}
+            style={{
+              fontFamily: "Montserrat",
+              color: "#c0ccd4"
+            }}
           >
             Contact
           </Menu.Item>

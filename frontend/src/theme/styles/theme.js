@@ -7,7 +7,7 @@ injectGlobal(`
     {
       font-family: 'Cardo', serif;
       font-family: 'Oswald', sans-serif;
-      src: url('https://fonts.googleapis.com/css?family=Oswald|Quattrocento|Cardo:400,700')
+      src: url('https://fonts.googleapis.com/css?family=Oswald|Quattrocento|Cardo:400,700|Montserrat:900|Work+Sans:300')
     }
 `)
 
@@ -29,7 +29,9 @@ export default {
   fonts: {
     sans: 'Oswald, sans-serif',
     serif: 'Quattrocento, serif',
-    cardo: 'Cardo, serif'
+    cardo: 'Cardo, serif',
+    mont: 'Montserrat, sans-serif',
+    work: 'Work Sans, sans-serif'
   },
   shadows: {
     small: '0 0 4px rgba(0, 0, 0, .125)',

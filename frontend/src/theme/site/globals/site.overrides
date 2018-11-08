@@ -2,8 +2,9 @@
          Site Overrides
 *******************************/
 
-@import (css) url("https://fonts.googleapis.com/css?family=Rubik+Mono+One")
+@import (css) url('https://fonts.googleapis.com/css?family=Oswald:700|Rubik+Mono+One');
 
+@import (css) url("https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300");
 
 code {
   background: #E0E1E2;
@@ -11,5 +12,5 @@ code {
 }
 
 body {
-  background: #00fff9;
+  background: #484d5c;
 }

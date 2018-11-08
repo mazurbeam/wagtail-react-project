@@ -20,7 +20,7 @@ const ParcticlesWrapper = () => (
               size_min: 0.3
             }
           },
-          color: { value: '#6f43a0' },
+          color: { value: '#c0ccd4' },
           line_linked: {
             enable: false
           },
@@ -59,7 +59,7 @@ const ParcticlesWrapper = () => (
       style={{
         position: 'fixed',
         zIndex: '0',
-        backgroundColor: '#008080',
+        // backgroundColor: '#008080',
         width: '100%',
         height: '100%'
       }}

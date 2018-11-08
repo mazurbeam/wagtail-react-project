@@ -56,17 +56,16 @@ class ContactPage extends Component {
           style={{ minHeight: 700, padding: "1em 0em" }}
           vertical
         >
-          <Header
-            as="h1"
-            inverted
-            content="Contact Me"
-            style={{
-              fontSize: "4em",
-              fontWeight: "normal",
-              marginBottom: 0,
-              marginTop: "3em"
-            }}
-          />
+          <Heading
+            color="white"
+            fontFamily="mont"
+            fontSize="3.7em"
+            mt="3em"
+            pb="1em"
+          >
+            Contact Me
+          </Heading>
+
           <Container>
             {submitted ? (
               <Segment inverted>

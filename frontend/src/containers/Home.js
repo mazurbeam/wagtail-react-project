@@ -62,24 +62,22 @@ class Home extends Component {
             }}
           >
             <Heading
-              color="whitish"
+              color="#c0ccd4"
               mt="3em"
-              fontFamily="sans"
-              fontSize="3em"
+              fontFamily="mont"
+              fontSize="4em"
               style={{ textTransform: "uppercase" }}
             >
               {page.name}
             </Heading>
-            <Header
-              as="h2"
-              content={page.subtitle}
-              inverted
-              style={{
-                fontSize: "1.7em",
-                fontWeight: "normal",
-                marginTop: "0.5em"
-              }}
-            />
+            <Heading
+              color="#c0ccd4"
+              fontSize="1.7em"
+              fontFamily="mont"
+              mt="1.5em"
+            >
+              {page.subtitle}
+            </Heading>
             {image ? (
               <Image
                 alt="walter mazur"
@@ -91,11 +89,11 @@ class Home extends Component {
               <Loader />
             )}
 
-            <Text fontFamily="sans" p={3} color="whitish">
+            <Text fontFamily="work" p={3} fontSize="1.2em" color="whitish">
               {page.introduction}
             </Text>
 
-            <Button primary size="huge" as={Link} to="/contact">
+            <Button primary size="large" as={Link} to="/contact">
               Contact Me
               <Icon className="angle right" />
             </Button>
@@ -104,7 +102,9 @@ class Home extends Component {
 
         {body.length > 0 && (
           <Segment>
-            <Text color="">{body}</Text>
+            <Text fontSize={3} color="c0ccd4">
+              {body}
+            </Text>
           </Segment>
         )}
       </div>

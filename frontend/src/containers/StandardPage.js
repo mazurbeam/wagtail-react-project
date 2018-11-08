@@ -84,19 +84,22 @@ class StandardPage extends Component {
           ) : (
             <Wrapper>
               <Box pt={80} className="uk-position-large uk-position-top-center">
-                <Heading color="white" fontSize={5}>
+                <Heading fontFamily="mont" color="white" fontSize="3.5em">
                   {details.title}
                 </Heading>
               </Box>
               <Wrapper className="uk-section-default">
                 <Container>
-                  <Box color="slate" bg="white" p={3} mt={[150]} mx={[0, 10]}>
+                  <Box color="slate" bg="white" p={3} mt={[200]} mx={[0, 10]}>
                     <Heading
                       fontSize={2}
+                      fontFamily="mont"
                       dangerouslySetInnerHTML={{ __html: details.intro }}
                     />
                   </Box>
-                  <Box p={20}>{body}</Box>
+                  <Text fontFamily="work" p={20}>
+                    {body}
+                  </Text>
                 </Container>
               </Wrapper>
             </Wrapper>

@@ -47,7 +47,6 @@ const Footer = () => (
             target='_blank'
           >
             <Icon
-              color='white'
               className='icon-link'
               name='linkedin'
               link

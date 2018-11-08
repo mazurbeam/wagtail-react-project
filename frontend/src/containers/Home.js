@@ -96,6 +96,7 @@ class Home extends Component {
             </Button>
           </Container>
         </Segment>
+
         {body.length > 0 && (
           <Segment>
             <Text color="">{body}</Text>

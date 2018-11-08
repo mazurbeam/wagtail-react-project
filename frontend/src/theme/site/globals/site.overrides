@@ -7,4 +7,5 @@ code {
 }
 
 body {
+  background: #00fff9;
 }

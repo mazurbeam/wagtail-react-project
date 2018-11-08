@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 
-import { Segment, Container } from "semantic-ui-react";
+import { Segment, Container, Grid } from "semantic-ui-react";
 
 import { Box, Heading, Card, Text } from "rebass";
 
@@ -74,41 +74,32 @@ class StandardPage extends Component {
 
     return (
       <Wrapper>
-        <Container>
-          <Segment
-            textAlign="center"
-            style={{ minHeight: 700, padding: "1em 0em" }}
-            vertical
-          >
-            {!details ? (
-              <Text>Loading...</Text>
-            ) : (
-              <Wrapper>
-                <Box
-                  pt={80}
-                  className="uk-position-large uk-position-top-center"
-                >
-                  <Heading fontSize={5}>{details.title}</Heading>
-                  <Heading
-                    fontSize={2}
-                    dangerouslySetInnerHTML={{ __html: details.intro }}
-                  />
-                </Box>
-                <Card
-                  color="white"
-                  bg="slate"
-                  p={3}
-                  mt={[150]}
-                  mx={[0, 10]}
-                  borderRadius={8}
-                  boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
-                >
-                  {body}
-                </Card>
+        <Segment
+          textAlign="center"
+          style={{ minHeight: 700, padding: "1em 0em" }}
+          vertical
+        >
+          {!details ? (
+            <Text>Loading...</Text>
+          ) : (
+            <Wrapper>
+              <Box pt={80} className="uk-position-large uk-position-top-center">
+                <Heading fontSize={5}>{details.title}</Heading>
+              </Box>
+              <Wrapper className="uk-section-default">
+                <Container>
+                  <Box color="slate" bg="white" p={3} mt={[150]} mx={[0, 10]}>
+                    <Heading
+                      fontSize={2}
+                      dangerouslySetInnerHTML={{ __html: details.intro }}
+                    />
+                  </Box>
+                  <Box p={20}>{body}</Box>
+                </Container>
               </Wrapper>
-            )}
-          </Segment>
-        </Container>
+            </Wrapper>
+          )}
+        </Segment>
       </Wrapper>
     );
   }

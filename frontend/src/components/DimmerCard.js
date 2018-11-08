@@ -25,7 +25,7 @@ class DimmerCard extends Component {
         </a>
         <Label.Group style={{ paddingTop: "20px" }}>
           {item.tags.map(tag => (
-            <Label key={tag} basic>
+            <Label key={tag} basic color="blue">
               {tag}
             </Label>
           ))}
@@ -38,7 +38,6 @@ class DimmerCard extends Component {
         as={Image}
         dimmed={active}
         dimmer={{ active, content }}
-        blurring
         onMouseEnter={this.handleShow}
         onMouseLeave={this.handleHide}
         size="large"

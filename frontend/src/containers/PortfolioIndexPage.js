@@ -51,7 +51,9 @@ class PortfolioIndexPage extends Component {
           ) : (
             <Wrapper>
               <Box pt={80} className="uk-position-large uk-position-top-center">
-                <Heading fontSize={5}>{details.title}</Heading>
+                <Heading color="white" fontSize={5}>
+                  {details.title}
+                </Heading>
               </Box>
               <Box color="" mx={[20, 40]} pt={[250]} className=" ">
                 {children && (

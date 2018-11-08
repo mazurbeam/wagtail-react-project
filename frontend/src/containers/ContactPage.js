@@ -58,6 +58,7 @@ class ContactPage extends Component {
         >
           <Header
             as="h1"
+            inverted
             content="Contact Me"
             style={{
               fontSize: "4em",

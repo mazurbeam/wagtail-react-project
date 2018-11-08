@@ -84,7 +84,9 @@ class StandardPage extends Component {
           ) : (
             <Wrapper>
               <Box pt={80} className="uk-position-large uk-position-top-center">
-                <Heading fontSize={5}>{details.title}</Heading>
+                <Heading color="white" fontSize={5}>
+                  {details.title}
+                </Heading>
               </Box>
               <Wrapper className="uk-section-default">
                 <Container>

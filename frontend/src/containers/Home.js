@@ -11,7 +11,8 @@ import {
   Header,
   Icon,
   Image,
-  Segment
+  Segment,
+  Loader
 } from "semantic-ui-react";
 import axios from "axios";
 import Particles from "react-particles-js";
@@ -60,6 +61,7 @@ class Home extends Component {
           >
             <Header
               as="h1"
+              inverted
               content={page.name}
               style={{
                 fontSize: "4em",
@@ -71,6 +73,7 @@ class Home extends Component {
             <Header
               as="h2"
               content={page.subtitle}
+              inverted
               style={{
                 fontSize: "1.7em",
                 fontWeight: "normal",
@@ -85,10 +88,12 @@ class Home extends Component {
                 circular
               />
             ) : (
-              <div>loading</div>
+              <Loader />
             )}
 
-            <Text color="">{page.introduction}</Text>
+            <Text p={3} color="whitish">
+              {page.introduction}
+            </Text>
 
             <Button primary size="huge" as={Link} to="/contact">
               Contact Me

@@ -89,7 +89,7 @@ class Header extends Component {
     const iconMenu = this.addIcons(menu);
     // console.log("icon menu", iconMenu);
     return (
-      <Menu fixed="top" pointing secondary>
+      <Menu fixed="top" pointing secondary inverted>
         <Box
           width={5 / 6}
           position="absolute"

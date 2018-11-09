@@ -13,6 +13,10 @@ const StickyFooter = styled.footer`
   left: 0;
   color: #f5f5f5;
   // background-color: #232741;
+  @media (max-width: 420px) {
+    top: 0;
+    left-margin: auto;
+  }
 `
 
 const FooterLink = styled.a`

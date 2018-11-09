@@ -1,14 +1,10 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import React, { Component } from "react";
 import {
   Button,
   Container,
-  Divider,
-  Grid,
   Header,
   Icon,
-  Image,
-  List,
   Menu,
   Responsive,
   Segment,
@@ -50,10 +46,6 @@ const HomepageHeading = ({ mobile }) => (
   </Container>
 );
 
-HomepageHeading.propTypes = {
-  mobile: PropTypes.bool
-};
-
 /* Heads up!
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
  * It can be more complicated, but you can create really flexible markup.
@@ -62,6 +54,7 @@ class DesktopContainer extends Component {
   state = {};
 
   hideFixedMenu = () => this.setState({ fixed: false });
+
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
@@ -120,10 +113,6 @@ class DesktopContainer extends Component {
   }
 }
 
-DesktopContainer.propTypes = {
-  children: PropTypes.node
-};
-
 class MobileContainer extends Component {
   state = {};
 
@@ -133,8 +122,10 @@ class MobileContainer extends Component {
     if (sidebarOpened) this.setState({ sidebarOpened: false });
   };
 
-  handleToggle = () =>
-    this.setState({ sidebarOpened: !this.state.sidebarOpened });
+  handleToggle = () => {
+    const { sidebarOpened } = this.state;
+    this.setState({ sidebarOpened: !sidebarOpened });
+  };
 
   render() {
     const { children } = this.props;
@@ -197,10 +188,6 @@ class MobileContainer extends Component {
   }
 }
 
-MobileContainer.propTypes = {
-  children: PropTypes.node
-};
-
 const ResponsiveContainer = ({ children }) => (
   <div>
     <DesktopContainer>{children}</DesktopContainer>
@@ -208,6 +195,4 @@ const ResponsiveContainer = ({ children }) => (
   </div>
 );
 
-ResponsiveContainer.propTypes = {
-  children: PropTypes.node
-};
+export default ResponsiveContainer;

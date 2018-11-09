@@ -65,16 +65,17 @@ class Home extends Component {
               color="#c0ccd4"
               mt={[50, 100]}
               fontFamily="mont"
-              fontSize="4em"
+              fontSize={["3em", "4em"]}
               style={{ textTransform: "uppercase" }}
             >
               {page.name}
             </Heading>
             <Heading
               color="#c0ccd4"
-              fontSize="1.7em"
-              fontFamily="mont"
-              mt="1.5em"
+              fontSize={["1.4em", "1.7em"]}
+              fontFamily="work"
+              mt="0"
+              mb="1.7em"
             >
               {page.subtitle}
             </Heading>
@@ -89,7 +90,13 @@ class Home extends Component {
               <Loader />
             )}
 
-            <Text fontFamily="work" p={3} fontSize="1.2em" color="whitish">
+            <Text
+              fontFamily="work"
+              m={[".05em", "1em"]}
+              p={3}
+              fontSize="1.2em"
+              color="whitish"
+            >
               {page.introduction}
             </Text>
 

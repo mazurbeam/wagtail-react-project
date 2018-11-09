@@ -119,7 +119,7 @@ class Dropdown extends Component {
             }}
           >
             {' '}
-            <Icon inverted name='github' link size='big' />{' '}
+            <Icon inverted name='github' link size='huge' />{' '}
           </Menu.Item>
           <Menu.Item
             as={FooterLink}
@@ -133,7 +133,7 @@ class Dropdown extends Component {
               name='linkedin'
               link
               inverted
-              size='big'
+              size='huge'
             />
           </Menu.Item>
         </Sidebar>

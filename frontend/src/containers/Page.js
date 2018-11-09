@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 // import axios from 'axios';
-import { Box } from "rebass";
+// import { Box } from "rebass";
 // import classNames from "classnames";
+// import { Loading } from "semantic-ui-react";
 
 import * as reducers from "../services/reducers";
 import {
@@ -13,6 +14,8 @@ import {
   fetchPageChildren
 } from "../services/actions/page";
 import Loading from "../components/Loading";
+import PageAnimationWrapper from "../components/PageAnimationWrapper";
+
 import BlogIndexPage from "./BlogIndexPage";
 import BlogPage from "./BlogPage";
 import StandardPage from "./StandardPage";
@@ -94,7 +97,9 @@ class Page extends Component {
       }
     }
     return (
-      <Box className="page">{loading && ready ? pageSpace : pageSpace}</Box>
+      <PageAnimationWrapper>
+        {loading && ready ? pageSpace : pageSpace}
+      </PageAnimationWrapper>
     );
   }
 }

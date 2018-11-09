@@ -5,21 +5,11 @@ import { withRouter, Link } from "react-router-dom";
 
 import { Box, Flex, Card } from "rebass";
 import { Menu, Container, Segment } from "semantic-ui-react";
-import styled from "styled-components";
-import {
-  color,
-  space,
-  width,
-  disply,
-  height,
-  position,
-  fontFamily
-} from "styled-system";
 
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 // import fetchPages from '../services/api';
-
+import StyledLink from "./base/StyledLink";
 //components
 import Dropdown from "../components/Dropdown";
 
@@ -36,17 +26,6 @@ const Toolbar = props => (
 
 const NavItem = props => <Box {...props} width={1} my="auto" height={1} />;
 
-const NavLink = styled(Link)`
-${space}
-${width}
-${color}
-${fontFamily}
-padding: 20px;
-text-decoration: none;
-display: inline-block;
-
-`;
-
 NavItem.displayName = "NavItem";
 
 class Header extends Component {
@@ -58,12 +37,10 @@ class Header extends Component {
 
   props = this.props;
 
-  componentWillMount() {
+  componentDidMount() {
     const { getMenu, menu } = this.props;
     getMenu();
   }
-
-  componentDidMount() {}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -108,7 +85,7 @@ class Header extends Component {
         <Container textAlign="center" centered className="uk-visible@s">
           <Menu.Item
             name="home"
-            as={Link}
+            as={StyledLink}
             to="/"
             active={pathname === "/"}
             onClick={this.handleItemClick}
@@ -124,7 +101,7 @@ class Header extends Component {
             <Menu.Item
               key={item.meta.id}
               name={item.meta.slug}
-              as={NavLink}
+              as={StyledLink}
               active={pathname === `/${item.meta.slug}`}
               to={{ pathname: `/${item.meta.slug}` }}
               onClick={this.handleItemClick}
@@ -138,7 +115,7 @@ class Header extends Component {
           ))}
           <Menu.Item
             name="contact"
-            as={NavLink}
+            as={StyledLink}
             to="/contact"
             active={pathname === "/contact"}
             onClick={this.handleItemClick}

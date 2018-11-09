@@ -20,7 +20,7 @@ const ParcticlesWrapper = () => (
               size_min: 0.3
             }
           },
-          color: { value: '#c0ccd4' },
+          color: { value: '#2e9cca' },
           line_linked: {
             enable: false
           },

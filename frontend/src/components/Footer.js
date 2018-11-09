@@ -10,6 +10,7 @@ const StickyFooter = styled.footer`
   // height: 40px;
   position: fixed;
   top: 95%;
+  // margin-top: auto;
   left: 0;
   color: #f5f5f5;
   // background-color: #232741;

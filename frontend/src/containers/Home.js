@@ -17,9 +17,8 @@ import {
 
 import { fontFamily } from "styled-system";
 
-import axios from "axios";
-import { fetchAllPages } from "../services/actions/page";
-// import * as reducers from '../services/reducers';
+import { fetchAllPages, fetchHomePage } from "../services/actions/page";
+import * as reducers from "../services/reducers";
 import renderPageBody from "../utils";
 
 import ContactForm from "../components/ContactForm";
@@ -31,23 +30,22 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    axios.get("/api/v2/pages/?type=home.HomePage&fields=*").then(res => {
-      const page = res.data.items[0];
-      this.setState({ page });
-    });
-    const { getPages } = this.props;
+    const { getPages, getHomeDetails } = this.props;
+    getHomeDetails();
     getPages();
+    const { page } = this.state;
+    console.log("page", page);
   }
 
   render() {
-    const { page } = this.state;
-    console.log("homepage", page);
-    const pageHasBody = Object.prototype.hasOwnProperty.call(page, "body");
-    if (!pageHasBody) {
-      page.body = [];
+    const { pages, details } = this.props;
+    console.log("pages in home render", pages);
+
+    const image = details.image_thumbnail;
+    let body = [];
+    if (details.body) {
+      body = renderPageBody(details.body);
     }
-    const image = page.image_thumbnail;
-    const body = renderPageBody(page.body);
     return (
       <div className="page">
         <Segment
@@ -68,7 +66,7 @@ class Home extends Component {
               fontSize={["3em", "4em"]}
               style={{ textTransform: "uppercase" }}
             >
-              {page.name}
+              {details.name}
             </Heading>
             <Heading
               color="#c0ccd4"
@@ -77,15 +75,10 @@ class Home extends Component {
               mt="0"
               mb="1.7em"
             >
-              {page.subtitle}
+              {details.subtitle}
             </Heading>
             {image ? (
-              <Image
-                alt="walter mazur"
-                src={page.image_thumbnail.url}
-                centered
-                circular
-              />
+              <Image alt="walter mazur" src={image.url} centered circular />
             ) : (
               <Loader />
             )}
@@ -97,7 +90,7 @@ class Home extends Component {
               fontSize="1.2em"
               color="whitish"
             >
-              {page.introduction}
+              {details.introduction}
             </Text>
 
             <Button primary size="large" as={Link} to="/contact">
@@ -120,11 +113,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  pages: state.page.pages
+  pages: state.page.pages,
+  details: reducers.refreshHome(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  getPages: () => dispatch(fetchAllPages())
+  getPages: () => dispatch(fetchAllPages()),
+  getHomeDetails: () => dispatch(fetchHomePage())
 });
 
 export default withRouter(

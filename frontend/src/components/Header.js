@@ -115,7 +115,7 @@ class Header extends Component {
                 pathname: `/${item.meta.slug}`,
                 state: {
                   index: index,
-                  prev: location.state.index < index
+                  prev: location.state ? location.state.index < index : false
                 }
               }}
               onClick={this.handleItemClick}

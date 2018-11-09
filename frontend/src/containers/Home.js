@@ -9,6 +9,7 @@ import {
   Button,
   Container,
   Header,
+  Placeholder,
   Icon,
   Image,
   Segment,
@@ -26,7 +27,8 @@ import PageSection from "../components/PageSection";
 
 class Home extends Component {
   state = {
-    page: {}
+    page: {},
+    loading: true
   };
 
   componentDidMount() {
@@ -35,9 +37,11 @@ class Home extends Component {
     getPages();
     const { page } = this.state;
     console.log("page", page);
+    this.setState({ loading: false });
   }
 
   render() {
+    const { loading } = this.state;
     const { pages, details } = this.props;
     console.log("pages in home render", pages);
 
@@ -59,39 +63,50 @@ class Home extends Component {
               zIndex: 0
             }}
           >
-            <Heading
-              color="#c0ccd4"
-              mt={[50, 100]}
-              fontFamily="mont"
-              fontSize={["3em", "4em"]}
-              style={{ textTransform: "uppercase" }}
-            >
-              {details.name}
-            </Heading>
-            <Heading
-              color="#c0ccd4"
-              fontSize={["1.4em", "1.7em"]}
-              fontFamily="work"
-              mt="0"
-              mb="1.7em"
-            >
-              {details.subtitle}
-            </Heading>
-            {image ? (
-              <Image alt="walter mazur" src={image.url} centered circular />
+            {loading || !details ? (
+              <Placeholder style={{ marginTop: "100px" }}>
+                <Placeholder.Header>
+                  <Placeholder.Line length="very short" />
+                  <Placeholder.Line length="medium" />
+                </Placeholder.Header>
+              </Placeholder>
             ) : (
-              <Loader />
-            )}
+              <div>
+                <Heading
+                  color="#c0ccd4"
+                  mt={[50, 100]}
+                  fontFamily="mont"
+                  fontSize={["3em", "4em"]}
+                  style={{ textTransform: "uppercase" }}
+                >
+                  {details.name}
+                </Heading>
+                <Heading
+                  color="#c0ccd4"
+                  fontSize={["1.4em", "1.7em"]}
+                  fontFamily="work"
+                  mt="0"
+                  mb="1.7em"
+                >
+                  {details.subtitle}
+                </Heading>
+                {image ? (
+                  <Image alt="walter mazur" src={image.url} centered circular />
+                ) : (
+                  <Loader />
+                )}
 
-            <Text
-              fontFamily="work"
-              m={[".05em", "1em"]}
-              p={3}
-              fontSize="1.2em"
-              color="whitish"
-            >
-              {details.introduction}
-            </Text>
+                <Text
+                  fontFamily="work"
+                  m={[".05em", "1em"]}
+                  p={3}
+                  fontSize="1.2em"
+                  color="whitish"
+                >
+                  {details.introduction}
+                </Text>
+              </div>
+            )}
 
             <Button primary size="large" as={Link} to="/contact">
               Contact Me

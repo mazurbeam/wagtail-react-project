@@ -27,6 +27,12 @@ class Page extends Component {
   };
 
   componentWillMount() {
+    // const state = { type: 'blog.BlogIndexPage' };
+    // console.log('will mount meta', meta);
+    // getPageMeta(match.params.slug);
+  }
+
+  componentDidMount() {
     this.setState({ loading: true });
     const { getPageMeta, match } = this.props;
     // console.log('Page match', match);
@@ -40,14 +46,25 @@ class Page extends Component {
     } else {
       getPageMeta(match.params.slug);
     }
-    // const state = { type: 'blog.BlogIndexPage' };
-    // console.log('will mount meta', meta);
-    // getPageMeta(match.params.slug);
-  }
-
-  componentDidMount() {
     this.setState({ loading: false });
   }
+
+  pageReducer = (id, type) => {
+    let page = <Loading />;
+    if (type === "blog.BlogIndexPage") {
+      page = <BlogIndexPage id={id} type={type} />;
+    }
+    if (type === "pages.StandardPage") {
+      page = <StandardPage id={id} type={type} />;
+    }
+    if (type === "blog.BlogPage") {
+      page = <BlogPage id={id} type={type} />;
+    }
+    if (type === "portfolio.PortfolioIndexPage") {
+      page = <PortfolioIndexPage id={id} type={type} />;
+    }
+    return page;
+  };
 
   render() {
     const { loading } = this.state;
@@ -63,42 +80,24 @@ class Page extends Component {
       "child"
     );
     let ready = true;
-    // console.log(pathname, meta.meta.html_url);
 
-    // console.log('props', this.props);
-    let pageSpace = <Loading />;
+    let PageType = this.pageReducer(meta.id, meta.meta.type);
 
-    if (meta.meta.type === "blog.BlogIndexPage" && ready) {
-      pageSpace = <BlogIndexPage id={meta.id} type={meta.meta.type} />;
-    }
-    if (meta.meta.type === "pages.StandardPage") {
-      pageSpace = <StandardPage id={meta.id} type={meta.meta.type} />;
-    }
-    if (meta.meta.type === "blog.BlogPage" && ready) {
-      pageSpace = <BlogPage id={meta.id} type={meta.meta.type} />;
-    }
-    if (meta.meta.type === "portfolio.PortfolioIndexPage" && ready) {
-      pageSpace = <PortfolioIndexPage id={meta.id} type={meta.meta.type} />;
-    }
-
-    // if (pathname !== meta.meta.html_url) {
-    //   pageSpace = <Text className="uk-position-center">Loading...</Text>;
-    // }
     if (isChildPage) {
       if (match.params.child !== meta.meta.slug) {
         ready = false;
-        pageSpace = <Loading />;
+        PageType = <Loading />;
       }
     }
     if (!isChildPage) {
       if (match.params.slug !== meta.meta.slug) {
         ready = false;
-        pageSpace = <Loading />;
+        PageType = <Loading />;
       }
     }
     return (
       <PageAnimationWrapper>
-        {loading && ready ? pageSpace : pageSpace}
+        {loading && ready ? PageType : PageType}
       </PageAnimationWrapper>
     );
   }

@@ -22,6 +22,8 @@ import { fetchAllPages, fetchHomePage } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 import renderPageBody from "../utils";
 
+import PageAnimationWrapper from "../components/PageAnimationWrapper";
+
 import ContactForm from "../components/ContactForm";
 import PageSection from "../components/PageSection";
 
@@ -51,7 +53,7 @@ class Home extends Component {
       body = renderPageBody(details.body);
     }
     return (
-      <div className="page">
+      <PageAnimationWrapper>
         <Segment
           textAlign="center"
           style={{ minHeight: 700, padding: "1em 0em" }}
@@ -122,7 +124,7 @@ class Home extends Component {
             </Text>
           </Segment>
         )}
-      </div>
+      </PageAnimationWrapper>
     );
   }
 }

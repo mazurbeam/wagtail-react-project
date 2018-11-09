@@ -52,7 +52,7 @@ class Dropdown extends Component {
   }
 
   render () {
-    const { list, active } = this.props
+    const { list, active, location } = this.props
     const { listOpen } = this.state
     return (
       <Box className='' p={3} position=''>
@@ -69,7 +69,10 @@ class Dropdown extends Component {
           <Menu.Item
             as={NavLink}
             active={active === '/'}
-            to='/'
+            to={{
+              pathname: '/',
+              state: { prev: false, index: -1 }
+            }}
             onClick={() => this.toggleList()}
             style={{
               fontFamily: 'Montserrat',
@@ -78,14 +81,20 @@ class Dropdown extends Component {
           >
             Home
           </Menu.Item>
-          {list.map(item => (
+          {list.map((item, index) => (
             <Menu.Item
               key={item.meta.id}
               name={item.meta.slug}
               as={NavLink}
               onClick={() => this.toggleList()}
               active={active === `/${item.meta.slug}`}
-              to={{ pathname: `/${item.meta.slug}` }}
+              to={{
+                pathname: `/${item.meta.slug}`,
+                state: {
+                  index,
+                  prev: location.state.index < index
+                }
+              }}
               style={{
                 fontFamily: 'Montserrat',
                 color: '#c0ccd4'
@@ -97,7 +106,10 @@ class Dropdown extends Component {
           <Menu.Item
             as={NavLink}
             active={active === '/contact'}
-            to='/contact'
+            to={{
+              pathname: '/contact',
+              state: { prev: true, index: 10 }
+            }}
             fitted
             onClick={() => this.toggleList()}
             style={{

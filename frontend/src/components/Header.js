@@ -70,7 +70,7 @@ class Header extends Component {
   render() {
     const { pages, activeItem } = this.state;
     const { items } = pages;
-    const { menu, getMenu, pathname } = this.props;
+    const { menu, getMenu, pathname, location } = this.props;
     const iconMenu = this.addIcons(menu);
     // console.log("icon menu", iconMenu);
     return (
@@ -80,13 +80,21 @@ class Header extends Component {
           position="absolute"
           className="uk-position-z-index uk-hidden@s "
         >
-          <Dropdown className="" list={iconMenu} active={pathname} />
+          <Dropdown
+            className=""
+            list={iconMenu}
+            location={location}
+            active={pathname}
+          />
         </Box>
         <Container textAlign="center" centered className="uk-visible@s">
           <Menu.Item
             name="home"
             as={StyledLink}
-            to="/"
+            to={{
+              pathname: "/",
+              state: { prev: false, index: -1 }
+            }}
             active={pathname === "/"}
             onClick={this.handleItemClick}
             style={{
@@ -97,13 +105,19 @@ class Header extends Component {
           >
             Home
           </Menu.Item>
-          {iconMenu.map(item => (
+          {iconMenu.map((item, index) => (
             <Menu.Item
               key={item.meta.id}
               name={item.meta.slug}
               as={StyledLink}
               active={pathname === `/${item.meta.slug}`}
-              to={{ pathname: `/${item.meta.slug}` }}
+              to={{
+                pathname: `/${item.meta.slug}`,
+                state: {
+                  index: index,
+                  prev: location.state.index < index
+                }
+              }}
               onClick={this.handleItemClick}
               style={{
                 fontFamily: "Montserrat",
@@ -116,7 +130,10 @@ class Header extends Component {
           <Menu.Item
             name="contact"
             as={StyledLink}
-            to="/contact"
+            to={{
+              pathname: "/contact",
+              state: { prev: true, index: 10 }
+            }}
             active={pathname === "/contact"}
             onClick={this.handleItemClick}
             style={{

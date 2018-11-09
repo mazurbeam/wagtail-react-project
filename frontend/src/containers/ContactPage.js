@@ -23,6 +23,8 @@ import { createNewMessage } from "../services/actions/contact";
 import ContactForm from "../components/ContactForm";
 import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 
+import PageAnimationWrapper from "../components/PageAnimationWrapper";
+
 class ContactPage extends Component {
   state = {
     submitted: false
@@ -50,7 +52,7 @@ class ContactPage extends Component {
     const { submitted } = this.state;
 
     return (
-      <div className="page">
+      <PageAnimationWrapper>
         <Segment
           textAlign="center"
           style={{ minHeight: 700, padding: "1em 0em" }}
@@ -86,7 +88,7 @@ class ContactPage extends Component {
             )}
           </Container>
         </Segment>
-      </div>
+      </PageAnimationWrapper>
     );
   }
 }

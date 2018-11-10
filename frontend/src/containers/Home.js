@@ -110,7 +110,15 @@ class Home extends Component {
               </div>
             )}
 
-            <Button primary size="large" as={Link} to="/contact">
+            <Button
+              primary
+              size="large"
+              as={Link}
+              to={{
+                pathname: "/contact",
+                state: { prev: true, index: 10 }
+              }}
+            >
               Contact Me
               <Icon className="angle right" />
             </Button>

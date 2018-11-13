@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 // import { Box } from 'rebass';
 import { Icon, Grid } from 'semantic-ui-react'
@@ -41,41 +41,39 @@ text-decoration: none;
 // }
 
 const Footer = () => (
-  <Fragment>
-    <footer className='uk-visible@s Site-footer'>
-      <Grid centered columns={3}>
-        <Grid.Row>
-          <Grid.Column />
-          <Grid.Column textAlign='center' centered>
-            <FooterLink
-              className='uk-nav-header'
-              color='whitish'
-              href='https://github.com/mazurbeam/'
-              target='_blank'
-            >
-              {' '}
-              <Icon inverted name='github' link size='big' />{' '}
-            </FooterLink>
-            <FooterLink
-              className='uk-nav-header'
-              color='whitish'
-              href='https://www.linkedin.com/in/walter-mazur-02803453/'
-              target='_blank'
-            >
-              <Icon
-                className='icon-link'
-                name='linkedin'
-                link
-                inverted
-                size='big'
-              />
-            </FooterLink>
-          </Grid.Column>
-          <Grid.Column />
-        </Grid.Row>
-      </Grid>
-    </footer>
-  </Fragment>
+  <footer className=' Site-footer'>
+    <Grid centered columns={3}>
+      <Grid.Row>
+        <Grid.Column />
+        <Grid.Column textAlign='center' centered>
+          <FooterLink
+            className='uk-nav-header'
+            color='whitish'
+            href='https://github.com/mazurbeam/'
+            target='_blank'
+          >
+            {' '}
+            <Icon inverted name='github' link size='big' />{' '}
+          </FooterLink>
+          <FooterLink
+            className='uk-nav-header'
+            color='whitish'
+            href='https://www.linkedin.com/in/walter-mazur-02803453/'
+            target='_blank'
+          >
+            <Icon
+              className='icon-link'
+              name='linkedin'
+              link
+              inverted
+              size='big'
+            />
+          </FooterLink>
+        </Grid.Column>
+        <Grid.Column />
+      </Grid.Row>
+    </Grid>
+  </footer>
 )
 
 export default Footer

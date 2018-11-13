@@ -12,5 +12,5 @@ code {
 }
 
 body {
-  background: #2f4454;
+  height: 100%;
 }

@@ -7,10 +7,10 @@ import NoMatch from '../components/NoMatch'
 import Home from '../containers/Home'
 import Page from '../containers/Page'
 import ContactPage from '../containers/ContactPage'
-import './styles.css'
+// import './styles.css'
 
 const Paths = () => (
-  <Box>
+  <Box className='Site-content'>
     <Route
       render={({ location }) => {
         const { pathname } = location

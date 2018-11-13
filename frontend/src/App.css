@@ -8,27 +8,37 @@ body {
   height: 100%;
 }
 
-/* .Site {
+.Site {
   display: flex;
   flex-direction: column;
+  overflow: auto;
   min-height: 100vh;
+  position: relative;
 }
 .Site-header,
 .Site-footer {
-  flex: none; 
+  flex: none;
+  display: block;
+}
+
+.Site-footer {
+  flex: none;
+  /* position: sticky; */
+  bottom: 5;
 }
 
 .Site-content {
   flex: 1 0 auto;
   padding: var(— space) var(— space) 0;
   padding-bottom: 50px;
-  overflow-x: scroll;
+  /* position: fixed; */
+  overflow: auto;
   width: 100%;
 }
-.Site-content:after {
+/* .Site-content:after {
   content: ‘\00a0’;
   display: block;
   margin-top: var(— space);
   height: 0;
-  visibility: hidden;
+  visibility: hidden; 
 } */

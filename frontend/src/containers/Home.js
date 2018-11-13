@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { Card, Box, Heading, Text } from "rebass";
+import { Flex, Card, Box, Heading, Text } from "rebass";
 import {
   Button,
   Container,
@@ -57,14 +57,14 @@ class Home extends Component {
       <PageAnimationWrapper>
         <Segment
           textAlign="center"
-          style={{ minHeight: 700, padding: "1em 0em" }}
+          // style={{ minHeight: 700, padding: "1em 0em" }}
           vertical
         >
           <Container
             text
-            style={{
-              zIndex: 0
-            }}
+            // style={{
+            //   zIndex: 0
+            // }}
           >
             {loading || !details ? (
               <Placeholder style={{ marginTop: "100px" }}>
@@ -125,7 +125,7 @@ class Home extends Component {
             </Button>
           </Container>
         </Segment>
-
+        <ContactForm />
         {body.length > 0 && (
           <Segment>
             <Text fontSize={3} color="c0ccd4">

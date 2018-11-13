@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 
 import styled from "styled-components";
 
-import { Container, Header } from "semantic-ui-react";
-import { Box, Text, Card } from "rebass";
+import { Header, Segment } from "semantic-ui-react";
+import { Box, Text } from "rebass";
 
 import {
   // fetchMainMenu,
@@ -22,8 +22,7 @@ import Loading from "../components/Loading";
 import renderPageBody from "../utils";
 
 const Wrapper = styled.div`
-  // flex: 1;
-  // overflow-y: hidden;
+  overflow: auto;
 `;
 
 class BlogPage extends Component {
@@ -103,7 +102,7 @@ class BlogPage extends Component {
         {loading || !details ? (
           <Loading />
         ) : (
-          <Container>
+          <Box css={{ postion: "fixed", overflowY: "auto" }}>
             <Box className="" color="" pt={80}>
               <Box className="">
                 <Header>{details.title}</Header>
@@ -119,19 +118,10 @@ class BlogPage extends Component {
               </Box>
             </Box>
 
-            <Card
-              className=""
-              color="slate"
-              bg="whitish"
-              p={3}
-              mt={[50]}
-              mx={[0, 10]}
-              borderRadius={8}
-              boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
-            >
+            <Segment>
               <div>{body}</div>
-            </Card>
-          </Container>
+            </Segment>
+          </Box>
         )}
       </Wrapper>
     );

@@ -1,19 +1,20 @@
 /* Base */
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
 /* Page */
 @import "./colors.css";
 
 .page {
+  min-height: 95vh;
   /* height: 100%; */
-  padding: var(--space) var(--space) 0;
-  display: block;
+  /* padding: var(--space) var(--space) 0; */
+  /* display: block; */
   overflow-y: auto;
-  position: absolute;
+  position: relative;
   top: 0;
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
   /* z-index: 1; */
   padding-bottom: 50px;
   width: 100%;

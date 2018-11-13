@@ -6,31 +6,27 @@ import { Flex, Box } from 'rebass'
 import ParticlesWrapper from './components/ParticlesWrapper'
 import Footer from './components/Footer'
 // import Header from '../components/Header'
-import './App.css'
+// import './App.css'
 import Routes from './routes'
 import './static/css/uikit.css'
+import ParcticlesWrapper from './components/ParticlesWrapper'
 
 const App = ({ history }) => {
   return (
     <Flex
       p={0}
       m={0}
-      css={{ minHeight: '99vh' }}
+      css={{ minHeight: '100vh' }}
       className='Site'
       flexDirection='column'
     >
-      <ParticlesWrapper />
-      <Box
-        css={{ minHeight: '95vh' }}
-        flex='1'
-        width={1}
-        className='Site-content'
-      >
+      <ParcticlesWrapper />
+      <Box flex='1 1 auto' width={1}>
         <ConnectedRouter history={history}>
           <Routes />
         </ConnectedRouter>
       </Box>
-      <Box width={1} className='app-footer'>
+      <Box>
         <Footer />
       </Box>
     </Flex>

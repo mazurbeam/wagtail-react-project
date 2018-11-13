@@ -20,7 +20,7 @@ class PortfolioPageTag(TaggedItemBase):
 
 
 class PortfolioIndexPage(Page):
-	intro = RichTextField(blank=True)
+	intro = models.CharField(max_length=1000, blank=True)
 	icon = models.CharField(max_length=20, blank=True)
 
 	api_fields = [

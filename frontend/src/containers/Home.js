@@ -128,7 +128,7 @@ class Home extends Component {
         </Segment>
         {body.length > 0 && (
           <Segment>
-            <Text fontSize={[1, 2, 3]} color="c0ccd4">
+            <Text fontFamily="work" fontSize={[1, 2]}>
               {body}
             </Text>
           </Segment>

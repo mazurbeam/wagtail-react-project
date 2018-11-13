@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Box, Heading } from "rebass";
+import { Box, Heading, Text } from "rebass";
 import { Container, Grid } from "semantic-ui-react";
 import styled from "styled-components";
 
@@ -54,6 +54,14 @@ class PortfolioIndexPage extends Component {
                 <Heading color="white" fontFamily="mont" fontSize="3.7em">
                   {details.title}
                 </Heading>
+                <Text
+                  mt={50}
+                  textAlign="center"
+                  color="white"
+                  fontFamily="mont"
+                >
+                  {details.intro}
+                </Text>
               </Box>
               <Box color="" mx={[20, 40]} pt={[250]} className=" ">
                 {children && (

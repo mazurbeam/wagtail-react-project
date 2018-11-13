@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  min-height: 95vh;
+  min-height: 90vh;
   position: relative;
 }
 .Site-header,

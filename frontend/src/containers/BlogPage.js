@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import styled from "styled-components";
 
-import { Segment, Container, Header } from "semantic-ui-react";
+import { Container, Header } from "semantic-ui-react";
 import { Box, Text, Card } from "rebass";
 
 import {
@@ -21,7 +21,10 @@ import Loading from "../components/Loading";
 
 import renderPageBody from "../utils";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  // flex: 1;
+  // overflow-y: hidden;
+`;
 
 class BlogPage extends Component {
   state = {
@@ -96,44 +99,38 @@ class BlogPage extends Component {
     }
 
     return (
-      <Wrapper>
+      <Wrapper className="">
         {loading || !details ? (
           <Loading />
         ) : (
           <Container>
-            <Segment
-              textAlign="center"
-              style={{ minHeight: 700, padding: "1em 0em" }}
-              vertical
-            >
-              <Box className="uk-position-large" color="" pt={80}>
-                <Box className="">
-                  <Header>{details.title}</Header>
-                  <Text className="">Written {details.date}</Text>
-                  <Text className="">
-                    Tags:
-                    {details.tags.map(tag => (
-                      <span className="uk-badge" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </Text>
-                </Box>
+            <Box className="" color="" pt={80}>
+              <Box className="">
+                <Header>{details.title}</Header>
+                <Text className="">Written {details.date}</Text>
+                <Text className="">
+                  Tags:
+                  {details.tags.map(tag => (
+                    <span className="uk-badge" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </Text>
               </Box>
+            </Box>
 
-              <Card
-                className=""
-                color="slate"
-                bg="whitish"
-                p={3}
-                mt={[50]}
-                mx={[0, 10]}
-                borderRadius={8}
-                boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
-              >
-                <div>{body}</div>
-              </Card>
-            </Segment>
+            <Card
+              className=""
+              color="slate"
+              bg="whitish"
+              p={3}
+              mt={[50]}
+              mx={[0, 10]}
+              borderRadius={8}
+              boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+            >
+              <div>{body}</div>
+            </Card>
           </Container>
         )}
       </Wrapper>

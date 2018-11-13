@@ -52,6 +52,7 @@ class Home extends Component {
     if (details.body) {
       body = renderPageBody(details.body);
     }
+    console.log("home body", details.body);
     return (
       <PageAnimationWrapper>
         <Segment

@@ -1,28 +1,28 @@
-'use strict';
+'use strict'
 
-const autoprefixer = require('autoprefixer');
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const getClientEnvironment = require('./env');
-const paths = require('./paths');
-const BundleTracker = require('webpack-bundle-tracker');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
+const eslintFormatter = require('react-dev-utils/eslintFormatter')
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
+const getClientEnvironment = require('./env')
+const paths = require('./paths')
+const BundleTracker = require('webpack-bundle-tracker')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
-const publicPath = 'http://localhost:3000/';
+const publicPath = 'http://localhost:3000/'
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
-const publicUrl = 'http://localhost:3000/';
+const publicUrl = 'http://localhost:3000/'
 // Get environment variables to inject into our app.
-const env = getClientEnvironment(publicUrl);
+const env = getClientEnvironment(publicUrl)
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -129,7 +129,6 @@ module.exports = {
         use: 'file-loader?name=[name].[ext]?[hash]'
       },
 
-
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -169,15 +168,19 @@ module.exports = {
             loader: 'url-loader?limit=10000&mimetype=application/font-woff'
           },
 
-          { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+          {
+            test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: 'file-loader'
+          },
 
           {
             test: /\.otf(\?.*)?$/,
-            use: 'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
+            use:
+              'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf'
           },
           {
             use: ExtractTextPlugin.extract({
-              use: [ 'css-loader', 'less-loader']
+              use: ['css-loader', 'less-loader']
             }),
             test: /\.less$/
           },
@@ -203,6 +206,7 @@ module.exports = {
                   // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
+                    require('postcss-nested'),
                     require('postcss-flexbugs-fixes'),
                     autoprefixer({
                       browsers: [
@@ -238,7 +242,7 @@ module.exports = {
               /\.gif$/,
               /\.jpe?g$/,
               /\.png$/,
-              /\.scss$/,
+              /\.scss$/
             ],
             loader: require.resolve('file-loader'),
             options: {
@@ -246,7 +250,7 @@ module.exports = {
             }
           }
         ]
-      },
+      }
 
       // ** STOP ** Are you adding a new loader?
       // Make sure to add the new loader(s) before the "file" loader.
@@ -258,7 +262,7 @@ module.exports = {
     // <link rel="shortcut icon" href="%PUBLIC_URL%/turtle.ico">
     // In development, this will be an empty string.
     new ExtractTextPlugin({
-      filename: '[name].[contenthash].css',
+      filename: '[name].[contenthash].css'
     }),
     new InterpolateHtmlPlugin(env.raw),
     // Generates an `index.html` file with the <script> injected.
@@ -308,4 +312,4 @@ module.exports = {
   performance: {
     hints: false
   }
-};
+}

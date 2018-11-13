@@ -1,22 +1,39 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import { ConnectedRouter } from 'connected-react-router'
 
+import { Grid } from 'semantic-ui-react'
+import { Flex, Box } from 'rebass'
 import ParticlesWrapper from './components/ParticlesWrapper'
+import Footer from './components/Footer'
+// import Header from '../components/Header'
+import './App.css'
 import Routes from './routes'
-import theme from './theme/styles/theme'
 import './static/css/uikit.css'
 
 const App = ({ history }) => {
   return (
-    <div>
+    <Flex
+      p={0}
+      m={0}
+      css={{ minHeight: '99vh' }}
+      className='Site'
+      flexDirection='column'
+    >
       <ParticlesWrapper />
-      <ThemeProvider theme={theme}>
+      <Box
+        css={{ minHeight: '95vh' }}
+        flex='1'
+        width={1}
+        className='Site-content'
+      >
         <ConnectedRouter history={history}>
           <Routes />
         </ConnectedRouter>
-      </ThemeProvider>
-    </div>
+      </Box>
+      <Box width={1} className='app-footer'>
+        <Footer />
+      </Box>
+    </Flex>
   )
 }
 

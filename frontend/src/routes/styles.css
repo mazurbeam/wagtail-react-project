@@ -1,33 +1,21 @@
 /* Base */
-* {
+/* * {
   box-sizing: border-box;
-}
-
-/* Nav */
-.nav {
-  background: rgba(0, 0, 0, 0.1);
-  padding: 5%;
-  position: fixed;
-  text-align: right;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.nav__link {
-  color: #fff;
-  margin-left: 0.5em;
-  text-decoration: none;
-}
+} */
 
 /* Page */
+@import "./colors.css";
 
 .page {
-  height: 100vh;
-  /* padding: calc(15% + 1.5em) 5% 5%; */
+  /* height: 100%; */
+  padding: var(--space) var(--space) 0;
+  display: block;
   overflow-y: auto;
-  position: fixed;
+  position: absolute;
   top: 0;
+  flex: 1 0 auto;
+  /* z-index: 1; */
+  padding-bottom: 50px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
   transition: transform 1s ease-in-out;

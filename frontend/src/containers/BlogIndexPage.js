@@ -68,7 +68,9 @@ class BlogIndexPage extends Component {
                 color=""
                 className="uk-position-large uk-position-top-center"
               >
-                <Heading fontSize={5}>{details.title}</Heading>
+                <Heading color="white" fontSize={5}>
+                  {details.title}
+                </Heading>
                 <Heading
                   fontSize={2}
                   dangerouslySetInnerHTML={{ __html: details.intro }}

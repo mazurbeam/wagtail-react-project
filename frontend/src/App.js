@@ -16,7 +16,7 @@ const App = ({ history }) => {
     <Flex
       p={0}
       m={0}
-      css={{ minHeight: '100vh' }}
+      css={{ minHeight: '95vh' }}
       className='Site'
       flexDirection='column'
     >
@@ -26,7 +26,14 @@ const App = ({ history }) => {
           <Routes />
         </ConnectedRouter>
       </Box>
-      <Box>
+      <Box
+        height={50}
+        p={1}
+        className='Site-footer'
+        css={{
+          flex: 'none'
+        }}
+      >
         <Footer />
       </Box>
     </Flex>

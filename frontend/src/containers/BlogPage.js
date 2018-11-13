@@ -105,7 +105,7 @@ class BlogPage extends Component {
           <Box css={{ postion: "fixed", overflowY: "auto" }}>
             <Box className="" color="" pt={80}>
               <Box className="">
-                <Header>{details.title}</Header>
+                <Header inverted>{details.title}</Header>
                 <Text className="">Written {details.date}</Text>
                 <Text className="">
                   Tags:

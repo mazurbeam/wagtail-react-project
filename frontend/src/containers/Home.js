@@ -59,6 +59,7 @@ class Home extends Component {
           textAlign="center"
           // style={{ minHeight: 700, padding: "1em 0em" }}
           vertical
+          basic
         >
           <Container
             text
@@ -125,10 +126,9 @@ class Home extends Component {
             </Button>
           </Container>
         </Segment>
-        <ContactForm />
         {body.length > 0 && (
           <Segment>
-            <Text fontSize={3} color="c0ccd4">
+            <Text fontSize={[1, 2, 3]} color="c0ccd4">
               {body}
             </Text>
           </Segment>

@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  min-height: 100vh;
+  min-height: 95vh;
   position: relative;
 }
 .Site-header,
@@ -23,14 +23,15 @@ body {
 
 .Site-footer {
   flex: none;
-  /* position: sticky; */
-  bottom: 5;
+  position: fixed;
+  bottom: 0;
+  /* padding-bottom: 60px; */
 }
 
 .Site-content {
   flex: 1 0 auto;
   padding: var(— space) var(— space) 0;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
   /* position: fixed; */
   overflow: auto;
   width: 100%;

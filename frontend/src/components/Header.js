@@ -74,78 +74,80 @@ class Header extends Component {
     const iconMenu = this.addIcons(menu);
     // console.log("icon menu", iconMenu);
     return (
-      <Menu className="Site-header" fixed="top" pointing secondary inverted>
-        <Box
-          width={5 / 6}
-          position="absolute"
-          className="uk-position-z-index uk-hidden@s "
-        >
-          <Dropdown
-            className=""
-            list={iconMenu}
-            location={location}
-            active={pathname}
-          />
-        </Box>
-        <Container textAlign="center" centered className="uk-visible@s">
-          <Menu.Item
-            name="home"
-            as={StyledLink}
-            to={{
-              pathname: "/",
-              state: { prev: false, index: -1 }
-            }}
-            active={pathname === "/"}
-            onClick={this.handleItemClick}
-            style={{
-              fontFamily: "Montserrat",
-              color: "#c0ccd4",
-              marginLeft: "auto"
-            }}
+      <Segment className="Site-header" basic inverted>
+        <Menu fixed="top" inverted>
+          <Box
+            width={5 / 6}
+            position="absolute"
+            className="uk-position-z-index uk-hidden@s "
           >
-            Home
-          </Menu.Item>
-          {iconMenu.map((item, index) => (
+            <Dropdown
+              className=""
+              list={iconMenu}
+              location={location}
+              active={pathname}
+            />
+          </Box>
+          <Container textAlign="center" centered className="uk-visible@s">
             <Menu.Item
-              key={item.meta.id}
-              name={item.meta.slug}
+              name="home"
               as={StyledLink}
-              active={pathname === `/${item.meta.slug}`}
               to={{
-                pathname: `/${item.meta.slug}`,
-                state: {
-                  index: index,
-                  prev: location.state ? location.state.index < index : false
-                }
+                pathname: "/",
+                state: { prev: false, index: -1 }
               }}
+              active={pathname === "/"}
               onClick={this.handleItemClick}
               style={{
                 fontFamily: "Montserrat",
-                color: "#c0ccd4"
+                color: "#c0ccd4",
+                marginLeft: "auto"
               }}
             >
-              {item.title}
+              Home
             </Menu.Item>
-          ))}
-          <Menu.Item
-            name="contact"
-            as={StyledLink}
-            to={{
-              pathname: "/contact",
-              state: { prev: true, index: 10 }
-            }}
-            active={pathname === "/contact"}
-            onClick={this.handleItemClick}
-            style={{
-              fontFamily: "Montserrat",
-              color: "#c0ccd4",
-              marginRight: "auto"
-            }}
-          >
-            Contact
-          </Menu.Item>
-        </Container>
-      </Menu>
+            {iconMenu.map((item, index) => (
+              <Menu.Item
+                key={item.meta.id}
+                name={item.meta.slug}
+                as={StyledLink}
+                active={pathname === `/${item.meta.slug}`}
+                to={{
+                  pathname: `/${item.meta.slug}`,
+                  state: {
+                    index: index,
+                    prev: location.state ? location.state.index < index : false
+                  }
+                }}
+                onClick={this.handleItemClick}
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#c0ccd4"
+                }}
+              >
+                {item.title}
+              </Menu.Item>
+            ))}
+            <Menu.Item
+              name="contact"
+              as={StyledLink}
+              to={{
+                pathname: "/contact",
+                state: { prev: true, index: 10 }
+              }}
+              active={pathname === "/contact"}
+              onClick={this.handleItemClick}
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4",
+                marginRight: "auto"
+              }}
+            >
+              Contact
+            </Menu.Item>
+          </Container>
+        </Menu>
+      </Segment>
     );
   }
 }

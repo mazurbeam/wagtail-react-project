@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 
 import { Box, Flex, Card } from "rebass";
-import { Menu, Container, Segment } from "semantic-ui-react";
+import { Menu, Container, Segment, Visibility } from "semantic-ui-react";
 
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -44,6 +44,10 @@ class Header extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
+  hideFixedMenu = () => this.setState({ fixed: false });
+
+  showFixedMenu = () => this.setState({ fixed: true });
+
   addIcons = menu => {
     const menuWithIcons = menu.map(item => {
       switch (item.meta.slug) {
@@ -68,86 +72,100 @@ class Header extends Component {
   };
 
   render() {
-    const { pages, activeItem } = this.state;
+    const { pages, fixed } = this.state;
     const { items } = pages;
     const { menu, getMenu, pathname, location } = this.props;
     const iconMenu = this.addIcons(menu);
     // console.log("icon menu", iconMenu);
     return (
-      <Segment className="Site-header" basic inverted>
-        <Menu fixed="top" inverted>
-          <Box
-            width={5 / 6}
-            position="absolute"
-            className="uk-position-z-index uk-hidden@s "
+      <Visibility
+        once={false}
+        onBottomPassed={this.showFixedMenu}
+        onBottomPassedReverse={this.hideFixedMenu}
+      >
+        <Segment className="Site-header" basic>
+          <Menu
+            fixed="top"
+            invertfixed={fixed ? "top" : null}
+            inverted
+            pointing={fixed}
+            secondary={!fixed}
           >
-            <Dropdown
-              className=""
-              list={iconMenu}
-              location={location}
-              active={pathname}
-            />
-          </Box>
-          <Container textAlign="center" centered className="uk-visible@s">
-            <Menu.Item
-              name="home"
-              as={StyledLink}
-              to={{
-                pathname: "/",
-                state: { prev: false, index: -1 }
-              }}
-              active={pathname === "/"}
-              onClick={this.handleItemClick}
-              style={{
-                fontFamily: "Montserrat",
-                color: "#c0ccd4",
-                marginLeft: "auto"
-              }}
+            <Box
+              width={5 / 6}
+              position="absolute"
+              className="uk-position-z-index uk-hidden@s "
             >
-              Home
-            </Menu.Item>
-            {iconMenu.map((item, index) => (
+              <Dropdown
+                className=""
+                list={iconMenu}
+                location={location}
+                active={pathname}
+              />
+            </Box>
+            <Container textAlign="center" centered className="uk-visible@s">
               <Menu.Item
-                key={item.meta.id}
-                name={item.meta.slug}
+                name="home"
                 as={StyledLink}
-                active={pathname === `/${item.meta.slug}`}
                 to={{
-                  pathname: `/${item.meta.slug}`,
-                  state: {
-                    index: index,
-                    prev: location.state ? location.state.index < index : false
-                  }
+                  pathname: "/",
+                  state: { prev: false, index: -1 }
                 }}
+                active={pathname === "/"}
                 onClick={this.handleItemClick}
                 style={{
                   fontFamily: "Montserrat",
-                  color: "#c0ccd4"
+                  color: "#c0ccd4",
+                  marginLeft: "auto"
                 }}
               >
-                {item.title}
+                Home
               </Menu.Item>
-            ))}
-            <Menu.Item
-              name="contact"
-              as={StyledLink}
-              to={{
-                pathname: "/contact",
-                state: { prev: true, index: 10 }
-              }}
-              active={pathname === "/contact"}
-              onClick={this.handleItemClick}
-              style={{
-                fontFamily: "Montserrat",
-                color: "#c0ccd4",
-                marginRight: "auto"
-              }}
-            >
-              Contact
-            </Menu.Item>
-          </Container>
-        </Menu>
-      </Segment>
+              {iconMenu.map((item, index) => (
+                <Menu.Item
+                  key={item.meta.id}
+                  name={item.meta.slug}
+                  as={StyledLink}
+                  active={pathname === `/${item.meta.slug}`}
+                  to={{
+                    pathname: `/${item.meta.slug}`,
+                    state: {
+                      index: index,
+                      prev: location.state
+                        ? location.state.index < index
+                        : false
+                    }
+                  }}
+                  onClick={this.handleItemClick}
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#c0ccd4"
+                  }}
+                >
+                  {item.title}
+                </Menu.Item>
+              ))}
+              <Menu.Item
+                name="contact"
+                as={StyledLink}
+                to={{
+                  pathname: "/contact",
+                  state: { prev: true, index: 10 }
+                }}
+                active={pathname === "/contact"}
+                onClick={this.handleItemClick}
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#c0ccd4",
+                  marginRight: "auto"
+                }}
+              >
+                Contact
+              </Menu.Item>
+            </Container>
+          </Menu>
+        </Segment>
+      </Visibility>
     );
   }
 }

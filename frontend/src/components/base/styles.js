@@ -34,11 +34,29 @@ display: inline-block;
 
 export const Toolbar = props => (
   <Flex
-    px={2}
+    p={0}
+    m={0}
     color='white'
     bg='black'
     height={1}
     alignItems='center'
+    {...props}
+  />
+)
+
+export const Navbar = props => (
+  <Flex
+    p={0}
+    m={0}
+    width={1}
+    color='white'
+    bg='black'
+    height={1}
+    alignItems='center'
+    css={{
+      position: 'fixed',
+      top: '0'
+    }}
     {...props}
   />
 )

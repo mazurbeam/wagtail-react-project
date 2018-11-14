@@ -102,7 +102,7 @@ class BlogPage extends Component {
               <Box className="">
                 <Header inverted>{details.title}</Header>
                 <Text className="">Written {details.date}</Text>
-                <Text className="">
+                <Text className="" fontFamily="work">
                   Tags:
                   {details.tags.map(tag => (
                     <span className="uk-badge" key={tag}>
@@ -114,7 +114,7 @@ class BlogPage extends Component {
             </Box>
 
             <Segment>
-              <div>{body}</div>
+              <Text fontFamily="work">{body}</Text>
             </Segment>
           </Box>
         )}

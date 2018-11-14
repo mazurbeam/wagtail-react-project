@@ -3,13 +3,19 @@ import { connect } from "react-redux";
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 import { withRouter, Link } from "react-router-dom";
 
-import { Box, Flex, Card } from "rebass";
-import { Menu, Container, Segment, Visibility } from "semantic-ui-react";
+import { Box } from "rebass";
+import { Menu, Container, Visibility } from "semantic-ui-react";
 
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 // import fetchPages from '../services/api';
-import { StyledLink, NavItem, StyledMenu, StyledSegment } from "./base/styles";
+import {
+  Navbar,
+  Toolbar,
+  StyledLink,
+  StyledMenu,
+  StyledSegment
+} from "./base/styles";
 //components
 import Dropdown from "../components/Dropdown";
 
@@ -68,88 +74,86 @@ class Header extends Component {
         onBottomPassed={this.showFixedMenu}
         onBottomPassedReverse={this.hideFixedMenu}
       >
-        <StyledSegment className="Site-header" basic>
-          <StyledMenu
-            fixed="top"
-            invertfixed={fixed ? "top" : null}
-            inverted
-            pointing={fixed}
-            secondary={!fixed}
+        <Menu
+          as={Navbar}
+          fixed="top"
+          className="Site-header"
+          invertfixed={fixed ? "top" : null}
+          inverted
+          pointing={fixed}
+          secondary={!fixed}
+        >
+          <Box
+            width={5 / 6}
+            position="absolute"
+            className="uk-position-z-index uk-hidden@s "
           >
-            <Box
-              width={5 / 6}
-              position="absolute"
-              className="uk-position-z-index uk-hidden@s "
+            <Dropdown
+              className=""
+              list={iconMenu}
+              location={location}
+              active={pathname}
+            />
+          </Box>
+          <Container textAlign="center" centered className="uk-visible@s">
+            <Menu.Item
+              name="home"
+              as={StyledLink}
+              to={{
+                pathname: "/",
+                state: { prev: false, index: -1 }
+              }}
+              active={pathname === "/"}
+              onClick={this.handleItemClick}
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4",
+                marginLeft: "auto"
+              }}
             >
-              <Dropdown
-                className=""
-                list={iconMenu}
-                location={location}
-                active={pathname}
-              />
-            </Box>
-            <Container textAlign="center" centered className="uk-visible@s">
+              Home
+            </Menu.Item>
+            {iconMenu.map((item, index) => (
               <Menu.Item
-                name="home"
+                key={item.meta.id}
+                name={item.meta.slug}
                 as={StyledLink}
+                active={pathname === `/${item.meta.slug}`}
                 to={{
-                  pathname: "/",
-                  state: { prev: false, index: -1 }
+                  pathname: `/${item.meta.slug}`,
+                  state: {
+                    index: index,
+                    prev: location.state ? location.state.index < index : false
+                  }
                 }}
-                active={pathname === "/"}
                 onClick={this.handleItemClick}
                 style={{
                   fontFamily: "Montserrat",
-                  color: "#c0ccd4",
-                  marginLeft: "auto"
+                  color: "#c0ccd4"
                 }}
               >
-                Home
+                {item.title}
               </Menu.Item>
-              {iconMenu.map((item, index) => (
-                <Menu.Item
-                  key={item.meta.id}
-                  name={item.meta.slug}
-                  as={StyledLink}
-                  active={pathname === `/${item.meta.slug}`}
-                  to={{
-                    pathname: `/${item.meta.slug}`,
-                    state: {
-                      index: index,
-                      prev: location.state
-                        ? location.state.index < index
-                        : false
-                    }
-                  }}
-                  onClick={this.handleItemClick}
-                  style={{
-                    fontFamily: "Montserrat",
-                    color: "#c0ccd4"
-                  }}
-                >
-                  {item.title}
-                </Menu.Item>
-              ))}
-              <Menu.Item
-                name="contact"
-                as={StyledLink}
-                to={{
-                  pathname: "/contact",
-                  state: { prev: true, index: 10 }
-                }}
-                active={pathname === "/contact"}
-                onClick={this.handleItemClick}
-                style={{
-                  fontFamily: "Montserrat",
-                  color: "#c0ccd4",
-                  marginRight: "auto"
-                }}
-              >
-                Contact
-              </Menu.Item>
-            </Container>
-          </StyledMenu>
-        </StyledSegment>
+            ))}
+            <Menu.Item
+              name="contact"
+              as={StyledLink}
+              to={{
+                pathname: "/contact",
+                state: { prev: true, index: 10 }
+              }}
+              active={pathname === "/contact"}
+              onClick={this.handleItemClick}
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4",
+                marginRight: "auto"
+              }}
+            >
+              Contact
+            </Menu.Item>
+          </Container>
+        </Menu>
       </Visibility>
     );
   }

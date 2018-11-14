@@ -22,12 +22,8 @@ class BlogIndexPage extends Component {
 
   componentWillMount() {
     this.setState({ loading: true });
-    const { id, type, getBlogPages, getPageDetails } = this.props;
-    // console.log('blogindex willmount match', match);
-    // const { state } = location;
-    // const { type, id } = state;
+    const { id, getBlogPages, getPageDetails } = this.props;
 
-    console.log("will mount type", type);
     getPageDetails(id);
     getBlogPages(id, "blog.BlogPage");
   }
@@ -40,19 +36,9 @@ class BlogIndexPage extends Component {
 
   render() {
     const { loading } = this.state;
-    // console.log('blogpageindex render state childPages', childPages);
 
-    // console.log('page meta', meta);
-    // console.log('page', page);
-    // console.log('page children', childPages);
     const { pathname, details, children } = this.props;
-    // console.log('blogpageindex details', details);
-    // console.log('blogpageindex children', children);
 
-    // let page = { title: '', intro: '' };
-    // if (loading === false) {
-    //   page = { title: 'loaded', intro: 'loaded' };
-    // }
     return (
       <Wrapper>
         <Container>

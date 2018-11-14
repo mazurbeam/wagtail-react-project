@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import styled from "styled-components";
-
 import { Header, Segment } from "semantic-ui-react";
 import { Box, Text } from "rebass";
 
@@ -16,14 +14,11 @@ import {
 import * as reducers from "../services/reducers";
 
 // components
+import { Wrapper } from "../components/base/styles";
 import Loading from "../components/Loading";
 // import Dropdown from '../components/Dropdown';
 
 import renderPageBody from "../utils";
-
-const Wrapper = styled.div`
-  overflow: auto;
-`;
 
 class BlogPage extends Component {
   state = {

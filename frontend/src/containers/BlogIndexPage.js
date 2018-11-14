@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import styled from "styled-components";
 
 // import axios from 'axios';
 import { Box, Heading } from "rebass";
@@ -12,11 +11,9 @@ import {
   fetchPageWithId
 } from "../services/actions/page";
 import * as reducers from "../services/reducers";
-// import BlogPage from './BlogPage';
+import { Wrapper } from "../components/base/styles";
 
 import Loading from "../components/Loading";
-
-const Wrapper = styled.div``;
 
 class BlogIndexPage extends Component {
   state = {

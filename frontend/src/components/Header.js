@@ -9,24 +9,9 @@ import { Menu, Container, Segment, Visibility } from "semantic-ui-react";
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 // import fetchPages from '../services/api';
-import StyledLink from "./base/StyledLink";
+import { StyledLink, NavItem, StyledMenu, StyledSegment } from "./base/styles";
 //components
 import Dropdown from "../components/Dropdown";
-
-const Toolbar = props => (
-  <Flex
-    px={2}
-    color="white"
-    bg="black"
-    height={1}
-    alignItems="center"
-    {...props}
-  />
-);
-
-const NavItem = props => <Box {...props} width={1} my="auto" height={1} />;
-
-NavItem.displayName = "NavItem";
 
 class Header extends Component {
   state = {
@@ -83,8 +68,8 @@ class Header extends Component {
         onBottomPassed={this.showFixedMenu}
         onBottomPassedReverse={this.hideFixedMenu}
       >
-        <Segment className="Site-header" basic>
-          <Menu
+        <StyledSegment className="Site-header" basic>
+          <StyledMenu
             fixed="top"
             invertfixed={fixed ? "top" : null}
             inverted
@@ -163,8 +148,8 @@ class Header extends Component {
                 Contact
               </Menu.Item>
             </Container>
-          </Menu>
-        </Segment>
+          </StyledMenu>
+        </StyledSegment>
       </Visibility>
     );
   }

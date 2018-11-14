@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Box, Heading, Text } from "rebass";
 import { Container, Grid } from "semantic-ui-react";
-import styled from "styled-components";
 
 import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 
+import { Wrapper } from "../components/base/styles";
 import DimmerCard from "../components/DimmerCard";
-
-const Wrapper = styled.div``;
 
 class PortfolioIndexPage extends Component {
   state = {

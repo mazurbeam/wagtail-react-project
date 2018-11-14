@@ -11,6 +11,7 @@ import { Box, Heading, Card, Text } from "rebass";
 // import axios from 'axios';
 import {
   // fetchPageType,
+  fetchDocumentDetails,
   fetchPageChildren,
   fetchPageWithId
 } from "../services/actions/page";
@@ -122,6 +123,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getPageDetails(id) {
     dispatch(fetchPageWithId(id));
+  },
+  getDocument(id) {
+    dispatch(fetchDocumentDetails(id));
   }
 });
 

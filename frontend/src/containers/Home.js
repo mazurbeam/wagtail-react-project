@@ -16,16 +16,11 @@ import {
   Loader
 } from "semantic-ui-react";
 
-import { fontFamily } from "styled-system";
-
 import { fetchAllPages, fetchHomePage } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 import renderPageBody from "../utils";
 
 import PageAnimationWrapper from "../components/PageAnimationWrapper";
-
-import ContactForm from "../components/ContactForm";
-import PageSection from "../components/PageSection";
 
 class Home extends Component {
   state = {

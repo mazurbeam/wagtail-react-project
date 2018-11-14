@@ -30,6 +30,10 @@ export const GET_PAGE_CHILDREN_REQUEST = '@@page/GET_PAGE_CHILDREN_REQUEST'
 export const GET_PAGE_CHILDREN_SUCCESS = '@@page/GET_PAGE_CHILDREN_SUCCESS'
 export const GET_PAGE_CHILDREN_FAILURE = '@@page/GET_PAGE_CHILDREN_FAILURE'
 
+export const GET_DOCUMENT_REQUEST = '@@page/GET_DOCUMENT_REQUEST'
+export const GET_DOCUMENT_SUCCESS = '@@page/GET_DOCUMENT_SUCCESS'
+export const GET_DOCUMENT_FAILURE = '@@page/GET_DOCUMENT_FAILURE'
+
 export const fetchHomePage = () => ({
   [RSAA]: {
     endpoint: '/api/v2/pages/?type=home.HomePage&fields=*',
@@ -97,6 +101,19 @@ export const fetchPageChildren = (id, type) => ({
       GET_PAGE_CHILDREN_REQUEST,
       { type: GET_PAGE_CHILDREN_SUCCESS, meta: id },
       GET_PAGE_CHILDREN_FAILURE
+    ]
+  }
+})
+
+export const fetchDocumentDetails = id => ({
+  [RSAA]: {
+    endpoint: `/api/v2/documents/{id}/`,
+    method: 'GET',
+    headers: { 'Content-type': 'application/json' },
+    types: [
+      GET_DOCUMENT_REQUEST,
+      { type: GET_DOCUMENT_SUCCESS, meta: id },
+      GET_DOCUMENT_FAILURE
     ]
   }
 })

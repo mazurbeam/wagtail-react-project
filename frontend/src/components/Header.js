@@ -171,7 +171,7 @@ class Header extends Component {
               }}
             >
               {" "}
-              <Icon inverted name="github" link size="big" />{" "}
+              <Icon inverted name="github" link size="large" />{" "}
             </Menu.Item>
             <Menu.Item
               as={FooterLink}
@@ -190,7 +190,7 @@ class Header extends Component {
                 name="linkedin"
                 link
                 inverted
-                size="big"
+                size="large"
               />
             </Menu.Item>
           </Box>

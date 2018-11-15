@@ -13,6 +13,16 @@ ${color}
 ${fontFamily}
 `
 
+export const FooterLink = styled.a`
+${space}
+${width}
+${color}
+text-align: right;
+// padding: 20px 20px;
+margin: 0;
+text-decoration: none;
+`
+
 export const StyledSegment = styled(Segment)`
 ${space}
 ${width}

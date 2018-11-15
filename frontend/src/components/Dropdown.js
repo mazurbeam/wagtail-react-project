@@ -46,9 +46,14 @@ class Dropdown extends Component {
     const { listOpen } = this.state
     return (
       <Box className='' p={3} position=''>
-        <div className='' onClick={() => this.toggleList()} role='presentation'>
+        <Box
+          width={40}
+          className=''
+          onClick={() => this.toggleList()}
+          role='presentation'
+        >
           <Icon name='sidebar' inverted size='big' />
-        </div>
+        </Box>
         <Sidebar
           as={Menu}
           vertical

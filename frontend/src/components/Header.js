@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 
 import { Box } from "rebass";
-import { Menu, Container, Visibility } from "semantic-ui-react";
+import { Menu, Container, Visibility, Icon } from "semantic-ui-react";
 
 import { fetchMainMenu, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -14,7 +14,8 @@ import {
   Toolbar,
   StyledLink,
   StyledMenu,
-  StyledSegment
+  StyledSegment,
+  FooterLink
 } from "./base/styles";
 //components
 import Dropdown from "../components/Dropdown";
@@ -84,7 +85,7 @@ class Header extends Component {
           secondary={!fixed}
         >
           <Box
-            width={5 / 6}
+            width={3 / 6}
             position="absolute"
             className="uk-position-z-index uk-hidden@s "
           >
@@ -154,6 +155,45 @@ class Header extends Component {
               Contact
             </Menu.Item>
           </Container>
+          <Box css={{ position: "fixed", top: 0, right: "0" }}>
+            <Menu.Item
+              as={FooterLink}
+              className="uk-nav-header"
+              color="whitish"
+              ml="auto"
+              href="https://github.com/mazurbeam/"
+              target="_blank"
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4",
+                marginLeft: "auto",
+                display: "inline-block"
+              }}
+            >
+              {" "}
+              <Icon inverted name="github" link size="big" />{" "}
+            </Menu.Item>
+            <Menu.Item
+              as={FooterLink}
+              className="uk-nav-header"
+              color="whitish"
+              href="https://www.linkedin.com/in/walter-mazur-02803453/"
+              target="_blank"
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4",
+                display: "inline-block"
+              }}
+            >
+              <Icon
+                className="icon-link"
+                name="linkedin"
+                link
+                inverted
+                size="big"
+              />
+            </Menu.Item>
+          </Box>
         </Menu>
       </Visibility>
     );

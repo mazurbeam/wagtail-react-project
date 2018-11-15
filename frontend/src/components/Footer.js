@@ -10,12 +10,17 @@ ${space}
 ${width}
 ${color}
 text-align: center;
-padding: 20px 20px;
+// padding: 10px 10px;
 text-decoration: none;
 `
 
 const Footer = () => (
-  <Segment basic className='Site-footer' textAlign='center'>
+  <Segment
+    basic
+    className='Site-footer'
+    textAlign='center'
+    style={{ position: '-webkit-sticky', bottom: 10 }}
+  >
     <FooterLink
       className='uk-nav-header'
       color='whitish'

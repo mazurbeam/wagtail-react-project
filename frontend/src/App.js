@@ -26,16 +26,6 @@ const App = ({ history }) => {
           <Routes />
         </ConnectedRouter>
       </Box>
-      <Box
-        height={50}
-        p={1}
-        className='Site-footer'
-        css={{
-          flex: 'none'
-        }}
-      >
-        <Footer />
-      </Box>
     </Flex>
   )
 }

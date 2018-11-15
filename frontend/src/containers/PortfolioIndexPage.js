@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Box, Heading, Text } from "rebass";
-import { Container, Grid } from "semantic-ui-react";
+import { Flex, Box, Heading, Text } from "rebass";
+import { Container } from "semantic-ui-react";
 
 import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 
 import { Wrapper } from "../components/base/styles";
-import DimmerCard from "../components/DimmerCard";
+// import DimmerCard from "../components/DimmerCard";
+import ProjectCard from "../components/ProjectCard";
 
 class PortfolioIndexPage extends Component {
   state = {
@@ -39,7 +40,7 @@ class PortfolioIndexPage extends Component {
 
   render() {
     const { loading } = this.state;
-    const { details, children } = this.props;
+    const { details, children, pathname } = this.props;
     console.log("portfolio props", this.props);
     return (
       <Wrapper>
@@ -61,17 +62,16 @@ class PortfolioIndexPage extends Component {
                   {details.intro}
                 </Text>
               </Box>
-              <Box color="" mx={[20, 40]} pt={[250]} className=" ">
-                {children && (
-                  <Grid centered stackable columns={2}>
-                    {children.items.map(child => (
-                      <Grid.Column key={child.id}>
-                        <DimmerCard item={child} />
-                      </Grid.Column>
-                    ))}
-                  </Grid>
-                )}
-              </Box>
+              <Flex alignItems="center" mx="auto" pt={[250]} className=" ">
+                <Box ml="auto" />
+                {children &&
+                  children.items.map(child => (
+                    <Box mx="auto" key={child.id} p={3}>
+                      <ProjectCard parent={pathname} item={child} />
+                    </Box>
+                  ))}
+                <Box mr="auto" />
+              </Flex>
             </Wrapper>
           )}
         </Container>

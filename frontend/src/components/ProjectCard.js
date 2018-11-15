@@ -14,24 +14,21 @@ class DimmerCard extends Component {
     const { item, parent } = this.props;
     console.log(item);
     const content = (
-      <div>
+      <Link
+        to={{
+          pathname: `${parent}/${item.meta.slug}`,
+          state: { type: item.meta.type, id: item.id }
+        }}
+      >
         <Header as="h2" inverted>
           {item.title}
         </Header>
         <Header as="h4" inverted>
           {item.intro}
         </Header>
-        <Link
-          to={{
-            pathname: `${parent}/${item.meta.slug}`,
-            state: { type: item.meta.type, id: item.id }
-          }}
-        >
-          <Button>More..</Button>
-        </Link>
-        <a href={item.project_url} target="_blank" rel="noopener noreferrer">
-          <Button primary>View</Button>
-        </a>
+
+        <Button>More..</Button>
+
         <Label.Group style={{ paddingTop: "20px" }}>
           {item.tags.map(tag => (
             <Label key={tag} basic color="blue">
@@ -39,7 +36,7 @@ class DimmerCard extends Component {
             </Label>
           ))}
         </Label.Group>
-      </div>
+      </Link>
     );
 
     return (

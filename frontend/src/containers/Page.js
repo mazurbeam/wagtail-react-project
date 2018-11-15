@@ -22,6 +22,7 @@ import StandardPage from "./StandardPage";
 import PortfolioIndexPage from "./PortfolioIndexPage";
 import ProjectIndexPage from "./ProjectIndexPage";
 import ProjectPage from "./ProjectPage";
+import PortfolioPage from "./PortfolioPage";
 
 class Page extends Component {
   state = {
@@ -70,6 +71,9 @@ class Page extends Component {
     }
     if (type === "projects.ProjectPage") {
       page = <ProjectPage id={id} type={type} />;
+    }
+    if (type === "portfolio.PortfolioPage") {
+      page = <PortfolioPage id={id} type={type} />;
     }
     return page;
   };

@@ -105,7 +105,7 @@ class ProjectPage extends Component {
                 className=""
                 mx="auto"
                 css={{
-                  maxWidth: "800px"
+                  maxWidth: "650px"
                 }}
               >
                 <Heading color="white" fontFamily="mont" fontSize="3em">
@@ -134,7 +134,7 @@ class ProjectPage extends Component {
                 mt={15}
                 mx="auto"
                 css={{
-                  maxWidth: "700px"
+                  maxWidth: "650px"
                 }}
               >
                 <AwesomeSlider

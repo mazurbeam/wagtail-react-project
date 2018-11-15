@@ -5,3 +5,4 @@ from api import views
 router = DefaultRouter()
 
 router.register(r'messages', views.ContactMessageView)
+router.register(r'project_tags', views.ProjectTagView)

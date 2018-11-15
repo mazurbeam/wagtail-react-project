@@ -65,7 +65,7 @@ class ProjectIndexPage extends Component {
                 <Box ml="auto" />
                 {children &&
                   children.items.map(child => (
-                    <Box key={child.id} p={1}>
+                    <Box key={child.id} p={3}>
                       <ProjectCard parent={pathname} item={child} />
                     </Box>
                   ))}

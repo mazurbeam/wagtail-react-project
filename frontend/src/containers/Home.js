@@ -151,7 +151,8 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   pages: state.page.pages,
-  details: reducers.refreshHome(state)
+  details: reducers.refreshHome(state),
+  menu: reducers.refreshMenu(state)
 });
 
 const mapDispatchToProps = dispatch => ({

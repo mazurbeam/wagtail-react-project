@@ -144,16 +144,11 @@ class ProjectPage extends Component {
                     marginLeft: "auto",
                     marginRight: "auto"
                   }}
-                />
-                {details.tags.map(tag => (
-                  <Text
-                    css={{ display: "inline-block" }}
-                    color="white"
-                    key={tag}
-                  >
-                    {tag}
-                  </Text>
-                ))}
+                >
+                  {details.gallery_images.map(image => (
+                    <div key={image.id} data-src={image.image_full.url} />
+                  ))}
+                </AwesomeSlider>
               </Box>
             </Box>
             {body.length > 0 && (

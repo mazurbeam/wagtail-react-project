@@ -20,6 +20,8 @@ import BlogIndexPage from "./BlogIndexPage";
 import BlogPage from "./BlogPage";
 import StandardPage from "./StandardPage";
 import PortfolioIndexPage from "./PortfolioIndexPage";
+import ProjectIndexPage from "./ProjectIndexPage";
+import ProjectPage from "./ProjectPage";
 
 class Page extends Component {
   state = {
@@ -62,6 +64,12 @@ class Page extends Component {
     }
     if (type === "portfolio.PortfolioIndexPage") {
       page = <PortfolioIndexPage id={id} type={type} />;
+    }
+    if (type === "projects.ProjectIndexPage") {
+      page = <ProjectIndexPage id={id} type={type} />;
+    }
+    if (type === "projects.ProjectPage") {
+      page = <ProjectPage id={id} type={type} />;
     }
     return page;
   };

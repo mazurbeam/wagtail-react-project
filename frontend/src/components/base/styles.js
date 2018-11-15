@@ -70,3 +70,13 @@ export const NavItem = props => (
 )
 
 NavItem.displayName = 'NavItem'
+
+export const Container = props => (
+  <Box
+    {...props}
+    mx='auto'
+    css={{
+      maxWidth: '1024px'
+    }}
+  />
+)

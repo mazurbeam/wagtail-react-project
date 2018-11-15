@@ -41,7 +41,7 @@ class DimmerCard extends Component {
         onMouseEnter={this.handleShow}
         onMouseLeave={this.handleHide}
         size="large"
-        src={item.gallery_images[0].image_full.url}
+        src={item.gallery_images[0].image_banner.url}
       />
     );
   }

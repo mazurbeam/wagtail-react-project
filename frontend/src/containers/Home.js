@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { Button, Flex, Card, Box, Heading, Text } from "rebass";
 import {
-  Container,
   Header,
+  Container,
   Placeholder,
   Icon,
   Image,
@@ -20,6 +20,7 @@ import { fetchAllPages, fetchHomePage } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 import renderPageBody from "../utils";
 
+import { Container as MyContainer } from "../components/base/styles";
 import PageAnimationWrapper from "../components/PageAnimationWrapper";
 
 class Home extends Component {
@@ -126,11 +127,22 @@ class Home extends Component {
           </Container>
         </Segment>
         {body.length > 0 && (
-          <Segment>
-            <Text fontFamily="work" fontSize={[1, 2]}>
-              {body}
-            </Text>
-          </Segment>
+          <MyContainer>
+            <Card
+              fontSize={6}
+              fontWeight="bold"
+              width={[1]}
+              p={5}
+              my={5}
+              bg=""
+              borderRadius={8}
+              boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+            >
+              <Text fontFamily="work" color="#8facb3" fontSize={[1, 2]}>
+                {body}
+              </Text>
+            </Card>
+          </MyContainer>
         )}
       </PageAnimationWrapper>
     );

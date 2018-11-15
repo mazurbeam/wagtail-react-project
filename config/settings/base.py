@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'pages',
     'pages.blog',
     'pages.portfolio',
+    'pages.projects',
     'api',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -165,7 +166,7 @@ WAGTAIL_SITE_NAME = "config"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://localhost:8000'
+WAGTAILAPI_BASE_URL = 'http://localhost:8000'
 
 
 # Webpack Settings

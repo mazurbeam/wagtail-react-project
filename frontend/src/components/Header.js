@@ -80,7 +80,7 @@ class Header extends Component {
           className="Site-header"
           invertfixed={fixed ? "top" : null}
           inverted
-          pointing={fixed}
+          bg="white"
           secondary={!fixed}
         >
           <Box
@@ -97,7 +97,6 @@ class Header extends Component {
           </Box>
           <Container textAlign="center" centered className="uk-visible@s">
             <Menu.Item
-              name="home"
               as={StyledLink}
               to={{
                 pathname: "/",
@@ -105,9 +104,11 @@ class Header extends Component {
               }}
               active={pathname === "/"}
               onClick={this.handleItemClick}
+              fontFamily="mont"
+              ml="auto"
               style={{
-                fontFamily: "Montserrat",
                 color: "#c0ccd4",
+                fontFamily: "Montserrat",
                 marginLeft: "auto"
               }}
             >

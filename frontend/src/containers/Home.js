@@ -4,9 +4,8 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { Flex, Card, Box, Heading, Text } from "rebass";
+import { Button, Flex, Card, Box, Heading, Text } from "rebass";
 import {
-  Button,
   Container,
   Header,
   Placeholder,
@@ -15,6 +14,7 @@ import {
   Segment,
   Loader
 } from "semantic-ui-react";
+import ProgressiveImage from "react-progressive-bg-image";
 
 import { fetchAllPages, fetchHomePage } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -90,7 +90,13 @@ class Home extends Component {
                   {details.subtitle}
                 </Heading>
                 {image ? (
-                  <Image alt="walter mazur" src={image.url} centered circular />
+                  <Image
+                    alt="walter mazur"
+                    src={image.url}
+                    centered
+                    circular
+                    transition="all 1s linear"
+                  />
                 ) : (
                   <Loader />
                 )}
@@ -106,19 +112,17 @@ class Home extends Component {
                 </Text>
               </div>
             )}
-
-            <Button
-              primary
-              size="large"
-              as={Link}
+            <Link
               to={{
                 pathname: "/contact",
                 state: { prev: true, index: 10 }
               }}
             >
-              Contact Me
-              <Icon className="angle right" />
-            </Button>
+              <Button>
+                Contact Me
+                <Icon className="angle right" />
+              </Button>
+            </Link>
           </Container>
         </Segment>
         {body.length > 0 && (

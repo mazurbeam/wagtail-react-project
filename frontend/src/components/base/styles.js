@@ -30,6 +30,10 @@ ${fontFamily}
 padding: 20px;
 text-decoration: none;
 display: inline-block;
+.active {
+    background-color: black !important;
+    
+}
 `
 
 export const Toolbar = props => (
@@ -37,7 +41,7 @@ export const Toolbar = props => (
     p={0}
     m={0}
     color='white'
-    bg='black'
+    bg=''
     height={1}
     alignItems='center'
     {...props}
@@ -50,7 +54,7 @@ export const Navbar = props => (
     m={0}
     width={1}
     color='white'
-    bg='black'
+    bg=''
     height={1}
     alignItems='center'
     css={{

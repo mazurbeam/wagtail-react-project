@@ -12,7 +12,8 @@ const initialState = {
   standard: [],
   blog: [],
   blogIndex: [],
-  errors: {}
+  errors: {},
+  documents: {}
 }
 
 export default (state = initialState, action) => {

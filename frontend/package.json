@@ -47,6 +47,8 @@
     "react-onclickoutside": "^6.7.1",
     "react-particle-animation": "^1.0.1",
     "react-particles-js": "^2.3.0",
+    "react-progressive-bg-image": "^3.0.0",
+    "react-progressive-image": "^0.6.0",
     "react-redux": "^5.0.7",
     "react-render-html": "^0.6.0",
     "react-router": "^4.3.1",

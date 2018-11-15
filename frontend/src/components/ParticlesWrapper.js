@@ -59,7 +59,11 @@ const ParcticlesWrapper = () => (
       style={{
         position: 'fixed',
         zIndex: '0',
-        backgroundColor: '#2f4454',
+        // backgroundColor: '#02aab0',
+        // backgroundImage: 'linear-gradient(to bottom,  #02aab0, #00cdac)',
+        backgroundColor: '#0f2027',
+        backgroundImage:
+          'linear-gradient(to bottom,  #0f2027, #203a43, #2c5364)',
         width: '100%',
         height: '100%'
       }}

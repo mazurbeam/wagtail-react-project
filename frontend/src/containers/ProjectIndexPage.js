@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Box, Heading, Text } from "rebass";
-import { Container, Grid } from "semantic-ui-react";
+import { Flex, Box, Heading, Text } from "rebass";
+import { Container } from "semantic-ui-react";
 
 import { fetchPageChildren, fetchPageWithId } from "../services/actions/page";
 import * as reducers from "../services/reducers";
@@ -61,17 +61,16 @@ class ProjectIndexPage extends Component {
                   {details.intro}
                 </Text>
               </Box>
-              <Box color="" mx={0} pt={[250]} className=" ">
-                {children && (
-                  <Grid centered stackable columns={2}>
-                    {children.items.map(child => (
-                      <Grid.Column key={child.id}>
-                        <ProjectCard parent={pathname} item={child} />
-                      </Grid.Column>
-                    ))}
-                  </Grid>
-                )}
-              </Box>
+              <Flex alignItems="center" mx="auto" pt={[250]} className=" ">
+                <Box ml="auto" />
+                {children &&
+                  children.items.map(child => (
+                    <Box key={child.id} p={1}>
+                      <ProjectCard parent={pathname} item={child} />
+                    </Box>
+                  ))}
+                <Box mr="auto" />
+              </Flex>
             </Wrapper>
           )}
         </Container>

@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { Segment, Icon, Image } from "semantic-ui-react";
+import { Segment, Icon } from "semantic-ui-react";
 import { Box, Text, Heading, Button } from "rebass";
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
 
 import {
   // fetchMainMenu,
@@ -99,7 +101,13 @@ class ProjectPage extends Component {
         ) : (
           <Container css={{ postion: "fixed", overflowY: "auto" }}>
             <Box className="" color="" pt={100}>
-              <Box className="">
+              <Box
+                className=""
+                mx="auto"
+                css={{
+                  maxWidth: "800px"
+                }}
+              >
                 <Heading color="white" fontFamily="mont" fontSize="3em">
                   {details.title}
                 </Heading>{" "}
@@ -117,17 +125,35 @@ class ProjectPage extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button bg="#009688" mt={20}>
+                  <Button mx="auto" bg="#009688" mt={20}>
                     View on Github <Icon className="github" />
                   </Button>
                 </a>
               </Box>
-              <Box mt={15}>
-                <Image
-                  alt="project"
-                  src={details.gallery_images[0].image_full.url}
-                  size="medium"
+              <Box
+                mt={15}
+                mx="auto"
+                css={{
+                  maxWidth: "700px"
+                }}
+              >
+                <AwesomeSlider
+                  css={{
+                    display: "inline-block",
+                    width: "50%",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
                 />
+                {details.tags.map(tag => (
+                  <Text
+                    css={{ display: "inline-block" }}
+                    color="white"
+                    key={tag}
+                  >
+                    {tag}
+                  </Text>
+                ))}
               </Box>
             </Box>
             {body.length > 0 && (

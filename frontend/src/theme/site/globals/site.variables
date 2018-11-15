@@ -2,7 +2,9 @@
      User Global Variables
 *******************************/
 
-@particlesColor: #00fff9
+@particlesColor: #00fff9;
+
+@backgroundColor: #2f4454;
 
 @headerFont        : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @pageFont          : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;

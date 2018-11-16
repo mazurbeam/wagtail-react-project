@@ -16,7 +16,8 @@
     "react-hot-loader/babel",
     "babel-plugin-transform-class-properties",
     "transform-object-rest-spread",
-    "react-css-modules"
+    "react-css-modules",
+    "babel-plugin-styled-components"
   ],
   "env": {
     "test": {

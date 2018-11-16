@@ -43,7 +43,7 @@ class Page extends Component {
     // });
     const { meta, match, location, menu } = this.props;
     // console.log("meta", meta);
-    let sideNav;
+    let sideNav = { next: "/contact", prev: "/" };
     if (menu.length > 0) {
       sideNav = getNextAndPrevPath(menu, location);
     }

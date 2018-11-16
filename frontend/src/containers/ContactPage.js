@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 import {
   Button,
@@ -53,6 +54,19 @@ class ContactPage extends Component {
 
     return (
       <PageAnimationWrapper>
+        <Box
+          color="white"
+          css={{ position: "absolute", left: "10px", top: "50vh", zIndex: 1 }}
+        >
+          <Link
+            to={{
+              pathname: `/`,
+              state: { prev: true, index: -1 }
+            }}
+          >
+            <Icon size="big" color="grey" className="chevron left" />
+          </Link>
+        </Box>
         <Segment
           textAlign="center"
           style={{ minHeight: 700, padding: "1em 0em" }}

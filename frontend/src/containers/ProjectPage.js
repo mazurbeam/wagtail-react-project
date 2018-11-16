@@ -85,8 +85,20 @@ class ProjectPage extends Component {
         ) : (
           <Container css={{ postion: "fixed", overflowY: "auto" }}>
             <Box className="" color="" pt={80}>
-              <Box ml={15} mb={40}>
-                <Link to="/projects">
+              <Box
+                ml={15}
+                mb={40}
+                css={[
+                  { position: "absolute", left: "10px", top: "30%", zIndex: 1 },
+                  { position: "absolute", left: "10px", top: "50%", zIndex: 1 }
+                ]}
+              >
+                <Link
+                  to={{
+                    pathname: "/projects",
+                    state: { prev: true, index: details.id }
+                  }}
+                >
                   <Popup
                     trigger={
                       <Icon inverted size="big" className="angle double left" />

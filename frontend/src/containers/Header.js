@@ -62,51 +62,12 @@ class Header extends Component {
     return menuWithIcons;
   };
 
-  getNextAndPrevPage = (menu, location) => {
-    const { pathname, state } = location;
-    const result = { prev: "", next: "" };
-    if (pathname === "/") {
-      result.next = {
-        pathname: `/${menu[0].meta.slug}`,
-        state: { prev: true, index: 0 }
-      };
-    } else {
-      for (let i = 0; i < menu.length; i += 1) {
-        if (pathname === `/${menu[i].meta.slug}`) {
-          if (i === 0) {
-            result.prev = {
-              pathname: `/`,
-              state: { prev: false, index: -1 }
-            };
-          } else {
-            result.prev = {
-              pathname: `/${menu[i - 1].meta.slug}`
-            };
-          }
-          if (i === menu.length - 1) {
-            result.next = {
-              pathname: "/contact",
-              state: { prev: true, index: 10 }
-            };
-          }
-        }
-      }
-    }
-
-    return result;
-  };
-
   render() {
-    const { pages, fixed } = this.state;
+    const { pages, fixed, activeItem } = this.state;
     const { items } = pages;
     const { menu, getMenu, pathname, location } = this.props;
     const iconMenu = this.addIcons(menu);
-    let sideNav;
-    if (menu.length > 0) {
-      sideNav = this.getNextAndPrevPage(menu, location);
-    }
-
-    console.log("header sidenav", sideNav);
+    console.log("active item", activeItem);
     // console.log("icon menu", iconMenu);
     return (
       <Visibility

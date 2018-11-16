@@ -20,7 +20,7 @@ import { Wrapper, Container } from "../components/base/styles";
 import Loading from "../components/Loading";
 // import Dropdown from '../components/Dropdown';
 
-import renderPageBody from "../utils";
+import { renderStreamField } from "../utils";
 
 class PortfolioPage extends Component {
   state = {
@@ -91,7 +91,7 @@ class PortfolioPage extends Component {
     // }
     let body = [];
     if (details) {
-      body = renderPageBody(details.body);
+      body = renderStreamField(details.body);
     }
 
     return (

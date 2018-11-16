@@ -16,7 +16,7 @@ import {
   fetchPageWithId
 } from "../services/actions/page";
 import * as reducers from "../services/reducers";
-import renderPageBody from "../utils";
+import { renderStreamField } from "../utils";
 
 const Wrapper = styled.div``;
 
@@ -70,7 +70,7 @@ class StandardPage extends Component {
     // }
     let body = [];
     if (details) {
-      body = renderPageBody(details.body);
+      body = renderStreamField(details.body);
     }
 
     return (

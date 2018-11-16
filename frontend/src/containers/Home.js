@@ -18,7 +18,7 @@ import ProgressiveImage from "react-progressive-bg-image";
 
 import { fetchAllPages, fetchHomePage } from "../services/actions/page";
 import * as reducers from "../services/reducers";
-import renderPageBody from "../utils";
+import { renderStreamField } from "../utils";
 
 import { Container as MyContainer } from "../components/base/styles";
 import PageAnimationWrapper from "../components/PageAnimationWrapper";
@@ -46,7 +46,7 @@ class Home extends Component {
     const image = details.image_thumbnail;
     let body = [];
     if (details.body) {
-      body = renderPageBody(details.body);
+      body = renderStreamField(details.body);
     }
     // console.log("home body", details.body);
     return (

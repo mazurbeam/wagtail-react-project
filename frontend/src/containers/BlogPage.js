@@ -18,7 +18,7 @@ import { Wrapper } from "../components/base/styles";
 import Loading from "../components/Loading";
 // import Dropdown from '../components/Dropdown';
 
-import renderPageBody from "../utils";
+import { renderStreamField } from "../utils";
 
 class BlogPage extends Component {
   state = {
@@ -89,7 +89,7 @@ class BlogPage extends Component {
     // }
     let body = [];
     if (details) {
-      body = renderPageBody(details.body);
+      body = renderStreamField(details.body);
     }
 
     return (

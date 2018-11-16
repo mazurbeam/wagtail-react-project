@@ -20,7 +20,7 @@ import { Wrapper, Container, Icon } from "../components/base/styles";
 import Loading from "../components/Loading";
 // import Dropdown from '../components/Dropdown';
 
-import renderPageBody from "../utils";
+import { renderStreamField } from "../utils";
 
 class ProjectPage extends Component {
   state = {
@@ -75,7 +75,7 @@ class ProjectPage extends Component {
     const { details } = this.props;
     let body = [];
     if (details) {
-      body = renderPageBody(details.body);
+      body = renderStreamField(details.body);
     }
 
     return (

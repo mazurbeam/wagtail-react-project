@@ -7,24 +7,36 @@ import { Box } from 'rebass'
 const NextPrevNav = ({ locations }) => (
   <Fragment>
     <Box
-      className=''
+      className='uk-visible@s'
       color='white'
-      css={[
-        { position: 'absolute', left: '10px', top: '50%', zIndex: 1 },
-        { position: 'absolute', left: '10px', top: '15%', zIndex: 1 }
-      ]}
+      css={{ position: 'absolute', left: '10px', top: '50%', zIndex: 1 }}
     >
       <Link to={locations.prev}>
         <Icon size='big' color='grey' className='chevron left' />
       </Link>
     </Box>
     <Box
-      className=''
+      className='uk-visible@s'
       color='white'
-      css={[
-        { position: 'absolute', right: '10px', top: '50%', zIndex: 1 },
-        { position: 'absolute', right: '10px', top: '15%', zIndex: 1 }
-      ]}
+      css={{ position: 'absolute', right: '10px', top: '50%', zIndex: 1 }}
+    >
+      <Link to={locations.next}>
+        <Icon size='big' color='grey' className='chevron right' />
+      </Link>
+    </Box>
+    <Box
+      className='uk-hidden@s'
+      color='white'
+      css={{ position: 'absolute', left: '10px', top: '15%', zIndex: 1 }}
+    >
+      <Link to={locations.prev}>
+        <Icon size='big' color='grey' className='chevron left' />
+      </Link>
+    </Box>
+    <Box
+      className='uk-hidden@s'
+      color='white'
+      css={{ position: 'absolute', right: '10px', top: '15%', zIndex: 1 }}
     >
       <Link to={locations.next}>
         <Icon size='big' color='grey' className='chevron right' />

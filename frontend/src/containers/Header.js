@@ -73,6 +73,7 @@ class Header extends Component {
       <Visibility
         once={false}
         onBottomPassed={this.showFixedMenu}
+        // pixelsPassed
         onBottomPassedReverse={this.hideFixedMenu}
       >
         <Menu
@@ -158,7 +159,12 @@ class Header extends Component {
             </Menu.Item>
           </Container>
           <Box
-            css={{ position: "absolute", top: 0, right: "0", height: "30px" }}
+            css={{
+              position: "absolute",
+              top: "6px",
+              right: "0",
+              height: "30px"
+            }}
           >
             <FooterLink
               className=""

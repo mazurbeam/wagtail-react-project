@@ -156,47 +156,49 @@ class Header extends Component {
             >
               Contact
             </Menu.Item>
-
-            <Box css={{ position: "fixed", top: 0, right: "0" }}>
-              <Menu.Item
-                as={FooterLink}
-                className="uk-nav-header"
-                color="whitish"
-                ml="auto"
-                href="https://github.com/mazurbeam/"
-                target="_blank"
-                style={{
-                  fontFamily: "Montserrat",
-                  color: "#c0ccd4",
-                  marginLeft: "auto",
-                  display: "inline-block"
-                }}
-              >
-                {" "}
-                <Icon inverted name="github" link size="large" />{" "}
-              </Menu.Item>
-              <Menu.Item
-                as={FooterLink}
-                className="uk-nav-header"
-                color="whitish"
-                href="https://www.linkedin.com/in/walter-mazur-02803453/"
-                target="_blank"
-                style={{
-                  fontFamily: "Montserrat",
-                  color: "#c0ccd4",
-                  display: "inline-block"
-                }}
-              >
-                <Icon
-                  className="icon-link"
-                  name="linkedin"
-                  link
-                  inverted
-                  size="large"
-                />
-              </Menu.Item>
-            </Box>
           </Container>
+          <Box
+            css={{ position: "absolute", top: 0, right: "0", height: "30px" }}
+          >
+            <FooterLink
+              className=""
+              color="whitish"
+              ml="auto"
+              href="https://github.com/mazurbeam/"
+              target="_blank"
+              style={{
+                fontFamily: "Montserrat",
+                padding: 10,
+                margin: 0,
+                color: "#c0ccd4",
+                marginLeft: "auto",
+                display: "inline-block"
+              }}
+            >
+              {" "}
+              <Icon inverted name="github" size="large" />{" "}
+            </FooterLink>
+            <FooterLink
+              className=""
+              color="whitish"
+              href="https://www.linkedin.com/in/walter-mazur-02803453/"
+              target="_blank"
+              style={{
+                fontFamily: "Montserrat",
+                color: "#c0ccd4",
+                display: "inline-block",
+                padding: 10
+              }}
+            >
+              <Icon
+                className="icon-link"
+                name="linkedin"
+                link
+                inverted
+                size="large"
+              />
+            </FooterLink>
+          </Box>
         </Menu>
       </Visibility>
     );

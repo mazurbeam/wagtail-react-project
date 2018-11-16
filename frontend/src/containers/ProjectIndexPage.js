@@ -14,7 +14,9 @@ class ProjectIndexPage extends Component {
     loading: true
   };
 
-  componentWillMount() {
+  componentWillMount() {}
+
+  componentDidMount() {
     this.setState({ loading: true });
     const {
       id,
@@ -31,9 +33,6 @@ class ProjectIndexPage extends Component {
     if (!children) {
       getPageChildren(id, "projects.ProjectPage");
     }
-  }
-
-  componentDidMount() {
     this.setState({ loading: false });
   }
 
@@ -61,15 +60,22 @@ class ProjectIndexPage extends Component {
                   {details.intro}
                 </Text>
               </Box>
-              <Flex alignItems="center" mx="auto" pt={[250]} className=" ">
-                <Box ml="auto" />
+              <Flex
+                flexWrap="wrap"
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="center"
+                mx="auto"
+                pt={[250]}
+                className=" "
+                width={1}
+              >
                 {children &&
                   children.items.map(child => (
                     <Box key={child.id} p={3}>
                       <ProjectCard parent={pathname} item={child} />
                     </Box>
                   ))}
-                <Box mr="auto" />
               </Flex>
             </Wrapper>
           )}

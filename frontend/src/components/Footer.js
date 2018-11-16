@@ -2,17 +2,8 @@ import React from 'react'
 
 // import { Box } from 'rebass';
 import { Icon, Segment } from 'semantic-ui-react'
-import styled from 'styled-components'
-import { color, space, width } from 'styled-system'
 
-const FooterLink = styled.a`
-${space}
-${width}
-${color}
-text-align: center;
-// padding: 10px 10px;
-text-decoration: none;
-`
+import { FooterLink } from './base/styles'
 
 const Footer = () => (
   <Segment

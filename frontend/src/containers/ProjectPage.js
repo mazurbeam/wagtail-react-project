@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
-import { Segment, Icon } from "semantic-ui-react";
+import { Segment, Popup } from "semantic-ui-react";
 import { Box, Text, Heading, Button } from "rebass";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
@@ -16,7 +16,7 @@ import {
 import * as reducers from "../services/reducers";
 
 // components
-import { Wrapper, Container } from "../components/base/styles";
+import { Wrapper, Container, Icon } from "../components/base/styles";
 import Loading from "../components/Loading";
 // import Dropdown from '../components/Dropdown';
 
@@ -27,16 +27,15 @@ class ProjectPage extends Component {
     loading: true
   };
 
-  componentWillMount() {
+  componentWillMount() {}
+
+  componentDidMount() {
     this.setState({ loading: true });
 
     const { id, getPageDetails } = this.props;
     console.log("willmount props", this.props);
 
     getPageDetails(id);
-  }
-
-  componentDidMount() {
     this.setState({ loading: false });
   }
 
@@ -72,23 +71,8 @@ class ProjectPage extends Component {
   };
 
   render() {
-    console.log("projectpage props", this.props);
-
     const { loading } = this.state;
-    // console.log(page);
     const { details } = this.props;
-    // const iconmenu = this.addIcons(menu)
-
-    // const detailsHasTags = Object.prototype.hasOwnProperty.call(
-    //   details,
-    //   "tags"
-    // );
-    // if (!detailsHasTags) {
-    //   details.title = "";
-    //   details.intro = "";
-    //   details.tags = [];
-    //   details.body = [];
-    // }
     let body = [];
     if (details) {
       body = renderPageBody(details.body);
@@ -100,7 +84,17 @@ class ProjectPage extends Component {
           <Loading />
         ) : (
           <Container css={{ postion: "fixed", overflowY: "auto" }}>
-            <Box className="" color="" pt={100}>
+            <Box className="" color="" pt={80}>
+              <Box ml={15} mb={40}>
+                <Link to="/projects">
+                  <Popup
+                    trigger={
+                      <Icon inverted size="big" className="angle double left" />
+                    }
+                    content="Back to projects"
+                  />
+                </Link>
+              </Box>
               <Box
                 className=""
                 mx="auto"
@@ -108,7 +102,11 @@ class ProjectPage extends Component {
                   maxWidth: "650px"
                 }}
               >
-                <Heading color="white" fontFamily="mont" fontSize="3em">
+                <Heading
+                  color="white"
+                  fontFamily="mont"
+                  fontSize={["2.3em", "3em"]}
+                >
                   {details.title}
                 </Heading>{" "}
                 <Text

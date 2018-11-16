@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
-import { Segment, Icon } from "semantic-ui-react";
+import { Segment, Icon, Popup } from "semantic-ui-react";
 import { Box, Text, Heading, Button } from "rebass";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
@@ -101,6 +101,16 @@ class PortfolioPage extends Component {
         ) : (
           <Container css={{ postion: "fixed", overflowY: "auto" }}>
             <Box className="" color="" pt={100}>
+              <Box ml={15} mb={40}>
+                <Link to="/portfolio">
+                  <Popup
+                    trigger={
+                      <Icon inverted size="big" className="angle double left" />
+                    }
+                    content="Back to portfolio"
+                  />
+                </Link>
+              </Box>
               <Box
                 className=""
                 mx="auto"

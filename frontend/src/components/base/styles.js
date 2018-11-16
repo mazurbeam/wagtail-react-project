@@ -4,13 +4,23 @@ import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 import { color, space, width, fontFamily } from 'styled-system'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Icon as SemanticIcon } from 'semantic-ui-react'
 
 export const StyledMenu = styled(Menu)`
 ${space}
 ${width}
 ${color}
 ${fontFamily}
+`
+
+export const Icon = styled(SemanticIcon)`
+${space}
+${width}
+${color}
+&:hover {
+  width: "1.5em",
+  height: "1.2em"
+}
 `
 
 export const FooterLink = styled.a`

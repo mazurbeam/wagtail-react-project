@@ -15,7 +15,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Popup
 } from "semantic-ui-react";
 import { Box, Heading, Card, Text } from "rebass";
 import { reset } from "redux-form";
@@ -56,7 +56,7 @@ class ContactPage extends Component {
       <PageAnimationWrapper>
         <Box
           color="white"
-          css={{ position: "absolute", left: "10px", top: "50vh", zIndex: 1 }}
+          css={{ position: "absolute", left: "10px", top: "18vh", zIndex: 1 }}
         >
           <Link
             to={{
@@ -64,7 +64,13 @@ class ContactPage extends Component {
               state: { prev: true, index: -1 }
             }}
           >
-            <Icon size="big" color="grey" className="chevron left" />
+            <Popup
+              trigger={
+                <Icon size="big" color="grey" className="chevron left" />
+              }
+              inverted
+              content="Home"
+            />
           </Link>
         </Box>
         <Segment

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import { Link } from 'react-router-dom'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Popup } from 'semantic-ui-react'
 import { Box } from 'rebass'
 
 const NextPrevNav = ({ locations }) => (
@@ -12,7 +12,11 @@ const NextPrevNav = ({ locations }) => (
       css={{ position: 'absolute', left: '10px', top: '50%', zIndex: 1 }}
     >
       <Link to={locations.prev}>
-        <Icon size='big' color='grey' className='chevron left' />
+        <Popup
+          inverted
+          trigger={<Icon size='big' color='grey' className='chevron left' />}
+          content={locations.prevTitle}
+        />
       </Link>
     </Box>
     <Box
@@ -21,7 +25,11 @@ const NextPrevNav = ({ locations }) => (
       css={{ position: 'absolute', right: '10px', top: '50%', zIndex: 1 }}
     >
       <Link to={locations.next}>
-        <Icon size='big' color='grey' className='chevron right' />
+        <Popup
+          inverted
+          trigger={<Icon size='big' color='grey' className='chevron right' />}
+          content={locations.nextTitle}
+        />
       </Link>
     </Box>
     <Box
@@ -30,7 +38,11 @@ const NextPrevNav = ({ locations }) => (
       css={{ position: 'absolute', left: '10px', top: '15%', zIndex: 1 }}
     >
       <Link to={locations.prev}>
-        <Icon size='big' color='grey' className='chevron left' />
+        <Popup
+          inverted
+          trigger={<Icon size='big' color='grey' className='chevron left' />}
+          content={locations.prevTitle}
+        />
       </Link>
     </Box>
     <Box
@@ -39,7 +51,11 @@ const NextPrevNav = ({ locations }) => (
       css={{ position: 'absolute', right: '10px', top: '15%', zIndex: 1 }}
     >
       <Link to={locations.next}>
-        <Icon size='big' color='grey' className='chevron right' />
+        <Popup
+          inverted
+          trigger={<Icon size='big' color='grey' className='chevron right' />}
+          content={locations.nextTitle}
+        />
       </Link>
     </Box>
   </Fragment>

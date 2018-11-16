@@ -12,7 +12,8 @@ import {
   Icon,
   Image,
   Segment,
-  Loader
+  Loader,
+  Popup
 } from "semantic-ui-react";
 import ProgressiveImage from "react-progressive-bg-image";
 
@@ -61,7 +62,13 @@ class Home extends Component {
               state: { prev: true, index: -1 }
             }}
           >
-            <Icon size="big" color="grey" className="chevron right" />
+            <Popup
+              inverted
+              trigger={
+                <Icon size="big" color="grey" className="chevron right" />
+              }
+              content="About Me"
+            />
           </Link>
         </Box>
         <Segment

@@ -1,10 +1,15 @@
 const getNextAndPrevPath = (menu, location) => {
-  const { pathname, state } = location
-  const result = { prev: '', next: '' }
+  const { pathname } = location
+  const result = {
+    prev: '',
+    prevTitle: 'Home',
+    next: '',
+    nextTitle: 'Contact'
+  }
   if (pathname === '/') {
     result.prev = {
       pathname: '/contact',
-      state: { prev: true, index: 10 }
+      state: { prev: false, index: 10 }
     }
     result.next = {
       pathname: `/${menu[0].meta.slug}`,
@@ -20,18 +25,21 @@ const getNextAndPrevPath = (menu, location) => {
           }
           result.next = {
             pathname: `/${menu[i + 1].meta.slug}`,
-            state: { prev: state ? state.index < i : false }
+            state: { prev: true }
           }
+          result.nextTitle = menu[i + 1].title
         } else {
           result.prev = {
             pathname: `/${menu[i - 1].meta.slug}`,
-            state: { prev: state ? state.index < i : false }
+            state: { prev: false }
           }
+          result.prevTitle = menu[i - 1].title
           if (i < menu.length - 1) {
             result.next = {
               pathname: `/${menu[i + 1].meta.slug}`,
-              state: { prev: state ? state.index < i : false }
+              state: { prev: true }
             }
+            result.nextTitle = menu[i + 1].title
           }
         }
         if (i === menu.length - 1) {

@@ -15,7 +15,7 @@ import {
 } from "../services/actions/page";
 import Loading from "../components/Loading";
 import PageAnimationWrapper from "../components/PageAnimationWrapper";
-
+import NextPrevNav from "../components/NextPrevNav";
 import BlogIndexPage from "./BlogIndexPage";
 import BlogPage from "./BlogPage";
 import StandardPage from "./StandardPage";
@@ -78,15 +78,66 @@ class Page extends Component {
     return page;
   };
 
+  getNextAndPrevPage = (menu, location) => {
+    const { pathname, state } = location;
+    const result = { prev: "", next: "" };
+    if (pathname === "/") {
+      result.prev = null;
+      result.next = {
+        pathname: `/${menu[0].meta.slug}`,
+        state: { prev: true, index: 0 }
+      };
+    } else {
+      for (let i = 0; i < menu.length; i += 1) {
+        if (pathname === `/${menu[i].meta.slug}`) {
+          if (i === 0) {
+            result.prev = {
+              pathname: `/`,
+              state: { prev: false, index: -1 }
+            };
+            result.next = {
+              pathname: `/${menu[i + 1].meta.slug}`,
+              state: { prev: state ? state.index < i : false }
+            };
+          } else {
+            result.prev = {
+              pathname: `/${menu[i - 1].meta.slug}`,
+              state: { prev: state ? state.index < i : false }
+            };
+            if (i < menu.length - 1) {
+              result.next = {
+                pathname: `/${menu[i + 1].meta.slug}`,
+                state: { prev: state ? state.index < i : false }
+              };
+            }
+          }
+          if (i === menu.length - 1) {
+            result.next = {
+              pathname: "/contact",
+              state: { prev: true, index: 10 }
+            };
+          }
+        }
+      }
+    }
+
+    return result;
+  };
+
   render() {
     const { loading } = this.state;
     // const cx = classNames({
     //   page: true,
     //   "page--prev": this.state && state.prev
     // });
-    const { meta, match } = this.props;
+    const { meta, match, location, menu } = this.props;
     console.log("meta", meta);
+    let sideNav;
+    if (menu.length > 0) {
+      sideNav = this.getNextAndPrevPage(menu, location);
+    }
 
+    console.log("page sidenav", sideNav);
     const isChildPage = Object.prototype.hasOwnProperty.call(
       match.params,
       "child"
@@ -109,6 +160,7 @@ class Page extends Component {
     }
     return (
       <PageAnimationWrapper>
+        {!isChildPage && <NextPrevNav locations={sideNav} />}
         {loading && ready ? PageType : PageType}
       </PageAnimationWrapper>
     );
@@ -117,7 +169,9 @@ class Page extends Component {
 
 const mapStateToProps = state => ({
   pathname: state.router.location.pathname,
-  meta: reducers.refreshPageMeta(state)
+  meta: reducers.refreshPageMeta(state),
+  location: state.router.location,
+  menu: reducers.refreshMenu(state)
 });
 
 const mapDispatchToProps = dispatch => ({

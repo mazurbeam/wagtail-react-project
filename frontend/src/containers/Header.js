@@ -62,11 +62,51 @@ class Header extends Component {
     return menuWithIcons;
   };
 
+  getNextAndPrevPage = (menu, location) => {
+    const { pathname, state } = location;
+    const result = { prev: "", next: "" };
+    if (pathname === "/") {
+      result.next = {
+        pathname: `/${menu[0].meta.slug}`,
+        state: { prev: true, index: 0 }
+      };
+    } else {
+      for (let i = 0; i < menu.length; i += 1) {
+        if (pathname === `/${menu[i].meta.slug}`) {
+          if (i === 0) {
+            result.prev = {
+              pathname: `/`,
+              state: { prev: false, index: -1 }
+            };
+          } else {
+            result.prev = {
+              pathname: `/${menu[i - 1].meta.slug}`
+            };
+          }
+          if (i === menu.length - 1) {
+            result.next = {
+              pathname: "/contact",
+              state: { prev: true, index: 10 }
+            };
+          }
+        }
+      }
+    }
+
+    return result;
+  };
+
   render() {
     const { pages, fixed } = this.state;
     const { items } = pages;
     const { menu, getMenu, pathname, location } = this.props;
     const iconMenu = this.addIcons(menu);
+    let sideNav;
+    if (menu.length > 0) {
+      sideNav = this.getNextAndPrevPage(menu, location);
+    }
+
+    console.log("header sidenav", sideNav);
     // console.log("icon menu", iconMenu);
     return (
       <Visibility
@@ -80,7 +120,6 @@ class Header extends Component {
           className="Site-header"
           invertfixed={fixed ? "top" : null}
           inverted
-          bg="white"
           secondary={!fixed}
         >
           <Box
@@ -156,46 +195,47 @@ class Header extends Component {
             >
               Contact
             </Menu.Item>
+
+            <Box css={{ position: "fixed", top: 0, right: "0" }}>
+              <Menu.Item
+                as={FooterLink}
+                className="uk-nav-header"
+                color="whitish"
+                ml="auto"
+                href="https://github.com/mazurbeam/"
+                target="_blank"
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#c0ccd4",
+                  marginLeft: "auto",
+                  display: "inline-block"
+                }}
+              >
+                {" "}
+                <Icon inverted name="github" link size="large" />{" "}
+              </Menu.Item>
+              <Menu.Item
+                as={FooterLink}
+                className="uk-nav-header"
+                color="whitish"
+                href="https://www.linkedin.com/in/walter-mazur-02803453/"
+                target="_blank"
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#c0ccd4",
+                  display: "inline-block"
+                }}
+              >
+                <Icon
+                  className="icon-link"
+                  name="linkedin"
+                  link
+                  inverted
+                  size="large"
+                />
+              </Menu.Item>
+            </Box>
           </Container>
-          <Box css={{ position: "fixed", top: 0, right: "0" }}>
-            <Menu.Item
-              as={FooterLink}
-              className="uk-nav-header"
-              color="whitish"
-              ml="auto"
-              href="https://github.com/mazurbeam/"
-              target="_blank"
-              style={{
-                fontFamily: "Montserrat",
-                color: "#c0ccd4",
-                marginLeft: "auto",
-                display: "inline-block"
-              }}
-            >
-              {" "}
-              <Icon inverted name="github" link size="large" />{" "}
-            </Menu.Item>
-            <Menu.Item
-              as={FooterLink}
-              className="uk-nav-header"
-              color="whitish"
-              href="https://www.linkedin.com/in/walter-mazur-02803453/"
-              target="_blank"
-              style={{
-                fontFamily: "Montserrat",
-                color: "#c0ccd4",
-                display: "inline-block"
-              }}
-            >
-              <Icon
-                className="icon-link"
-                name="linkedin"
-                link
-                inverted
-                size="large"
-              />
-            </Menu.Item>
-          </Box>
         </Menu>
       </Visibility>
     );

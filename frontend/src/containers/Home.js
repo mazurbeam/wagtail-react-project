@@ -51,9 +51,22 @@ class Home extends Component {
     console.log("home body", details.body);
     return (
       <PageAnimationWrapper>
+        <Box
+          color="white"
+          css={{ position: "fixed", right: "10px", top: "50%", zIndex: 1 }}
+        >
+          <Link
+            to={{
+              pathname: `/about`,
+              state: { prev: true, index: -1 }
+            }}
+          >
+            <Icon size="big" inverted className="chevron right" />
+          </Link>
+        </Box>
         <Segment
           textAlign="center"
-          // style={{ minHeight: 700, padding: "1em 0em" }}
+          style={{ minHeight: 700, padding: "1em 0em" }}
           vertical
           basic
         >

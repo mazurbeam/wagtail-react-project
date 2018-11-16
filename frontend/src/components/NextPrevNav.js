@@ -7,6 +7,7 @@ import { Box } from 'rebass'
 const NextPrevNav = ({ locations }) => (
   <Fragment>
     <Box
+      className='uk-visible@s'
       color='white'
       css={[
         { position: 'absolute', left: '10px', top: '30%', zIndex: 1 },
@@ -18,6 +19,7 @@ const NextPrevNav = ({ locations }) => (
       </Link>
     </Box>
     <Box
+      className='uk-visible@s'
       color='white'
       css={[
         { position: 'absolute', right: '10px', top: '30%', zIndex: 1 },

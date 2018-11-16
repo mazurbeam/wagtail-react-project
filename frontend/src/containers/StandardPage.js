@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 /* eslint no-unused-vars: ["off", { "caughtErrorsIgnorePattern": "^ignore" }] */
 
-import { Segment, Container, Grid } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 
 import { Box, Heading, Card, Text } from "rebass";
 
@@ -17,8 +17,7 @@ import {
 } from "../services/actions/page";
 import * as reducers from "../services/reducers";
 import { renderStreamField } from "../utils";
-
-const Wrapper = styled.div``;
+import { Wrapper, Container } from "../components/base/styles";
 
 class StandardPage extends Component {
   state = {
@@ -75,37 +74,42 @@ class StandardPage extends Component {
 
     return (
       <Wrapper>
-        <Segment
-          textAlign="center"
-          style={{ minHeight: 700, padding: "1em 0em" }}
-          vertical
-        >
-          {!details ? (
-            <Text>Loading...</Text>
-          ) : (
-            <Wrapper>
-              <Box pt={80} className="uk-position-large uk-position-top-center">
-                <Heading fontFamily="mont" color="white" fontSize="3.5em">
-                  {details.title}
-                </Heading>
-              </Box>
-              <Wrapper className="uk-section-default">
-                <Container>
-                  <Box color="slate" bg="white" p={3} mt={[200]} mx={[0, 10]}>
-                    <Heading
-                      fontSize={2}
-                      fontFamily="mont"
-                      dangerouslySetInnerHTML={{ __html: details.intro }}
-                    />
-                  </Box>
-                  <Text fontFamily="work" p={20}>
-                    {body}
-                  </Text>
-                </Container>
+        <Container>
+          <Segment
+            textAlign="center"
+            style={{ minHeight: 700, padding: "1em 0em" }}
+            vertical
+          >
+            {!details ? (
+              <Text>Loading...</Text>
+            ) : (
+              <Wrapper>
+                <Box
+                  pt={80}
+                  className="uk-position-large uk-position-top-center"
+                >
+                  <Heading fontFamily="mont" color="white" fontSize="3.5em">
+                    {details.title}
+                  </Heading>
+                </Box>
+                <Wrapper className="uk-section-default">
+                  <Container>
+                    <Box color="slate" bg="white" p={3} mt={[200]} mx={[0, 10]}>
+                      <Heading
+                        fontSize={2}
+                        fontFamily="mont"
+                        dangerouslySetInnerHTML={{ __html: details.intro }}
+                      />
+                    </Box>
+                    <Text fontFamily="work" p={20}>
+                      {body}
+                    </Text>
+                  </Container>
+                </Wrapper>
               </Wrapper>
-            </Wrapper>
-          )}
-        </Segment>
+            )}
+          </Segment>
+        </Container>
       </Wrapper>
     );
   }

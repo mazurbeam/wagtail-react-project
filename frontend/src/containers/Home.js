@@ -34,26 +34,26 @@ class Home extends Component {
     getHomeDetails();
     getPages();
     const { page } = this.state;
-    console.log("page", page);
+    // console.log("page", page);
     this.setState({ loading: false });
   }
 
   render() {
     const { loading } = this.state;
     const { pages, details } = this.props;
-    console.log("pages in home render", pages);
+    // console.log("pages in home render", pages);
 
     const image = details.image_thumbnail;
     let body = [];
     if (details.body) {
       body = renderPageBody(details.body);
     }
-    console.log("home body", details.body);
+    // console.log("home body", details.body);
     return (
       <PageAnimationWrapper>
         <Box
           color="white"
-          css={{ position: "fixed", right: "10px", top: "50%", zIndex: 1 }}
+          css={{ position: "absolute", right: "10px", top: "50vh", zIndex: 1 }}
         >
           <Link
             to={{
@@ -61,7 +61,7 @@ class Home extends Component {
               state: { prev: true, index: -1 }
             }}
           >
-            <Icon size="big" inverted className="chevron right" />
+            <Icon size="big" color="grey" className="chevron right" />
           </Link>
         </Box>
         <Segment

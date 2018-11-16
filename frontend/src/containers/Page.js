@@ -82,10 +82,13 @@ class Page extends Component {
     const { pathname, state } = location;
     const result = { prev: "", next: "" };
     if (pathname === "/") {
-      result.prev = null;
+      result.prev = {
+        pathname: "/contact",
+        state: { prev: true, index: 10 }
+      };
       result.next = {
         pathname: `/${menu[0].meta.slug}`,
-        state: { prev: true, index: 0 }
+        state: { prev: true, index: -1 }
       };
     } else {
       for (let i = 0; i < menu.length; i += 1) {
@@ -131,13 +134,13 @@ class Page extends Component {
     //   "page--prev": this.state && state.prev
     // });
     const { meta, match, location, menu } = this.props;
-    console.log("meta", meta);
+    // console.log("meta", meta);
     let sideNav;
     if (menu.length > 0) {
       sideNav = this.getNextAndPrevPage(menu, location);
     }
 
-    console.log("page sidenav", sideNav);
+    // console.log("page sidenav", sideNav);
     const isChildPage = Object.prototype.hasOwnProperty.call(
       match.params,
       "child"

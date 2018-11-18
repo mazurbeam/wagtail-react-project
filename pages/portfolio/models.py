@@ -15,80 +15,106 @@ from wagtail.images.api.fields import ImageRenditionField
 
 from pages.blocks import BaseStreamBlock
 
+
 class PortfolioPageTag(TaggedItemBase):
-	content_object = ParentalKey('portfolio.PortfolioPage', on_delete=models.CASCADE, related_name='tagged_items')
+    content_object = ParentalKey(
+        'portfolio.PortfolioPage', on_delete=models.CASCADE, related_name='tagged_items')
 
 
 class PortfolioIndexPage(Page):
-	intro = models.CharField(max_length=1000, blank=True)
-	icon = models.CharField(max_length=20, blank=True)
+    intro = models.CharField(max_length=1000, blank=True)
+    icon = models.CharField(max_length=20, blank=True)
 
-	api_fields = [
-		APIField('intro'),
-		APIField('icon'),
-	]
-	content_panels = Page.content_panels + [
-		FieldPanel('intro', classname="full"),
-		FieldPanel('icon'),
+    api_fields = [
+        APIField('intro'),
+        APIField('icon'),
+    ]
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        FieldPanel('icon'),
 
-	]
+    ]
 
 
 class PortfolioPage(Page):
-	project_url = models.CharField(max_length=250, blank=True)
-	intro = models.CharField(max_length=250, blank=True)
-	body = StreamField(
-		BaseStreamBlock(), verbose_name="Page body", blank=True
-	)
-	tags = ClusterTaggableManager(through=PortfolioPageTag, blank=True)
+    project_url = models.CharField(max_length=250, blank=True)
+    intro = models.CharField(max_length=250, blank=True)
+    body = StreamField(
+        BaseStreamBlock(), verbose_name="Page body", blank=True
+    )
+    about = models.TextField(blank=True)
+    tags = ClusterTaggableManager(through=PortfolioPageTag, blank=True)
 
-	def main_image(self):
-		gallery_item = self.gallery_images.first()
-		if gallery_item:
-			return gallery_item.image
-		else:
-			return None
+    def main_image(self):
+        gallery_item = self.gallery_images.first()
+        if gallery_item:
+            return gallery_item.image
+        else:
+            return None
 
-	search_fields = Page.search_fields + [
-		index.SearchField('intro'),
-		index.SearchField('body'),
-	]
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
 
-	api_fields = [
-		APIField('project_url'),
-		APIField('intro'),
-		APIField('body'),
-		APIField('tags'),
-		APIField('gallery_images')
-	]
+    api_fields = [
+        APIField('project_url'),
+        APIField('intro'),
+        APIField('body'),
+        APIField('about'),
+        APIField('tags'),
+        APIField('gallery_images'),
+        APIField('technical_sheet')
+    ]
 
-	content_panels = Page.content_panels + [
-		FieldPanel('project_url'),
-		FieldPanel('intro'),
-		StreamFieldPanel('body', classname="full"),
-		InlinePanel('gallery_images', label="Gallery images"),
-		FieldPanel('tags'),
-	]
+    content_panels = Page.content_panels + [
+        FieldPanel('project_url'),
+        FieldPanel('intro'),
+        StreamFieldPanel('body', classname="full"),
+        FieldPanel('about'),
+        InlinePanel('technical_sheet', label='Technical Sheet'),
+        InlinePanel('gallery_images', label="Gallery images"),
+        FieldPanel('tags'),
+    ]
 
 
 class PortfolioPageGalleryImage(Orderable):
-	page = ParentalKey(PortfolioPage, on_delete=models.CASCADE, related_name='gallery_images')
-	image = models.ForeignKey(
-		'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-	)
-	caption = models.CharField(blank=True, max_length=250)
+    page = ParentalKey(PortfolioPage, on_delete=models.CASCADE,
+                       related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
 
-	api_fields = [
-		APIField('image'),
-		APIField('caption'),
-		APIField('page'),
-		APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
-		APIField('image_medium', serializer=ImageRenditionField('max-300x300', source='image')),
-		APIField('image_banner', serializer=ImageRenditionField('fill-500x400', source='image')),
-		APIField('image_full', serializer=ImageRenditionField('max-800x800', source='image'))
-	]
+    api_fields = [
+        APIField('image'),
+        APIField('caption'),
+        APIField('page'),
+        APIField('image_thumbnail', serializer=ImageRenditionField(
+            'fill-100x100', source='image')),
+        APIField('image_medium', serializer=ImageRenditionField(
+            'max-300x300', source='image')),
+        APIField('image_banner', serializer=ImageRenditionField(
+            'fill-500x400', source='image')),
+        APIField('image_full', serializer=ImageRenditionField(
+            'max-800x800', source='image'))
+    ]
 
-	panels = [
-		ImageChooserPanel('image'),
-		FieldPanel('caption'),
-	]
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]
+
+
+class TechnicalSheetItem(Orderable):
+    page = ParentalKey(PortfolioPage, on_delete=models.CASCADE,
+                       related_name='technical_sheet')
+    item = models.CharField(max_length=250)
+
+    api_fields = [
+        APIField('item')
+    ]
+
+    panels = [
+        FieldPanel('item')
+    ]

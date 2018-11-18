@@ -114,8 +114,9 @@ class PortfolioPage extends Component {
               <Box
                 className=""
                 mx="auto"
+                p={[2, 0]}
                 css={{
-                  maxWidth: "650px",
+                  maxWidth: "700px",
                   alignItems: "center"
                 }}
               >
@@ -146,8 +147,9 @@ class PortfolioPage extends Component {
               <Box
                 mt={15}
                 mx="auto"
+                p={[2, 0]}
                 css={{
-                  maxWidth: "650px"
+                  maxWidth: "700px"
                 }}
               >
                 <AwesomeSlider
@@ -162,13 +164,72 @@ class PortfolioPage extends Component {
                     <div key={image.id} data-src={image.image_full.url} />
                   ))}
                 </AwesomeSlider>
+                {body.length > 0 && (
+                  <Segment>
+                    <Text fontFamily="work">{body}</Text>
+                  </Segment>
+                )}
+              </Box>
+              <Box
+                mt={15}
+                mx="auto"
+                p={[2, 0]}
+                css={{
+                  maxWidth: "700px"
+                }}
+              >
+                {details.about && (
+                  <Box
+                    p={[2, 1]}
+                    mt={5}
+                    css={{
+                      maxWidth: "650px",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Heading
+                      pb={2}
+                      color="white"
+                      fontFamily="mont"
+                      fontSize="2em"
+                    >
+                      About this project
+                    </Heading>
+                    <Text
+                      color="white"
+                      fontFamily="work"
+                      fontSize={["1.2em", "1.3em"]}
+                    >
+                      {details.about}
+                    </Text>
+                  </Box>
+                )}
+
+                {details.technical_sheet.length > 0 && (
+                  <Box p={[2, 1]} mt={5}>
+                    <Heading
+                      pb={3}
+                      color="white"
+                      fontFamily="mont"
+                      fontSize="2em"
+                    >
+                      Technical Sheet
+                    </Heading>
+                    {details.technical_sheet.map(item => (
+                      <Text
+                        key={item.id}
+                        color="white"
+                        p={1}
+                        fontSize={["1.2em", "1.3em"]}
+                      >
+                        <Icon className="caret right" size="small" />
+                        {item.item}
+                      </Text>
+                    ))}
+                  </Box>
+                )}
               </Box>
             </Box>
-            {body.length > 0 && (
-              <Segment>
-                <Text fontFamily="work">{body}</Text>
-              </Segment>
-            )}
           </Container>
         )}
       </Wrapper>

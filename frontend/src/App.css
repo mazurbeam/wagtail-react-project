@@ -37,10 +37,3 @@ body {
   height: 0;
   visibility: hidden;
 }
-/* .Site-content:after {
-  content: ‘\00a0’;
-  display: block;
-  margin-top: var(— space);
-  height: 0;
-  visibility: hidden; 
-} */

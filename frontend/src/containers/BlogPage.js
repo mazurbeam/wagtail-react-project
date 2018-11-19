@@ -97,7 +97,7 @@ class BlogPage extends Component {
         {loading || !details ? (
           <Loading />
         ) : (
-          <Box css={{ postion: "fixed", overflowY: "auto" }}>
+          <Box mb={100}>
             <Box className="" color="" pt={80}>
               <Box className="">
                 <Header inverted>{details.title}</Header>

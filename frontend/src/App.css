@@ -11,30 +11,31 @@ body {
 .Site {
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  min-height: 90vh;
-  position: relative;
+  min-height: 100vh;
 }
-.Site-header,
+/* .Site-header,
 .Site-footer {
   flex: none;
   display: block;
-}
+} */
 
-.Site-footer {
+/* .Site-footer {
   flex: none;
-  position: fixed;
-  bottom: 0;
-  /* padding-bottom: 60px; */
-}
+  /* position: fixed;
+  bottom: 0; */
+/* padding-bottom: 60px; */
 
 .Site-content {
-  flex: 1 0 auto;
+  flex: 1;
   padding: var(— space) var(— space) 0;
-  padding-bottom: 60px;
-  /* position: fixed; */
-  overflow: auto;
   width: 100%;
+}
+.Site-content:after {
+  content: ‘\00a0’;
+  display: block;
+  margin-top: var(— space);
+  height: 0;
+  visibility: hidden;
 }
 /* .Site-content:after {
   content: ‘\00a0’;

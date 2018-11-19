@@ -4,29 +4,37 @@ import { Link } from 'react-router-dom'
 import { Icon, Popup } from 'semantic-ui-react'
 import { Box } from 'rebass'
 
+const popupStyle = {
+  borderRadius: 0,
+  opacity: 0.7,
+  padding: '2em'
+}
+
 const NextPrevNav = ({ locations }) => (
   <Fragment>
     <Box
       className='uk-visible@s'
       color='white'
-      css={{ position: 'absolute', left: '10px', top: '50%', zIndex: 1 }}
+      css={{ position: 'fixed', left: '10px', top: '50%', zIndex: 1 }}
     >
       <Link to={locations.prev}>
         <Popup
           inverted
           trigger={<Icon size='big' color='grey' className='chevron left' />}
           content={locations.prevTitle}
+          style={popupStyle}
         />
       </Link>
     </Box>
     <Box
       className='uk-visible@s'
       color='white'
-      css={{ position: 'absolute', right: '10px', top: '50%', zIndex: 1 }}
+      css={{ position: 'fixed', right: '10px', top: '50%', zIndex: 1 }}
     >
       <Link to={locations.next}>
         <Popup
           inverted
+          style={popupStyle}
           trigger={<Icon size='big' color='grey' className='chevron right' />}
           content={locations.nextTitle}
         />
@@ -35,11 +43,12 @@ const NextPrevNav = ({ locations }) => (
     <Box
       className='uk-hidden@s'
       color='white'
-      css={{ position: 'absolute', left: '10px', top: '15%', zIndex: 1 }}
+      css={{ position: 'fixed', left: '10px', top: '15%', zIndex: 1 }}
     >
       <Link to={locations.prev}>
         <Popup
           inverted
+          style={popupStyle}
           trigger={<Icon size='big' color='grey' className='chevron left' />}
           content={locations.prevTitle}
         />
@@ -48,11 +57,12 @@ const NextPrevNav = ({ locations }) => (
     <Box
       className='uk-hidden@s'
       color='white'
-      css={{ position: 'absolute', right: '10px', top: '15%', zIndex: 1 }}
+      css={{ position: 'fixed', right: '10px', top: '15%', zIndex: 1 }}
     >
       <Link to={locations.next}>
         <Popup
           inverted
+          style={popupStyle}
           trigger={<Icon size='big' color='grey' className='chevron right' />}
           content={locations.nextTitle}
         />

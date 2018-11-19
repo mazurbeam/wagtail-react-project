@@ -18,13 +18,14 @@ from wagtail.images.api.fields import ImageRenditionField
 
 from pages.blocks import BaseStreamBlock
 
+
 class HomePage(Page):
     name = models.TextField(
         help_text='Your Name',
         blank=True)
     subtitle = models.TextField(
         help_text='Ex: Full Stack Developer',
-	    blank=True
+        blank=True
     )
     introduction = models.TextField(
         help_text='A paragraph intro',
@@ -39,14 +40,13 @@ class HomePage(Page):
         help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
     )
 
-  
     hero_cta = models.CharField(
         verbose_name='Hero CTA',
         max_length=255,
         null=True,
         blank=True,
         help_text='Text to display on Call to Action'
-        )
+    )
     hero_cta_link = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -61,7 +61,7 @@ class HomePage(Page):
         BaseStreamBlock(), verbose_name="Page body", blank=True, null=True
     )
 
-     # Promo section of the HomePage
+    # Promo section of the HomePage
     promo_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -142,11 +142,12 @@ class HomePage(Page):
         APIField('body'),
         APIField('featured_section_1'),
         APIField('featured_section_1_title'),
-        APIField('image_thumbnail', serializer=ImageRenditionField('fill-200x200', source='image')),
+        APIField('image_thumbnail', serializer=ImageRenditionField(
+            'fill-200x200', source='image')),
     ]
 
     content_panels = Page.content_panels + [
-        
+
         MultiFieldPanel([
             ImageChooserPanel('image'),
             FieldPanel('name'),
@@ -155,8 +156,8 @@ class HomePage(Page):
             MultiFieldPanel([
                 FieldPanel('hero_cta'),
                 PageChooserPanel('hero_cta_link'),
-                ])
-            ], heading="Hero section"),
+            ])
+        ], heading="Hero section"),
         MultiFieldPanel([
             ImageChooserPanel('promo_image'),
             FieldPanel('promo_title'),
@@ -167,14 +168,21 @@ class HomePage(Page):
             MultiFieldPanel([
                 FieldPanel('featured_section_1_title'),
                 PageChooserPanel('featured_section_1'),
-                ]),
+            ]),
             MultiFieldPanel([
                 FieldPanel('featured_section_2_title'),
                 PageChooserPanel('featured_section_2'),
-                ]),
+            ]),
             MultiFieldPanel([
                 FieldPanel('featured_section_3_title'),
                 PageChooserPanel('featured_section_3'),
-                ])
+            ])
         ], heading="Featured homepage sections", classname="collapsible")
+    ]
+
+    subpage_types = [
+        'pages.StandardPage',
+        'portfolio.PortfolioIndexPage',
+        'projects.ProjectIndexPage',
+        'blog.BlogIndexPage'
     ]

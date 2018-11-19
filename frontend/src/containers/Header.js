@@ -14,8 +14,7 @@ import {
   Toolbar,
   StyledLink,
   StyledMenu,
-  StyledSegment,
-  FooterLink
+  StyledSegment
 } from "../components/base/styles";
 import Dropdown from "../components/Dropdown";
 
@@ -158,53 +157,6 @@ class Header extends Component {
               Contact
             </Menu.Item>
           </Container>
-          <Box
-            css={{
-              position: "absolute",
-              top: "6px",
-              right: "0",
-              height: "30px"
-            }}
-          >
-            <FooterLink
-              className=""
-              color="whitish"
-              ml="auto"
-              href="https://github.com/mazurbeam/"
-              target="_blank"
-              style={{
-                fontFamily: "Montserrat",
-                padding: 10,
-                margin: 0,
-                color: "#c0ccd4",
-                marginLeft: "auto",
-                display: "inline-block"
-              }}
-            >
-              {" "}
-              <Icon inverted name="github" size="large" />{" "}
-            </FooterLink>
-            <FooterLink
-              className=""
-              color="whitish"
-              href="https://www.linkedin.com/in/walter-mazur-02803453/"
-              target="_blank"
-              style={{
-                fontFamily: "Montserrat",
-                color: "#c0ccd4",
-                display: "inline-block",
-                padding: 10
-              }}
-            >
-              <Icon
-                className="icon-link"
-                name="linkedin"
-                link
-                inverted
-                size="large"
-              />
-            </FooterLink>
-          </Box>
         </Menu>
       </Visibility>
     );

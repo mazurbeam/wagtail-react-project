@@ -51,7 +51,7 @@ class Home extends Component {
     }
     // console.log("home body", details.body);
     return (
-      <PageAnimationWrapper>
+      <div>
         <Box
           color="white"
           css={{ position: "absolute", right: "10px", top: "50vh", zIndex: 1 }}
@@ -164,7 +164,7 @@ class Home extends Component {
             </Card>
           </MyContainer>
         )}
-      </PageAnimationWrapper>
+      </div>
     );
   }
 }

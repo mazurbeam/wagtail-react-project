@@ -15,83 +15,97 @@ from wagtail.images.api.fields import ImageRenditionField
 
 from pages.blocks import BaseStreamBlock
 
+
 class ProjectPageTag(TaggedItemBase):
-	content_object = ParentalKey('projects.ProjectPage', on_delete=models.CASCADE, related_name='tagged_items')
+    content_object = ParentalKey(
+        'projects.ProjectPage', on_delete=models.CASCADE, related_name='tagged_items')
 
 
 class ProjectIndexPage(Page):
-	intro = models.CharField(max_length=1000, blank=True)
-	icon = models.CharField(max_length=20, blank=True)
+    intro = models.CharField(max_length=1000, blank=True)
+    icon = models.CharField(max_length=20, blank=True)
 
-	api_fields = [
-		APIField('intro'),
-		APIField('icon'),
-	]
-	content_panels = Page.content_panels + [
-		FieldPanel('intro', classname="full"),
-		FieldPanel('icon'),
+    api_fields = [
+        APIField('intro'),
+        APIField('icon'),
+    ]
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        FieldPanel('icon'),
 
-	]
+    ]
+
+    subpage_types = [
+        'projects.ProjectPage',
+    ]
 
 
 class ProjectPage(Page):
-	project_url = models.CharField(max_length=250, blank=True, help_text='Ex: Github url')
-	demo_url = models.CharField(max_length=250, blank=True, help_text='Url for demo of project')
-	intro = models.CharField(max_length=250, blank=True, help_text='a couple sentance introduction')
-	body = StreamField(
-		BaseStreamBlock(), verbose_name="Page body", blank=True
-	)
-	tags = ClusterTaggableManager(through=ProjectPageTag, blank=True)
+    project_url = models.CharField(
+        max_length=250, blank=True, help_text='Ex: Github url')
+    demo_url = models.CharField(
+        max_length=250, blank=True, help_text='Url for demo of project')
+    intro = models.CharField(max_length=250, blank=True,
+                             help_text='a couple sentance introduction')
+    body = StreamField(
+        BaseStreamBlock(), verbose_name="Page body", blank=True
+    )
+    tags = ClusterTaggableManager(through=ProjectPageTag, blank=True)
 
-	def main_image(self):
-		gallery_item = self.gallery_images.first()
-		if gallery_item:
-			return gallery_item.image
-		else:
-			return None
+    def main_image(self):
+        gallery_item = self.gallery_images.first()
+        if gallery_item:
+            return gallery_item.image
+        else:
+            return None
 
-	search_fields = Page.search_fields + [
-		index.SearchField('intro'),
-		index.SearchField('body'),
-	]
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
 
-	api_fields = [
-		APIField('project_url'),
+    api_fields = [
+        APIField('project_url'),
         APIField('demo_url'),
-		APIField('intro'),
-		APIField('body'),
-		APIField('tags'),
-		APIField('gallery_images')
-	]
+        APIField('intro'),
+        APIField('body'),
+        APIField('tags'),
+        APIField('gallery_images')
+    ]
 
-	content_panels = Page.content_panels + [
-		FieldPanel('project_url'),
-		FieldPanel('demo_url'),        
-		FieldPanel('intro'),
-		StreamFieldPanel('body', classname="full"),
-		InlinePanel('gallery_images', label="Gallery images"),
-		FieldPanel('tags'),
-	]
+    content_panels = Page.content_panels + [
+        FieldPanel('project_url'),
+        FieldPanel('demo_url'),
+        FieldPanel('intro'),
+        StreamFieldPanel('body', classname="full"),
+        InlinePanel('gallery_images', label="Gallery images"),
+        FieldPanel('tags'),
+    ]
 
 
 class ProjectPageGalleryImage(Orderable):
-	page = ParentalKey(ProjectPage, on_delete=models.CASCADE, related_name='gallery_images')
-	image = models.ForeignKey(
-		'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-	)
-	caption = models.CharField(blank=True, max_length=250)
+    page = ParentalKey(ProjectPage, on_delete=models.CASCADE,
+                       related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
 
-	api_fields = [
-		APIField('image'),
-		APIField('caption'),
-		APIField('page'),
-		APIField('image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='image')),
-		APIField('image_medium', serializer=ImageRenditionField('fill-300x300', source='image')),
-		APIField('image_banner', serializer=ImageRenditionField('fill-500x400', source='image')),
-		APIField('image_full', serializer=ImageRenditionField('max-800x800', source='image'))
-	]
+    api_fields = [
+        APIField('image'),
+        APIField('caption'),
+        APIField('page'),
+        APIField('image_thumbnail', serializer=ImageRenditionField(
+            'fill-100x100', source='image')),
+        APIField('image_medium', serializer=ImageRenditionField(
+            'fill-300x300', source='image')),
+        APIField('image_banner', serializer=ImageRenditionField(
+            'fill-500x400', source='image')),
+        APIField('image_full', serializer=ImageRenditionField(
+            'max-800x800', source='image'))
+    ]
 
-	panels = [
-		ImageChooserPanel('image'),
-		FieldPanel('caption'),
-	]
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]

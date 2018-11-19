@@ -35,6 +35,10 @@ class PortfolioIndexPage(Page):
 
     ]
 
+    subpage_types = [
+        'portfolio.PortfolioPage',
+    ]
+
 
 class PortfolioPage(Page):
     project_url = models.CharField(max_length=250, blank=True)

@@ -10,7 +10,7 @@ import {
 } from "../services/actions/page";
 import { pageTypeReducer, getNextAndPrevPath } from "../utils";
 import Loading from "../components/Loading";
-import PageAnimationWrapper from "../components/PageAnimationWrapper";
+// import PageAnimationWrapper from "../components/PageAnimationWrapper";
 import NextPrevNav from "../components/NextPrevNav";
 
 class Page extends Component {
@@ -70,10 +70,10 @@ class Page extends Component {
       }
     }
     return (
-      <PageAnimationWrapper>
+      <div>
         {!isChildPage && <NextPrevNav locations={sideNav} />}
         {loading && ready ? PageType : PageType}
-      </PageAnimationWrapper>
+      </div>
     );
   }
 }

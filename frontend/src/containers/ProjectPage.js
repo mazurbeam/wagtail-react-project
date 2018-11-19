@@ -27,8 +27,6 @@ class ProjectPage extends Component {
     loading: true
   };
 
-  componentWillMount() {}
-
   componentDidMount() {
     this.setState({ loading: true });
 
@@ -38,37 +36,6 @@ class ProjectPage extends Component {
     getPageDetails(id);
     this.setState({ loading: false });
   }
-
-  isEmpty = obj => {
-    const values = Object.values(obj);
-    if (values.length > 0) {
-      return false;
-    }
-    return true;
-  };
-
-  addIcons = menu => {
-    const menuWithIcons = menu.map(item => {
-      switch (item.meta.slug) {
-        case "blog":
-          return {
-            ...item,
-            icon: "icon: social"
-          };
-        case "about":
-          return {
-            ...item,
-            icon: "icon: question"
-          };
-        default:
-          return {
-            ...item,
-            icon: "icon: bolt"
-          };
-      }
-    });
-    return menuWithIcons;
-  };
 
   render() {
     const { loading } = this.state;

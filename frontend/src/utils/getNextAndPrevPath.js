@@ -15,6 +15,18 @@ const getNextAndPrevPath = (menu, location) => {
       pathname: `/${menu[0].meta.slug}`,
       state: { prev: true, index: -1 }
     }
+  } else if (pathname === '/contact') {
+    const { length } = menu
+    result.prev = {
+      pathname: `/${menu[length - 1].meta.slug}`,
+      state: { prev: false, index: length - 1 }
+    }
+    result.prevTitle = menu[length - 1].title
+    result.next = {
+      pathname: `/`,
+      state: { prev: false, index: -1 }
+    }
+    result.nextTitle = 'Home'
   } else {
     for (let i = 0; i < menu.length; i += 1) {
       if (pathname === `/${menu[i].meta.slug}`) {

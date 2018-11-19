@@ -1,17 +1,13 @@
 import React from 'react'
 
-// import { Box } from 'rebass';
+// import { Box } from 'rebass'
 import { Icon, Segment } from 'semantic-ui-react'
+// import StickyFooter from 'react-sticky-footer'
 
 import { FooterLink } from './base/styles'
 
 const Footer = () => (
-  <Segment
-    basic
-    className='Site-footer'
-    textAlign='center'
-    style={{ position: '-webkit-sticky', bottom: 10 }}
-  >
+  <Segment basic className='Site-footer' textAlign='center'>
     <FooterLink
       className='uk-nav-header'
       color='whitish'

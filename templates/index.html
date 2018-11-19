@@ -1,4 +1,6 @@
-{% load render_bundle  from webpack_loader  %}
+{% load render_bundle from webpack_loader  %}
+{% load webpack_static from webpack_loader %}
+
 {% load static wagtailuserbar %}
 <!DOCTYPE html>
 <html>
@@ -12,15 +14,26 @@
     <title>
         Walter Mazur
     </title>
+
+     {% comment %} {% render_bundle 'main' %} {% endcomment %}
+    {% comment %} {% render_bundle 'main' 'js' attrs='async' %} {% endcomment %}
 </head>
-<body class="Site">
+<body >
 
 
 {#<div id="particles-js"></div>#}
 
-<div id="root">
-</div>
+<main id="root">{{ markup|safe }}</main>
 {% render_bundle 'main' %}
+
+<!-- Root -->
+    
+
+    <!-- Redux State -->
+    <script>
+      window.__REDUX_STATE__ = {{ finalState|safe }}
+    </script>
+
 {#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.12/js/uikit.min.js"></script>#}
 {#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.12/js/uikit-icons.min.js"#}
 <script type="text/javascript" src="{% static 'js/uikit.min.js' %}"></script>

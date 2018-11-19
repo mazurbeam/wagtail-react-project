@@ -25,6 +25,7 @@
     "fs-extra": "3.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
+    "http": "0.0.0",
     "immutable": "^3.8.2",
     "jest": "20.0.4",
     "js-cookie": "^2.2.0",
@@ -51,6 +52,7 @@
     "react-progressive-bg-image": "^3.0.0",
     "react-progressive-image": "^0.6.0",
     "react-redux": "^5.0.7",
+    "react-render": "^2.0.0",
     "react-render-html": "^0.6.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -75,7 +77,8 @@
     "sw-precache-webpack-plugin": "0.11.4",
     "uikit": "^3.0.0-rc.16",
     "url-loader": "0.6.2",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "2.0.3",
+    "yargs": "^12.0.4"
   },
   "scripts": {
     "start": "node scripts/start.js",

@@ -50,6 +50,8 @@ class ProjectPage(Page):
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True
     )
+    about = models.TextField(blank=True)
+
     tags = ClusterTaggableManager(through=ProjectPageTag, blank=True)
 
     def main_image(self):
@@ -108,4 +110,19 @@ class ProjectPageGalleryImage(Orderable):
     panels = [
         ImageChooserPanel('image'),
         FieldPanel('caption'),
+    ]
+
+
+class ProjectResources(Orderable):
+    page = ParentalKey(ProjectPage, on_delete=models.CASCADE,
+                       related_name='resources')
+    name = models.CharField(max_length=250)
+    url = models.CharField(max_length=200, blank=True)
+
+    api_fields = [
+        APIField('item')
+    ]
+
+    panels = [
+        FieldPanel('item')
     ]

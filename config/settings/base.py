@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'webpack_loader',
+    'react'
 ]
 
 MIDDLEWARE = [
@@ -172,7 +173,7 @@ WAGTAILAPI_BASE_URL = 'http://localhost:8000'
 # Webpack Settings
 WEBPACK_LOADER = {
     'DEFAULT': {
-            'BUNDLE_DIR_NAME': 'bundles/',
-            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
-        }
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
+    }
 }

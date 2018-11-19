@@ -11,30 +11,34 @@ from search import views as search_views
 
 from .api import api_router
 from api.router import router
+from .views import _react_render, render_main
 
 urlpatterns = [
-	url(r'^django-admin/', admin.site.urls),
+    url(r'^django-admin/', admin.site.urls),
 
-	url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^admin/', include(wagtailadmin_urls)),
 
-	url(r'^documents/', include(wagtaildocs_urls)),
-	url(r'^api/v2/', api_router.urls),
-	url(r'^api/v2/', include(router.urls) ),
-	url(r'^search/$', search_views.search, name='search'),
-	url(r'^api-auth/', include('rest_framework.urls')),
-	# For anything not caught by a more specific rule above, hand over to
-	# Wagtail's page serving mechanism. This should be the last pattern in
-	# the list:
-	url(r'^', TemplateView.as_view(template_name='index.html')),
-	url(r'', include(wagtail_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^api/v2/', api_router.urls),
+    url(r'^api/v2/', include(router.urls)),
+    url(r'^search/$', search_views.search, name='search'),
+    url(r'^api-auth/', include('rest_framework.urls')),
+    # For anything not caught by a more specific rule above, hand over to
+    # Wagtail's page serving mechanism. This should be the last pattern in
+    # the list:
 
-	# Alternatively, if you want Wagtail pages to be served from a subpath
-	# of your site, rather than the site root:
-	# url(r'^pages/', include(wagtail_urls)),
+    # url(r'^', TemplateView.as_view(template_name='index.html')),
+    url(r'^', render_main),
+    url(r'', include(wagtail_urls)),
+
+    # Alternatively, if you want Wagtail pages to be served from a subpath
+    # of your site, rather than the site root:
+    # url(r'^pages/', include(wagtail_urls)),
 ]
 if settings.DEBUG:
-	from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-	from django.conf.urls.static import static
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    from django.conf.urls.static import static
 
-	urlpatterns = staticfiles_urlpatterns() + urlpatterns
-	urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + urlpatterns
+    urlpatterns = staticfiles_urlpatterns() + urlpatterns
+    urlpatterns = static(settings.MEDIA_URL,
+                         document_root=settings.MEDIA_ROOT) + urlpatterns

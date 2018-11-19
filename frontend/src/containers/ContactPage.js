@@ -56,18 +56,19 @@ class ContactPage extends Component {
     return (
       <FadeWrapper>
         <NextPrevNav locations={sideNav} />
-        <Box mx="auto" p={4} css={{ minHeight: 700, maxWidth: 500 }} vertical>
-          <Heading
-            color="white"
-            fontFamily="mont"
-            fontSize="3.7em"
-            mt="3em"
-            pb="1em"
-          >
-            Contact Me
-          </Heading>
+        <Container>
+          <Box mx="auto" p={4} css={{ minHeight: 700, maxWidth: 500 }} vertical>
+            <Heading
+              color="white"
+              fontFamily="mont"
+              fontSize={["3em", "3.7em"]}
+              mt={["2.6em", "3em"]}
+              mx="auto"
+              pb="1em"
+            >
+              Contact Me
+            </Heading>
 
-          <Container>
             {submitted ? (
               <Segment inverted>
                 <Header icon as="h3">
@@ -85,8 +86,8 @@ class ContactPage extends Component {
                 <ContactForm onSubmit={this.submit} />
               </Segment>
             )}
-          </Container>
-        </Box>
+          </Box>
+        </Container>
       </FadeWrapper>
     );
   }

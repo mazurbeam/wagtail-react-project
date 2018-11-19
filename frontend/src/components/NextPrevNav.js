@@ -43,7 +43,7 @@ const NextPrevNav = ({ locations }) => (
     <Box
       className='uk-hidden@s'
       color='white'
-      css={{ position: 'fixed', left: '10px', top: '15%', zIndex: 1 }}
+      css={{ position: 'fixed', left: '10px', top: '15%' }}
     >
       <Link to={locations.prev}>
         <Popup
@@ -57,7 +57,7 @@ const NextPrevNav = ({ locations }) => (
     <Box
       className='uk-hidden@s'
       color='white'
-      css={{ position: 'fixed', right: '10px', top: '15%', zIndex: 1 }}
+      css={{ position: 'fixed', right: '10px', top: '15%' }}
     >
       <Link to={locations.next}>
         <Popup

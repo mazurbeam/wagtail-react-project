@@ -13,6 +13,8 @@ import {
   Popup
 } from "semantic-ui-react";
 import { Box, Heading, Card, Text } from "rebass";
+import { showSnack, dismissSnack } from "react-redux-snackbar";
+
 import * as reducers from "../services/reducers";
 import { createNewMessage } from "../services/actions/contact";
 
@@ -24,14 +26,18 @@ import { getNextAndPrevPath } from "../utils";
 
 class ContactPage extends Component {
   state = {
-    submitted: false
+    submitted: false,
+    count: "x"
   };
 
   submit = values => {
-    const { createMessage } = this.props;
+    const { count } = this.state;
+    const { createMessage, newSnack } = this.props;
     console.log(values);
     createMessage(values.name, values.email, values.message);
-    this.setState({ submitted: true });
+    newSnack(count, "Message Recieved");
+    this.setState({ count: count + count });
+    newSnack(count + count, "another message", "Cool!");
   };
 
   toggleForm = () => {
@@ -104,6 +110,15 @@ const mapDispatchToProps = dispatch => ({
   },
   resetForm() {
     dispatch(reset("contact"));
+  },
+  newSnack(id, label, buttonLabel = "X") {
+    dispatch(
+      showSnack(id, {
+        label,
+        timeout: 3000,
+        button: { label: buttonLabel }
+      })
+    );
   }
 });
 

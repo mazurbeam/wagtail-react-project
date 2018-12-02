@@ -42,7 +42,7 @@ class Home extends Component {
   render() {
     const { loading } = this.state;
     const { pages, details } = this.props;
-    // console.log("pages in home render", pages);
+    console.log("pages in home render", pages);
 
     const image = details.image_thumbnail;
     let body = [];

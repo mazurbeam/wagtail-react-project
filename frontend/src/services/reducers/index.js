@@ -2,6 +2,8 @@
 
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
+import { snackbarReducer } from 'react-redux-snackbar' // Import it
+
 import * as contact from '../actions/contact'
 import page, * as fromPage from './page'
 
@@ -17,7 +19,8 @@ const rootReducer = combineReducers({
           return state
       }
     }
-  })
+  }),
+  snackbar: snackbarReducer
 })
 
 export const refreshHome = state => fromPage.refreshHomePage(state.page)

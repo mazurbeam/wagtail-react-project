@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import { Provider } from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import App from './App'
 import rootReducer from './services/reducers'
 import store, { history } from './services/store'

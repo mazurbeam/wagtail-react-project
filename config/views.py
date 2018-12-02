@@ -26,9 +26,8 @@ from react.render import render_component
 def render_main(request):
     main = get_files('main')
     print(main)
-    # main_component = render_component(
-    #     '/Users/mazurbeam/dev/projects/wagtail-react/wagtail-react-project/assets/bundles/js/main.51c7f8a2.js')
-    # rendered = render_component(main[0]['url'])
+    # main_component = render_component('/Users/mazurbeam/dev/projects/wagtail-react/wagtail-react-project/assets/bundles/js/main.51c7f8a2.js')
+    # rendered = render_component(main_component, timeout=None)
     # rendered = 'rendered'
     # print(main[0]['path'])
     # print(rendered)

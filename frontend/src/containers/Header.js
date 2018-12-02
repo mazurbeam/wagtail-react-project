@@ -95,7 +95,7 @@ class Header extends Component {
               active={pathname}
             />
           </Box>
-          <Container textAlign="center" centered>
+          <Container textAlign="center">
             <Menu.Item
               as={StyledLink}
               className="uk-visible@s"

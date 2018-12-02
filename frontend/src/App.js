@@ -2,6 +2,8 @@ import React from 'react'
 import { ConnectedRouter } from 'connected-react-router'
 
 import { Box } from 'rebass'
+import { Snackbar } from 'react-redux-snackbar'
+
 import ParticlesWrapper from './components/ParticlesWrapper'
 import Footer from './components/Footer'
 // import Header from '../components/Header'
@@ -20,6 +22,7 @@ const App = ({ history }) => {
         </ConnectedRouter>
       </Box>
       <Footer />
+      <Snackbar />
     </Box>
   )
 }

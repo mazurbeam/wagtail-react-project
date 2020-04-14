@@ -22,7 +22,7 @@ requests==2.20.0
 six==1.11.0
 Unidecode==1.0.22
 urllib3==1.23
-wagtail==2.3
+wagtail==2.7.2
 webencodings==0.5.1
 whitenoise==4.1
 Willow==1.1

@@ -5,7 +5,7 @@
   "dependencies": {
     "animated": "^0.2.2",
     "autoprefixer": "7.1.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-plugin-react-css-modules": "^3.4.2",
     "body-parser": "^1.18.3",
     "case-sensitive-paths-webpack-plugin": "2.1.1",

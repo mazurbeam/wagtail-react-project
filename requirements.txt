@@ -14,7 +14,7 @@ html5lib==1.0.1
 idna==2.7
 Markdown==2.6.11
 Pillow==5.2.0
-PyJWT==1.6.4
+PyJWT==2.4.0
 python-decouple==3.1
 pytz==2018.5
 react-ssr==0.1.8

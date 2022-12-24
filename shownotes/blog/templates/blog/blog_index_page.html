@@ -4,6 +4,8 @@
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
+{% block content %}
+
 {% for post in blogpages %}
     {% with post=post.specific %}
         <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>

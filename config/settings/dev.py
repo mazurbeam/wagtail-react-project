@@ -19,6 +19,44 @@ REACT = {
     'RENDER': True,
     'RENDER_URL': 'http://127.0.0.1:9009/render',
 }
+MIDDLEWARE_CLASSES = (
+  'django.middleware.common.CommonMiddleware',
+  'django.contrib.sessions.middleware.SessionMiddleware',
+  'django.middleware.csrf.CsrfViewMiddleware',
+  'django.contrib.auth.middleware.AuthenticationMiddleware',
+  'django.contrib.messages.middleware.MessageMiddleware',
+  'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+  'wagtail.wagtailcore.middleware.SiteMiddleware',
+
+  'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+)
+INSTALLED_APPS = (
+  'django.contrib.auth',
+  'django.contrib.contenttypes',
+  'django.contrib.sessions',
+  'django.contrib.messages',
+  'django.contrib.staticfiles',
+
+  'compressor',
+  'taggit',
+  'modelcluster',
+
+  'wagtail.wagtailcore',
+  'wagtail.wagtailadmin',
+  'wagtail.wagtaildocs',
+  'wagtail.wagtailsnippets',
+  'wagtail.wagtailusers',
+  'wagtail.wagtailimages',
+  'wagtail.wagtailembeds',
+  'wagtail.wagtailsearch',
+  'wagtail.wagtailsites',
+  'wagtail.wagtailredirects',
+  'wagtail.wagtailforms',
+
+  'shownotes',
+  'pages',
+)
 
 try:
     from .local import *

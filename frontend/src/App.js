@@ -1,30 +1,24 @@
-import React from 'react'
-import { ConnectedRouter } from 'connected-react-router'
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import axios from "axios";
 
-import { Box } from 'rebass'
-import { Snackbar } from 'react-redux-snackbar'
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
-import ParticlesWrapper from './components/ParticlesWrapper'
-import Footer from './components/Footer'
-// import Header from '../components/Header'
-import './App.css'
-import Routes from './routes'
-import './static/css/uikit.css'
-import ParcticlesWrapper from './components/ParticlesWrapper'
+const Wrapper = styled.h1`
+`;
 
-const App = ({ history }) => {
-  return (
-    <Box className='Site'>
-      <ParcticlesWrapper />
-      <Box className='Site-content'>
-        <ConnectedRouter history={history}>
-          <Routes />
-        </ConnectedRouter>
-      </Box>
-      <Footer />
-      <Snackbar />
-    </Box>
-  )
+function App() {
+    const [blog, setBlog] = useState([]);
+    useEffect(() => {
+        axios.get(`/4`).then((response) => {
+            setBlog(response.data);
+            console.log(blog)
+        });
+    }, []);
+    return (
+        <Wrapper>
+            <p>Hi {blog.title}</p>
+        </Wrapper>
+    );
 }
-
-export default App
+export default App;

@@ -1,6 +1,0 @@
-/*******************************
-    User Variable Overrides
-*******************************/
-@import (css) url("https://fonts.googleapis.com/css?family=Rubik+Mono+One")
-
-@headerFont        : 'Rubik Mono One', sans-serif;

@@ -1,7 +1,0 @@
-/* Base */
-* {
-  box-sizing: border-box;
-}
-
-/* Page */
-@import "./colors.css";

@@ -1,6 +1,8 @@
 from django import forms
 
 from django.db import models
+from rest_framework.fields import DateField
+
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
@@ -9,6 +11,9 @@ from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail.api import APIField
+from wagtail.images.api.fields import ImageRenditionField
+
 
 
 @register_snippet
@@ -29,6 +34,10 @@ class BlogCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'blog categories'
+    
+    api_fields = [
+        APIField('name'),
+    ]
 
 
 
@@ -50,6 +59,7 @@ class BlogPageTag(TaggedItemBase):
         on_delete=models.CASCADE
     )
 
+
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
@@ -69,8 +79,18 @@ class BlogPage(Page):
         index.SearchField('intro'),
         index.SearchField('body'),
     ]
+        # Export fields over the API
+    api_fields = [
+        APIField('date'),
+        APIField('intro'),
+        APIField('body'),
+        APIField('main_image'),
+        APIField('main_image_thumbnail', serializer=ImageRenditionField('fill-100x100', source='main_image')),
+        APIField('published_date_display', serializer=DateField(format='%A %d %B %Y', source='date')),
 
-content_panels = Page.content_panels + [
+    ]
+
+    content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('date'),
             FieldPanel('tags'),

@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     "blog",
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -66,8 +68,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "mysite.urls"
 CSRF_TRUSTED_ORIGINS = ['https://jessiebelle-refactored-space-giggle-p9qp69477pqh7qj6-8000.preview.app.github.dev','https://*.127.0.0.1']
-
-
+REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']}
 
 TEMPLATES = [
     {
